@@ -66,7 +66,7 @@ Penultimate[BigList].apply(bigList)
 
 
 Invoquer une instance de `Penultimate` oblige le compilateur à invoquer des instances pour `Last` et `Init`,
-nous bénéficions donc du même niveau de vérification des types sur les `HLists` courtes :
+nous bénéficions donc du même niveau de vérification des types sur les `HList`s courtes :
 
 ```tut:book:silent
 type TinyList = String :: HNil

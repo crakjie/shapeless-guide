@@ -72,7 +72,7 @@ La repésentation générique de `Shape` est
 Dans la Section [@sec:generic:product-generic]
 nous avons définie des encodeurs de produit pour `Rectangle` et `Circle`.
 Maintenant, pour écrire des `CsvEncoders` générique pour `:+:` et `CNil`,
-nous alons utilisé les mêmes principes que pour `HLists`:
+nous alons utilisé les mêmes principes que pour `HList`s:
 
 ```tut:book:silent
 import shapeless.{Coproduct, :+:, CNil, Inl, Inr}
@@ -92,7 +92,7 @@ implicit def coproductEncoder[H, T <: Coproduct](
 
 Il importe de noter deux choses :
 
- 1. Comme `Coproducts` est une *disjonction* de types,
+ 1. Comme `Coproduct`s est une *disjonction* de types,
     l'encoder de `:+:` doit *choisir*
     si il a à encoder la valeur de droit ou de gauche.
     On fait un pattern matching sur les deux sous types de `:+:`,
@@ -137,7 +137,7 @@ writeCsv(shapes)
 
 <div class="callout callout-warning">
   *SI-7046 et vous*
-  Il y a dans Scala un bug du compilateur appeler [SI-7046][link-si7046]
+  Il y a dans *Scala* un bug du compilateur appelé [SI-7046][link-si7046]
   qui peut amener la résolution de générique pour comproduct a ne pas fonctionner.
   Le bug provoque dans certaines partie de l'API de macro,
   dont shapeless dépend, deviens sensible a l'ordre
@@ -147,10 +147,10 @@ writeCsv(shapes)
   mais ces solution on tendence a ne durée qu'un temps
   et sont peut fiable.
 
-  Si vous utilisez Lightbend Scala 2.11.8 ou une version plus ancienne
+  Si vous utilisez *Lightbend Scala 2.11.8* ou une version plus ancienne
   et que vous ètes toucher par ce problème, pensez a mettre a jour
-  vers la version Lightbend Scala 2.11.9 ou Typelevel Scala 2.11.8.
-  SI-7046 est corriger dans chaqu'une de ces versions.
+  vers la version *Lightbend Scala 2.11.9* ou *Typelevel Scala 2.11.8*.
+  SI-7046 est corrigée dans chacune de de ces versions.
 </div>
 
 ### Aligner les colonnes dans la sortie CSV

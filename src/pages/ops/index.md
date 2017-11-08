@@ -6,7 +6,7 @@ class pour des types de données algébriques.
 Nous pouvons utiliser la déduction automatique
 d'instance pour enrichir presque toutes les type class,
 cependant dans les cas les plus compliqués, cela nous amène à rédiger beaucoup de code 
-pour manipuler les `HLists` et les `Coproducts`.
+pour manipuler les `HList`s et les `Coproduct`s.
 
 Dans la Partie II, nous allons regarder de plus près le package `shapeless.ops`,
 il fournit un ensemble utile d'outils que 
@@ -19,17 +19,17 @@ et des *méthodes d'extension* que nous pouvons appeler sur `HList` et `Coproduc
 Il existe trois ensembles d'ops,
 chacun disponible dans un des trois packages suivants :
 
-  - `shapeless.ops.hlist` définit des type classes pour `HLists`.
+  - `shapeless.ops.hlist` définit des type classes pour `HList`s.
     Elles peuvent être utilisées directement sur les `HList` via les 
     méthodes d'extension définies dans `shapeless.syntax.hlist`.
 
-  - `shapeless.ops.coproduct` définit des type classes pour `Coproducts`.
+  - `shapeless.ops.coproduct` définit des type classes pour `Coproduct`s.
     Elles peuvent être utilisées directement sur les `Coproduct` via les 
     méthodes d'extension définies dans `shapeless.syntax.coproduct`.
 
   - `shapeless.ops.record` définit des type classes pour shapeless records
-    (des `HLists` contenant des éléments taggés : Section [@sec:labelled-generic:type-tagging]).
-    Elles peuvent être utilisées directement sur les `HLists` importées de `shapeless.record`  via les 
+    (des `HList`s contenant des éléments taggés : Section [@sec:labelled-generic:type-tagging]).
+    Elles peuvent être utilisées directement sur les `HList`s importées de `shapeless.record`  via les 
     méthodes d'extension définies dans `shapeless.syntax.record`.
     
 Nous n'avons pas le temps dans ce 

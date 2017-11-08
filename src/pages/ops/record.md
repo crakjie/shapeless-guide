@@ -6,7 +6,7 @@ Nous avons passé un certain temps dans ce chapitre
 Nous ne devons pas passer à côté du troisième package :`shapeless.ops.record`.
 
 « Record ops » de shapeless fournissent des opérations semblables à celles des `Map`
-sur les `HLists` d'éléments taggés.
+sur les `HList`s d'éléments taggés.
 Voici quelques exemples mettant en scène IceCreams :
 
 ```tut:book:silent

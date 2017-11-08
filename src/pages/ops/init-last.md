@@ -51,7 +51,7 @@ import shapeless._
 ("Hello" :: 123 :: true :: HNil).init
 ```
 
-Ensuite, la type classe n'est définie que pour les `HLists` qui contiennent au moins un élément.
+Ensuite, la type classe n'est définie que pour les `HList`s qui contiennent au moins un élément.
 Ce qui nous donne quelques vérifications statiques.
 Si on essaie d'appeler `last` sur une `HList` vide, 
 cela provoque une erreur de compilation :

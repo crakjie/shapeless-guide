@@ -18,7 +18,7 @@ trait Last[L <: HList] {
 ```
 
 On peut invoquer des instances de `Last`
-pour inspecter les `HLists` dans notre code.
+pour inspecter les `HList`s dans notre code.
 Notez que dans les deux exemples ci-dessous
 les types de `Out` sont dépendants des types des `HList` :
 
@@ -122,7 +122,7 @@ the[Last[String :: Int :: HNil]]
 </div>
 
 Nous n'avons besoin que d'une seule instance 
-définie pour une `HLists` d'au moins deux éléments :
+définie pour une `HList`s d'au moins deux éléments :
 
 
 ```tut:book:invisible

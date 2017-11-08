@@ -1,6 +1,6 @@
 ## Types littéreaux.
 
-Une valeur de scala peut avoir plusieurs types.
+Une valeur de *Scala* peut avoir plusieurs types.
 Par exemple, la string `"hello"` a au moins trois types :
 `String`, `AnyRef` et `Any`[^multiple-inheritance] :
 
@@ -11,7 +11,7 @@ Par exemple, la string `"hello"` a au moins trois types :
 ```
 
 [^multiple-inheritance]:
-`String` est également doté de pluisieurs autres types tels que 
+`String` est également doté de pluisieurs autres types tels que
 `Serializable` et `Comparable`, mais ignorons-les pour l'instant.
 
 `"hello"` a aussi un autre type :
@@ -31,7 +31,7 @@ Le type `Foo.type` est le type de `Foo`,
 et `Foo` est la seule et unique valeur pour ce type.
 
 Les types singleton appliqués aux valeurs littérales sont appelés *types littéraux*.
-Ils existent depuis longtemps dans Scala,
+Ils existent depuis longtemps dans *Scala*,
 mais il n'y a normalement pas d'interaction avec eux, car le compilateur "élargit" par défaut les littéraux au type non singleton le plus proche.
 Par exemple, ces deux expressions sont essentiellement équivalentes :
 
@@ -43,7 +43,7 @@ Par exemple, ces deux expressions sont essentiellement équivalentes :
 ```
 
 Shapeless fournit quelques outils pour travailler avec les types littéraux.
-Tout d'abord, la macro `narrow` convertit 
+Tout d'abord, la macro `narrow` convertit
 une expression littérale en une expression littérale typée par un singleton :
 
 
@@ -71,7 +71,7 @@ Si l'on fait des opérations sur `x`, on obtient bien un type normal pour résul
 x + 1
 ```
 
-Nous pouvons utiliser `narrow` avec n'importe quel type littéral Scala :
+Nous pouvons utiliser `narrow` avec n'importe quel type littéral *Scala* :
 
 ```tut:book
 1.narrow
@@ -89,7 +89,7 @@ math.sqrt(4).narrow
 <div class="callout callout-info">
 *Types littéraux en Scala*
 
-Jusqu'à récament, Scala ne disposait pas de syntaxe pour écrire les types littéraux.
+Jusque récemment, *Scala* ne disposait pas de syntaxe pour écrire les types littéraux.
 Les types étaient là, dans le compilateur, mais nous ne pouvions pas les écrire directement dans le code.
 Mais grâce aux versions de Lightbend Scala 2.12.1, Lightbend Scala 2.11.9,
 et Typelevel Scala 2.11.8, nous disposons désormais d'un support direct de la syntaxe pour les types littéraux.
@@ -106,7 +106,7 @@ mais la syntaxe canonique restera `42`.
 
 ## Le type tagging et les types fantômes {#sec:labelled-generic:type-tagging}
 
-Shapeless utilise les types littéraux pour modéliser les noms de champs des case classes.
+Shapeless utilise les types littéraux pour modéliser les noms de champs des *case classes*.
 Pour ce faire, il "tag" les types des champs avec le type littéral de leurs noms.
 Avant de découvrir comment shapeless réalise cela, faisons-le nous-même pour montrer que la magie n'y est pour rien
 (enfin... pas vraiment).
@@ -118,16 +118,16 @@ val number = 42
 Ce nombre est un `Int` dans deux mondes :
 à l'execution où il a réellement une valeur
 et des méthodes que l'on peut appeler,
-et à la compilation, où le compilateur utilise 
-le type pour calculer quelle partie 
-de code fonctionne ensemble 
+et à la compilation, où le compilateur utilise
+le type pour calculer quelle partie
+de code fonctionne ensemble
 et l'utilise pour rechercher les implicits.
 
 On peut modifier le type du `number` à la compilation
 sans modifier ces valeurs
 à l'execution en le "taggant" avec un "type fantôme".
-Les types fantômes sont des types qui 
-ne présentent pas de sémantique à l'exécution, 
+Les types fantômes sont des types qui
+ne présentent pas de sémantique à l'exécution,
 comme ceci :
 
 ```tut:book:silent
@@ -135,7 +135,7 @@ trait Cherries
 ```
 
 Nous pouvons tagger le `number` en utilisant `asInstanceOf`.
-Nous finissons avec une valeur qui est 
+Nous finissons avec une valeur qui est
 à la fois un `Int` et une `Cherries` à la compilation
 et uniquement un `Int` à l'execution :
 
@@ -143,16 +143,16 @@ et uniquement un `Int` à l'execution :
 val numCherries = number.asInstanceOf[Int with Cherries]
 ```
 
-Shapeless utilise cette astuce pour tagger les champs et les sous-types d'un ADT 
+Shapeless utilise cette astuce pour tagger les champs et les sous-types d'un ADT
 avec le type singleton de leurs noms.
 Si l'utilisation de `asInstanceOf`
 vous dérange, ne vous inquiétez pas :
-Shapeless fournit deux syntaxes de 
+Shapeless fournit deux syntaxes de
 tagging qui vous éviteront ce désagrément.
 
 
 La première syntaxe :  `->>`
-tag l'expression à droite de la flèche avec 
+tag l'expression à droite de la flèche avec
 le type singleton de l'expression littérale à droite de la flèche.
 
 
@@ -176,14 +176,14 @@ KeyTag["numCherries", Int]
 ```
 
 Le tag détaille à la fois le nom et le type du champ ;
-la combinaison des deux est utile lorsque 
-l'on recherche des éléments dans un `Repr` en 
+la combinaison des deux est utile lorsque
+l'on recherche des éléments dans un `Repr` en
 utilisant la résolution d'implicit.
 
 La seconde syntaxe considère le tag comme un type plutôt qu'une valeur littérale.
-C'est utile lorsque vous connaissez le tag à utiliser 
-mais que vous n'avez pas la possibilité 
-d'écrire ce type littéral dans notre code : 
+C'est utile lorsque vous connaissez le tag à utiliser
+mais que vous n'avez pas la possibilité
+d'écrire ce type littéral dans notre code :
 
 ```tut:book:silent
 import shapeless.labelled.field
@@ -193,7 +193,7 @@ import shapeless.labelled.field
 field[Cherries](123)
 ```
 
-`FieldType` est un alias de type qui simplifie 
+`FieldType` est un alias de type qui simplifie
 l'extraction du tag et du type de base du type tagger :
 
 ```scala
@@ -201,16 +201,16 @@ type FieldType[K, V] = V with KeyTag[K, V]
 ```
 
 Comme nous le verrons plus tard,
-Shapeless emploie ce mécanisme pour tagger 
-les champs et les sous-types avec 
+Shapeless emploie ce mécanisme pour tagger
+les champs et les sous-types avec
 leurs noms dans notre code source.
 
 
-Les tags n'existent qu'à la compilation 
+Les tags n'existent qu'à la compilation
 et n'ont pas de représentation à l'exécution.
 Alors, comment pouvons-nous les convertir en valeurs utilisables à l'exécution ?
 Shapeless fournit à cette fin une type class appelée `Witness`[^witness].
-Si l'on combine `Witness` et `FieldType`, 
+Si l'on combine `Witness` et `FieldType`,
 on obtient quelque chose de vraiment intéressant :
 la possibilité d'extraire le nom d'un champ à partir d'un champ tagger :
 
@@ -254,7 +254,7 @@ Shapeless appelle ces structures des "records".
 
 ### Records et *LabelledGeneric*
 
-Les records sont des `HLists` d'éléments taggés.
+Les records sont des `HList`s d'éléments taggés.
 
 ```tut:book:silent
 import shapeless.{HList, ::, HNil}
@@ -279,4 +279,3 @@ en bref, les records sont les représentations génériques utilisées par `Labe
 Shapeless fournit un ensemble d'operations semblables à celles de `Map` pour manipuler les records,
 certaines seront traitées dans la section [@sec:ops:record].
 Pour l'instant, contentons-nous de déduire quelquess type class à l'aide de  `LabelledGeneric`.
-

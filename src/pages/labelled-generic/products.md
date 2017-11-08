@@ -6,7 +6,7 @@ Nous allons définir une type classe `JsonEncoder`
 qui va convertir nos valeurs en AST JSON.
 C'est l'approche adoptée par
 Argonaut, Circe, Play JSON, Spray JSON
-et de nombreuses autres bibliothèques scala pour le JSON.
+et de nombreuses autres bibliothèques *Scala* pour le JSON.
 
 Tout d'abord, définissons le type de données de notre JSON :
 

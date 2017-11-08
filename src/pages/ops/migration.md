@@ -4,7 +4,7 @@ La puissance des type classes ops se conrétise
 quand on assemble dans notre propre code.
 Nous allons conclure ce chapitre avec un exemple probant :
 une type classe visant à effectuer des « migrations » (ou « évolutions »)
-de case classes[^database-migrations].
+de *case classes*[^database-migrations].
 Par exemple, si la version 1 de notre application contient la case classe suivante :
 
 [^database-migrations]: Le terme est tiré de
@@ -97,7 +97,7 @@ implicit def genericMigration[A, B, ARepr <: HList, BRepr <: HList](
 Prenez un moment pour localiser [`Intersection`][code-ops-hlist-intersection]
 dans la base de code de shapeless.
 L'alias de type `Aux` prend en compte trois paramètres :
-deux `HLists` qui sont les entrées et une pour le type du résultat de l'intersection.
+deux `HList`s qui sont les entrées et une pour le type du résultat de l'intersection.
 Dans l'exemple au-dessus nous spécifions `ARepr` et `BRepr` comme type d'entrée et `BRepr` comme type de retour.
 Ce qui signifie que la résolution d'implicite ne fonctionnera que si `B` contient l'exact sous-ensemble des champs de `A`,
 avec exactement les mêmes noms et dans le même ordre :
@@ -268,7 +268,7 @@ IceCreamV1("Sundae", 1, true).migrateTo[IceCreamV2c]
 C'est incroyable tout ce que nous pouvons faire avec les type class ops.
 `Migration` ne contient qu'une `implicit def` avec une seul ligne d'implémentation
 au value-level.
-Cela nous permet d'automatiser les migrations entre *n'importe* quelle paire de case classes,
+Cela nous permet d'automatiser les migrations entre *n'importe* quelle paire de *case classes*,
 avec approximativement la même quantité de code
 nécessiare pour gérer une *seule* paire
 de types en utilisant une bibliothèque standard.

@@ -14,14 +14,14 @@ for(i <- 1 to 3) println(Arbitrary.arbitrary[Int].sample)
 for(i <- 1 to 3) println(Arbitrary.arbitrary[(Boolean, Byte)].sample)
 ```
 
-ScalaCheck founit deja des instances d'`Arbitrary` 
+ScalaCheck founit deja des instances d'`Arbitrary`
 pour un grand nombre de types scala standards.
 Pourtant, créer des instances d'`Arbitrary` pour les utilisateurs d'ADTs
 reste un travail manuel et chronophage.
 C'est ce qui rend très intéressant l'intégration de shapeless
 via des bibliothèques comme [scalacheck-shapeless][link-scalacheck-shapeless].
 
-Dans cette section, nous allons créer une simple type class `Random` 
+Dans cette section, nous allons créer une simple type class `Random`
 pour générer des valeurs aléatoires pour un ADT donné.
 Nous allons voir comment `Length` et `Nat` font partie intégrante de l'implémentation.
 Comme toujours, nous commençons par définir la type class elle-même.
@@ -96,7 +96,7 @@ implicit def hlistRandom[H, T <: HList](
   createRandom(() => hRandom.value.get :: tRandom.get)
 ```
 
-Ce qui nous conduit à invoquer des instances aléatoires pour les case classes :
+Ce qui nous conduit à invoquer des instances aléatoires pour les *case classes* :
 
 ```tut:book:silent
 case class Cell(col: Char, row: Int)
@@ -141,7 +141,7 @@ case object Green extends Light
 Le `Repr` de `Light` est `Red :+: Amber :+: Green :+: CNil`.
 Pour ce type, une instance de `Random` choisira `Red` une fois sur deux et `Amber :+: Green :+: CNil`
 une fois sur deux.
-Alors qu'une distribution correcte 
+Alors qu'une distribution correcte
 serait à 33 % `Red` et 67 % `Amber :+: Green :+: CNil`.
 
 Et ce n'est pas tout.

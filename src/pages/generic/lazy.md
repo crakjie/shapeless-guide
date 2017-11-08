@@ -75,14 +75,14 @@ CsvEncoder[Tree[Int]]
 ````
 
 Le problème est que notre type est qu'il est récusif.
-Le compilateur rentre dans une boucle infie 
+Le compilateur rentre dans une boucle infie
 en essayant d'appliquer nos implicits
 puis il abandonne.
 
 ### Les divergences d'implicits
 
 La résolution d'implicit est un processus de recherche.
-Le compilateur utilise des heuristique pour 
+Le compilateur utilise des heuristique pour
 s'orianté vers la bonne solution.
 Le compilateur effectue ces recherche branche par branche,
 si l'une d'elle ne donne pas de résultat favorable,
@@ -91,7 +91,7 @@ et continue ces recherche sur une autre branche.
 
 Une des heuristique est conçus spécifiquement pour
 éviter les boucles infinie.
-Si le compilateur rencontre le type cible 
+Si le compilateur rencontre le type cible
 deux fois dans une branche de recherche;
 il abandone cette branche et passe a une autre.
 On peut l'observer si on regarde l'expression `CsvEncoder[Tree[Int]]`.
@@ -109,16 +109,16 @@ On rencontre `Tree[A]` deux fois lignes 1 et 5,
 donc le compilateur abandonne la recherche dans cette branche.
 La concésquence est que le compilateur echou a trouver bon implicit.
 
-En fait, la situation est pire. 
-Si le compilateur vois le meme constructeur de type deux fois 
-et que la complexité du parametre de type *augmente* il supose
-que la branche n'aboutiras pas.*
-C'est un problème avec shapeless car les types comme 
-`::[H, T]` et `:+:[H, T]` peuvent aparaitre plusieurs fois 
-lors que le compilateur developpe les représentation générique.
-Ce qui pousse le compilateur a abonnoner prématurément
-meme si il aurais pue trouver la solution si il avais persité 
-a chercher dans cette branche.
+En fait, la situation est pire.
+Si le compilateur voit le même constructeur de types deux fois
+et que la complexité du paramètre de type *augmente* il suppose
+que la branche n'aboutira pas.*
+C'est un problème avec shapeless car les types comme
+`::[H, T]` et `:+:[H, T]` peuvent apparaître plusieurs fois
+lorsque le compilateur développe les représentations génériques.
+Ce qui pousse le compilateur a abandonner prématurément
+même si il aurait pu trouver la solution si il avait persisté
+a chercher dans cette voie.
 
 comte tenus des types suivants:
 
@@ -127,7 +127,7 @@ case class Bar(baz: Int, qux: String)
 case class Foo(bar: Bar)
 ```
 
-Le déroulement de la recherche pour `Foo` 
+Le déroulement de la recherche pour `Foo`
 resemble a ca :
 
 ```scala
@@ -147,13 +147,13 @@ il ne trouvera pas de quoi générer la bonne instance.
 
 ### *Lazy*
 
-La divergence d'implicit mettrais un 
+La divergence d'implicit mettrais un
 stop au bibliotèque telle que shapeless.
-Heureusement, shapeless fournis un 
+Heureusement, shapeless fournis un
 type appeler `Lazy` pour contourner ce problème.
 `Lazy` fait deux chose:
 
- 1. Il supprime la divergence d'implicit a la 
+ 1. Il supprime la divergence d'implicit a la
     compilation en ce protégant des heuristique trop défensive.
 
 

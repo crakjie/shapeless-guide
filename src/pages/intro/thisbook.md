@@ -11,24 +11,24 @@ La Partie I comprend quatre chapitres :
   - Dans le chapitre [@sec:representations],
     nous introduisons les *generic representations*,
     mais aussi la type class `Generic` de shapeless,
-    qui permet de produire un encodage générique 
+    qui permet de produire un encodage générique
     de n'importe quelle case class ou famille scellée.
 
   - Dans le chapitre [@sec:generic] on utilise `Generic`
     pour déduire une instance d'une de vos propres type class.
     On crée un exemple de type class pour
-    encoder des données scala en 
+    encoder des données *Scala* en 
     Comma Separated Values (CSV),
     mais la technique utilisée
     peut être adaptée à de nombreuses situations.
     Nous présentons également le type `Lazy` de shapeless,
-    qui permet de manipuler les types de données récusives 
+    qui permet de manipuler les types de données récusives
     comme les listes ou les abres.
 
   - Dans le chapitre [@sec:type-level-programming],
     nous présentons les théories et les patterns de programmation
     nécessaires à la généralisation des techniques du chapitre précédent.
-    On se penchera sur les types dépendants, 
+    On se penchera sur les types dépendants,
     les fonctions à type dépendant et la programmation au type level.
     Cela nous permet d'utiliser des applications plus avancées de shapeless.
 
@@ -37,7 +37,7 @@ La Partie I comprend quatre chapitres :
     dans sa repésentation générique.
     Nous présentons également une théorie supplémentaire :
     les types littéraux, les types singleton, les types fantôme et les type tagging.
-    Nous illustrons `LabelledGeneric` en créant 
+    Nous illustrons `LabelledGeneric` en créant
     un encodeur JSON qui préserve les champs et les noms des types dans sa sortie.
 
 Dans la Partie II, nous présentons les "ops type classes"
@@ -57,8 +57,8 @@ nous offrons une base théorique en trois chapitres :
     *les fonctions polymorphique*,
     également connues sous le nom de `Polys`,
     et montrons comment les utiliser dans
-    les ops type classes pour « mapper », 
-    « flat mappés » et « folder » 
+    les ops type classes pour « mapper »,
+    « flat mappés » et « folder »
     les représentations génériques.
 
   - Enfin, dans le chapitre [@sec:nat] nous présentons

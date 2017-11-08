@@ -1,6 +1,6 @@
 ## Résumé
 
-Dans ce chapitre, nous avons exploré quelques-unes des types classes qui
+Dans ce chapitre, nous avons exploré quelques-unes des *types classes* qui
 sont fournies par le package `shapeless.ops`.
 Nous nous somme intéréssés à deux exemples simples du pattern ops : `Last` et `Init`,
 et nous avons construit nos propres type classes `Penultimate` et `Migration`
@@ -15,7 +15,7 @@ de regarder directement leur code source dans
 Dans le chapitre suivant, nous allons aborder deux ensembles de type classe ops
 qui nécessitent davantage de théorie.
 Le Chapitre [@sec:poly] traite des opérations fonctionnelles comme
-`map` et `flatMap` sur les `HLists`, et le Chapitre [@sec:nat] nous explique
+`map` et `flatMap` sur les `HList`s, et le Chapitre [@sec:nat] nous explique
 comment implémenter des type classes qui
 nécessitent une représentation au type level des nombres.
 Ces informations vont nous aider à mieux comprendre

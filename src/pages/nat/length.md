@@ -1,7 +1,7 @@
 ## La longueur des représentations génériques
 
 Un des cas d'utilisation de `Nat`consiste à déterminer la taille
-des `HLists` et des `Coproducts`.
+des `HList`s et des `Coproduct`s.
 Shapeless fournit les type classes `shapeless.ops.hlist.Length` et
 `shapeless.ops.coproduct.Length` pour cela :
 

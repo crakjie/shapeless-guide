@@ -10,12 +10,12 @@ Shapeless fournit deux ensembles d'outils dans ce but :
     au `type-level`
 
  2. Le mapping automatique entre *algebraic data types (ADTs)*
-    (encoder en Scala par les case classes et les traits scellés)
+    (encodé en *Scala* par les *case classes* et les *sealed traits*)
     et leurs représentations génériques.
 
 Dans ce chapitre, nous commençons par un
 récapitulatif sur la théorie des types alébriques
-et la raison pour laquelle ils peuvent être familiers pour le développeur scala.
+et la raison pour laquelle ils peuvent être familiers pour le développeur *Scala*.
 Puis, nous verrons les représentations génériques utilisées
 par shapeless et nous traiterons de la façon dont ils sont
 reliés aux ADTs concrets.

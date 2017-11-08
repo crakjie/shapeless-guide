@@ -17,7 +17,7 @@ Still to do:
   - **DONE** Built-in `HList` and `Coproduct` operations
     - **DONE** Migrating case class as a basic example
   - **DONE** Polymorphic functions
-    - **DONE** Mapping over `HLists` as an example
+    - **DONE** Mapping over `HList`s as an example
   - **DONE** Counting with `Nat`
     - **DONE** Generating `Arbitrary` instances as an example
   - **DONE** Callout box on quirkiness of type inference with poly:

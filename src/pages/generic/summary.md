@@ -1,6 +1,6 @@
 ## Résumer
 Dans ce chapitre nous expliquons comment utiliser
-`Generic`, `HLists`, et `Coproducts`
+`Generic`, `HList`s, et `Coproduct`s
 pour déduire automatiquement l'instance d'une type class.
 Nous couvrons aussi le type `Lazy`
 qui est un moyen de manipuler les types complexes/recursifs.

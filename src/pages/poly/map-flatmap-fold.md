@@ -1,6 +1,6 @@
 ## Mapping et flatMapping à l'aide de *Poly*
 
-Shapeless fournit un ensemble d'opérations fonctionnelles 
+Shapeless fournit un ensemble d'opérations fonctionnelles
 basées sur `Poly`, chacune implémentée par un type classe ops.
 Jetons un œil à `map` et `flatMap` en guise d'exemple.
 voici `map` :
@@ -24,7 +24,7 @@ object sizeOf extends Poly1 {
 (10 :: "hello" :: true :: HNil).map(sizeOf)
 ```
 
-Notez que les éléments dans la `HList` résultante a des types qui correspondent 
+Notez que les éléments dans la `HList` résultante a des types qui correspondent
 au `Case` dans `sizeOf`.
 Nous pouvons utiliser `map` avec nimporte quel `Poly` qui contient
 un `Case` pour chaque membre de notre `HList`.
@@ -63,13 +63,13 @@ ou si un `Case` ne retourne pas de `HList` :
 (10 :: "hello" :: true :: HNil).flatMap(sizeOf)
 ```
 
-`map` et `flatMap` sont basés sur les types classes 
-`Mapper` et `FlatMapper`. Nous en verrons un exemple 
+`map` et `flatMap` sont basés sur les *types classes*
+`Mapper` et `FlatMapper`. Nous en verrons un exemple
 d'utilisation de `Mapper` dans la Section  [@sec:poly:product-mapper].
 
 ## Utiliser Fold avec *Poly*
 
-En plus de `map` et `flatMap`, shapeless fournit 
+En plus de `map` et `flatMap`, shapeless fournit
 `foldLeft` et `foldRight` qui sont basés sur `Poly2` :
 
 ```tut:book:silent
