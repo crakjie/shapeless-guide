@@ -1,6 +1,6 @@
 ## Rappel: types de données algébriques
 
-*Algebraic data types (ADTs)*[^adts]
+*Algebraic data types (*ADT*s)*[^adts]
 est un nom raffiné qui cache un concept très simple.
 C'est un moyen idiomatique de représenter une donnée
 en utilisant les « et » et « ou » logiques. Par exemple :
@@ -14,7 +14,7 @@ en utilisant les « et » et « ou » logiques. Par exemple :
 qui sont un outil différent en informatique et qui ont
 peu d'influence sur notre sujet.
 
-Dans la terminologie des ADTs,
+Dans la terminologie des *ADT*s,
 les types « et » comme le rectangle et le cercle sont appelés *products (produits)*,
 les types « ou » comme le type forme sont appelés *coproducts (coproduits)*.
 En Scala, nous représentons typiquement les produits par des case class
@@ -30,7 +30,7 @@ val rect: Shape = Rectangle(3.0, 4.0)
 val circ: Shape = Circle(1.0)
 ```
 
-Ce qui est beau avec les ADTs, c'est qu'ils sont complètement type safe.
+Ce qui est beau avec les *ADT*s, c'est qu'ils sont complètement type safe.
 Le compilateur a une connaisence complète de l'algèbre[^algebra]
 que nous définissons, il peut donc nous aider à écrire des méthodes
 correctement typées avec nos types.
@@ -53,7 +53,7 @@ area(circ)
 ### Les écritures alternatives
 
 Les sealed traits et les *case classes* sont sans aucun doute
-les encodages les plus pratique des ADTs en *Scala*.
+les encodages les plus pratique des *ADT*s en *Scala*.
 Mais ce ne sont pas les *seules* possibilités d'encodage.
 Par exemple, la bibliotèque standard de *Scala* fournit
 des produits génériques appelés `Tuples`

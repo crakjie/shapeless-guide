@@ -17,7 +17,7 @@ La Partie I comprend quatre chapitres :
   - Dans le chapitre [@sec:generic] on utilise `Generic`
     pour déduire une instance d'une de vos propres type class.
     On crée un exemple de type class pour
-    encoder des données *Scala* en 
+    encoder des données *Scala* en
     Comma Separated Values (CSV),
     mais la technique utilisée
     peut être adaptée à de nombreuses situations.
@@ -38,7 +38,7 @@ La Partie I comprend quatre chapitres :
     Nous présentons également une théorie supplémentaire :
     les types littéraux, les types singleton, les types fantôme et les type tagging.
     Nous illustrons `LabelledGeneric` en créant
-    un encodeur JSON qui préserve les champs et les noms des types dans sa sortie.
+    un encodeur *JSON* qui préserve les champs et les noms des types dans sa sortie.
 
 Dans la Partie II, nous présentons les "ops type classes"
 fournies dans le package `shapeless.ops`.

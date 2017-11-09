@@ -93,13 +93,13 @@ writeCsv(iceCreams)
 
 ### Résoudre les instances
 
-Les *types classes* sont très flexible mais elles nous imposent
+Les *types classes* sont très flexibles mais elles nous imposent
 de définir une instance pour
-chaque type qui nous intéressent.
-Heureusement, le compilateur de *Scala* a plus d'un tour dans sont sac,
+chaque type qui nous intéresse.
+Heureusement, le compilateur de *Scala* a plus d'un tour dans son sac,
 si on lui donne certaines regles, il est capable de résoudre les instances pour nous.  
-Par exemple, l'on peut ecrire un règle qui nous crée un `CsvEncoder` pour `(A, B)` pour
-un `CsvEncoders` pour `A` et un pour `B` donnée:
+Par exemple, on peut ecrire une règle qui créé un `CsvEncoder` pour `(A, B)` pour
+un `CsvEncoder` pour `A` et un pour `B` donnés :
 
 ```tut:book:silent
 implicit def pairEncoder[A, B](
@@ -129,20 +129,20 @@ pour produire le `CsvEncoder[(Employee, IceCream)]` requis:
 writeCsv(employees zip iceCreams)
 ```
 
-A partir d'une liste de règles ecrite a partir de
-`implicit vals` et de `implicit defs`,
-le compilateur est capable de *rechèrcher* les combinaisons
-pour données l'instance requise.
+À partir d'une liste de règles écrites à partir d'
+`implicit val`s et d'`implicit def`s,
+le compilateur est capable de *rechercher* les combinaisons
+pour retourner l'instance requise.
 
 
-Cette fonctionalité, connue sous le nom de "résolution d'implicits",
-et ce qui rand le pattern des *types classes* si puissant en *Scala*.
+Cette fonctionalité, connue sous le nom de *résolution d'`implicit`s*,
+est ce qui rend le pattern des *types classes* si puissant en *Scala*.
 
 Même avec cette puissance, le compilateur
-ne peut démenteler nos *case classes* et *sealed traits*.
-L'on est tenu de définir a la mains les instance de nos ADTs.
-Les représentation générique de shapeless change la donne,
-car ils nous permettes de déduire automatiquement les instances de nimporte quel ADT.
+ne peut démanteler nos *case classes* et *sealed traits*.
+On est tenu de définir à la main les instances de nos *ADT*s.
+Les représentations génériques de shapeless changent la donne,
+car ils nous permettent de déduire automatiquement les instances de nimporte quel *ADT*.
 
 ### Les définitions de type class idiomatique {#sec:generic:idiomatic-style}
 
@@ -167,25 +167,25 @@ object CsvEncoder {
 }
 ```
 
-La methode `apply` connue sous le nom de "summoner" ou "materializer",
+La methode `apply` connue sous le nom de *summoner* ou *materializer*,
 nous permet d'invoquer une instance de type class selon un type donnée:
 
 
 ```tut:book
 CsvEncoder[IceCream]
 ```
-Dans les cas les plus simple le "summoner" fait la meme chose
+Dans les cas les plus simple le *summoner* fait la meme chose
  que la méhode `implicitly` définie dans `scala.Predef`:
 
 ```tut:book
 implicitly[CsvEncoder[IceCream]]
 ```
-Cependent, comme nous le verons dans la Section [@sec:type-level-programming:depfun],
+Cependant, comme nous le verrons dans la Section [@sec:type-level-programming:depfun],
 lors que l'on travaille avec shapeless il arrive que
 la methode `implicitly` n'infère pas les types correctement.
-L'on peut toujours définir une methode summoner pour avoir le bon comportement,
-donc sela vaux le cup d'un écrire une pour chaque type class que l'on crée.
-L'on peut aussi utiliser une methode de shapeless appeler "`the`"
+On peut toujours définir une methode *summoner* pour avoir le bon comportement,
+donc cela vaut le coup d'en écrire une pour chaque *type class* que l'on créé.
+On peut aussi utiliser une methode de shapeless appelée "`the`"
 (nous y reviendrons):
 
 ```tut:book:silent
@@ -218,12 +218,11 @@ import CsvEncoder.instance
 implicit val booleanEncoder: CsvEncoder[Boolean] =
   instance(b => if(b) List("yes") else List("no"))
 ```
-Malheuresement,
-les limitation imposer par le livre
-nous empèche d'écrire un grand singleton
-contenant beaucoup de méthode et d'instances.
+Malheureusement,
+les limitations imposées par le livre
+nous empèchent d'écrire un grand singleton
+contenant beaucoup de méthodes et d'instances.
 Nous préférons donc décrire les définitons en
-dehors de leurs object compagnon.
-Ceci est a garder a l'esprit lorse que vous lisez ce livre
-mais rappelez vous que code complet se trouve dans le repository
-linké dans la Section [@sec:intro:about-this-book]
+dehors de leurs *object* compagnon.
+Ceci est à garder a l'esprit lorsque que vous lisez ce livre
+mais rappelez-vous que code complet se trouve dans le dépôt mentionné dans la Section [@sec:intro:about-this-book]

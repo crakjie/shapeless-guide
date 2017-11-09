@@ -9,7 +9,7 @@ Shapeless fournit deux ensembles d'outils dans ce but :
     qui peuvent être inspectés, itérés et manipulés
     au `type-level`
 
- 2. Le mapping automatique entre *algebraic data types (ADTs)*
+ 2. Le mapping automatique entre *algebraic data types (*ADT*s)*
     (encodé en *Scala* par les *case classes* et les *sealed traits*)
     et leurs représentations génériques.
 
@@ -18,9 +18,9 @@ récapitulatif sur la théorie des types alébriques
 et la raison pour laquelle ils peuvent être familiers pour le développeur *Scala*.
 Puis, nous verrons les représentations génériques utilisées
 par shapeless et nous traiterons de la façon dont ils sont
-reliés aux ADTs concrets.
+reliés aux *ADT*s concrets.
 Enfin, nous présenterons une type class appelée `Generic`
 qui fournit un mapping automatique bidirectionnel entre
-un ADT et sa représentation générique.
+un *ADT* et sa représentation générique.
 Enfin, nous utiliserons `Generic` dans quelques exemples
 pour convertir des valeurs d'un type vers un autre.

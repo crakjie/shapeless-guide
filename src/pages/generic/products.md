@@ -1,12 +1,12 @@
 ## Déduire des instances pour les produits {#sec:generic:products}
 
-Dans cette section nous allons utiliser shapeless pour
+Dans cette section nous utilisons shapeless pour
 déduire des instances de *types classes* pour des types de produits.
-(i.e. *case classes*).
+(*ie.* *case classes*).
 
-Utilisons deux intuitions :
+Utilisons ces deux idées :
 
-1. Si l'on a une instance de type class
+1. Si l'on a une instance de type *class*
    pour la tête et la queue d'une `HList`,
    on peut en déduire l'instance de toute la `HList`.
 
@@ -21,7 +21,7 @@ Prenons `CsvEncoder` et `IceCream` comme exemples :
 
  - Le `Repr` est fait d'une
     `String`, d'un `Int`, d'un `Boolean` et d'une `HNil`.
-   Si nous avons un  `CsvEncoders` pour ces types alors nous
+   Si nous avons un  `CsvEncoder` pour ces types alors nous
    disposons d'un encodeur pour le tout.
 
  - Si nous pouvons déduire un `CsvEncoder` pour le `Repr`,
@@ -268,14 +268,14 @@ writeCsv(List(new Foo("abc", 123)))
 ```
 
 Dans ce cas le message est relativement simple à comprendre.
-Si shapeless ne peut calculer un `Generic` cela veut dire que le type en question n'est pas un ADT
+Si shapeless ne peut calculer un `Generic` cela veut dire que le type en question n'est pas un *ADT*
 (il y a quelque-part dans l'algèbre un type qui n'est pas une case class ou un trait scellé).
 
 L'autre source potentielle d'erreur
 survient lorsque le compilateur ne peut calculer un
 `CsvEncoder` pour notre `HList`.
 Cela arrive normalement car l'on n'a pas
-d'encodeur pour un des champs de notre ADT.
+d'encodeur pour un des champs de notre *ADT*.
 Par exemple nous n'avons pas encore défini de
 `CsvEncoder` pour `java.util.Date`,
 donc le code suivant ne fonctionne pas :

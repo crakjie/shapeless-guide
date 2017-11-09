@@ -1,7 +1,7 @@
 ## Types dépendants
 
 Dans le dernier chapitre, nous avons passé beaucoup de temps à utiliser `Generic`,
-la type classe qui sert à lier un type ADT à sa représentation générique.
+la type classe qui sert à lier un type *ADT* à sa représentation générique.
 Pourtant, nous n'avons pas encore abordé la théorie sous-jacente à `Generic` et à tout shapeless :
 *les types dépendants*.
 

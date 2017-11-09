@@ -59,7 +59,7 @@ implicit def genericEncoder[A, R](
 Dans la section précédente nous avons crée un ensemble de règle
 pour déduire automatiquement un `CsvEncoder` pour n'importe quel type de produits.
 Dans cette section allons appliqué les memes patterns aux coproduits.
-Retournons a notre exemple, l'ADT shape :
+Retournons a notre exemple, l'*ADT* shape :
 
 ```tut:book:silent
 sealed trait Shape

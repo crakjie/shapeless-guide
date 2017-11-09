@@ -143,7 +143,7 @@ et uniquement un `Int` à l'execution :
 val numCherries = number.asInstanceOf[Int with Cherries]
 ```
 
-Shapeless utilise cette astuce pour tagger les champs et les sous-types d'un ADT
+Shapeless utilise cette astuce pour tagger les champs et les sous-types d'un *ADT*
 avec le type singleton de leurs noms.
 Si l'utilisation de `asInstanceOf`
 vous dérange, ne vous inquiétez pas :
@@ -274,7 +274,7 @@ Pour être clair, le type de `garfield` est le suivant :
 
 Nous n'avons pas besoin ici d'approfondir les records :
 en bref, les records sont les représentations génériques utilisées par `LabelledGeneric`.
-`LabelledGeneric` tag chaque champ ou nom de type d'un ADT dans des produits ou des coproduits
+`LabelledGeneric` tag chaque champ ou nom de type d'un *ADT* dans des produits ou des coproduits
 (bien que les noms soient représentés par des `Symbols` et non des `Strings`).
 Shapeless fournit un ensemble d'operations semblables à celles de `Map` pour manipuler les records,
 certaines seront traitées dans la section [@sec:ops:record].

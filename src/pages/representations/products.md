@@ -78,7 +78,7 @@ dans les applications.
 ### Changer de représentation en utilisant *Generic*
 
 Shapeless fournit une type class appelée `Generic`
-qui permet de convertir des ADT concrets en représentation générique
+qui permet de convertir des *ADT* concrets en représentation générique
 et vice versa.
 Il y a quelques macros en coulisses qui permettent d'invoquer des instances
 de `Generic` sans boilerplate :
@@ -107,7 +107,7 @@ val repr = iceCreamGen.to(iceCream)
 val iceCream2 = iceCreamGen.from(repr)
 ```
 
-On peut convertir de l'un vers l'autre deux ADTs qui ont le
+On peut convertir de l'un vers l'autre deux *ADT*s qui ont le
 même `Repr` en utilisant leurs `Generics` :
 
 ```tut:book:silent

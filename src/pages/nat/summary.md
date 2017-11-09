@@ -9,7 +9,7 @@ Nous avons aussi vu comment créer nos type classes
 qui utilisent `Nat` pour leurs propres besoins.
 
 
-Avec `Nat`, `Poly` et les variétés de type que nous avons vues dans le dernier chapitre, nous n'avons abordé qu'une fraction des outils fournis par `shapeless.ops`.
+Avec `Nat`, `Poly` et les variétés de type que nous avons vues dans le dernier chapitre, nous n'avons abordé qu'une fraction des outils fournit par `shapeless.ops`.
 Il existe de nombreux autres type classes qui apportent
 des fondations structurées sur lesquelles nous pouvons construire notre propre code.
 

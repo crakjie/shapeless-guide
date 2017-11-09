@@ -16,13 +16,13 @@ for(i <- 1 to 3) println(Arbitrary.arbitrary[(Boolean, Byte)].sample)
 
 ScalaCheck founit deja des instances d'`Arbitrary`
 pour un grand nombre de types scala standards.
-Pourtant, créer des instances d'`Arbitrary` pour les utilisateurs d'ADTs
+Pourtant, créer des instances d'`Arbitrary` pour les utilisateurs d'*ADT*s
 reste un travail manuel et chronophage.
 C'est ce qui rend très intéressant l'intégration de shapeless
 via des bibliothèques comme [scalacheck-shapeless][link-scalacheck-shapeless].
 
 Dans cette section, nous allons créer une simple type class `Random`
-pour générer des valeurs aléatoires pour un ADT donné.
+pour générer des valeurs aléatoires pour un *ADT* donné.
 Nous allons voir comment `Length` et `Nat` font partie intégrante de l'implémentation.
 Comme toujours, nous commençons par définir la type class elle-même.
 

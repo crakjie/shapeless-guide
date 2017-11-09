@@ -178,7 +178,7 @@ et `combine` pour « fusionner » deux valeurs en une seule.
 Dans notre code nous n'avons besoin que de `empty`
 mais il serait trivial de définir également`combine`.
 
-Cats fournis une instance de `Monoid` pour chacun des type
+Cats fournit une instance de `Monoid` pour chacun des type
 primitf qui nous intéresse (`Int`, `Double`, `Boolean`, and `String`).
 Nous pouvons définir une instance pour `HNil`et `::`
 en utilisant les techniques du Chapitre [@sec:labelled-generic]:
