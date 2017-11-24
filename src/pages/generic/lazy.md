@@ -160,8 +160,8 @@ type appeler `Lazy` pour contourner ce problème.
     ce qui permet la déduction des implicits récursifs.
 
 On utilise `Lazy` en le paramétrant avec nos paramètres implicites.
-En règle générale, il est toujours bon de mettre dans `Lazy`
-dans le parametre de "tête" de toute règle de `HList` ou de `Coproduct`
+En règle générale, il est toujours bon d'englober dans `Lazy`
+le paramètre de "tête" de toute règle de `HList` ou de `Coproduct`
 ainsi que n'importe quel paramètre `Repr` d'un `Generic`:
 
 ```tut:book:invisible:reset

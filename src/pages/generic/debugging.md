@@ -120,7 +120,7 @@ on répète le processus pour trouver le prochain point problématique.
 ### Debugger en utilisant *reify*
 
 La méthode `reify` de `scala.reflect` prend une
-expression *Scala* en paramètre et retourne
+expression Scala en paramètre et retourne
 un objet AST représentant l'expression sous
 forme d'abre avec toutes les annotations de types.
 

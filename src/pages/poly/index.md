@@ -42,5 +42,5 @@ des `HList`.
 
 ![mapper sur des listes hétérogènes ("polymorphic" map)](src/pages/poly/polymorphic-map.pdf+svg){#fig:poly:polymorphic-map}
 
-Malheureusement nous ne pouvons pas utiliser les fonctions *Scala* pour implémenter
+Malheureusement nous ne pouvons pas utiliser les fonctions Scala pour implémenter
 ces opérations. Nous avons besoin d'une nouvelle infrastructure.

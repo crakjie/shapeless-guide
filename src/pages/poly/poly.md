@@ -170,7 +170,7 @@ total(List(1L, 2L, 3L))
 <div class="callout callout-warning">
 *Particularité de l'inférence de type*
 
-`Poly` amène l'inférence de type de *Scala* en dehors de sa zone de confort.
+`Poly` amène l'inférence de type de Scala en dehors de sa zone de confort.
 Nous pouvons facilement embrouiller le compilateur en lui demandant trop d'inférences de type d'un seul coup.
 Par exemple, le code suivant compile correctement :
 

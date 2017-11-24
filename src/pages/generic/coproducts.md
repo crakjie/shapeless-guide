@@ -137,7 +137,7 @@ writeCsv(shapes)
 
 <div class="callout callout-warning">
   *SI-7046 et vous*
-  Il y a dans *Scala* un bug du compilateur appelé [SI-7046][link-si7046]
+  Il y a dans Scala un bug du compilateur appelé [SI-7046][link-si7046]
   qui peut amener la résolution de générique pour comproduct a ne pas fonctionner.
   Le bug provoque dans certaines partie de l'API de macro,
   dont shapeless dépend, deviens sensible a l'ordre

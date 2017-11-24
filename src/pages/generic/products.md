@@ -4,7 +4,7 @@ Dans cette section nous utilisons shapeless pour
 déduire des instances de *types classes* pour des types de produits.
 (*ie.* *case classes*).
 
-Utilisons ces deux idées :
+Utilisons les deux idées suivantes :
 
 1. Si l'on a une instance de type *class*
    pour la tête et la queue d'une `HList`,

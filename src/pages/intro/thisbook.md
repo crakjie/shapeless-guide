@@ -17,7 +17,7 @@ La Partie I comprend quatre chapitres :
   - Dans le chapitre [@sec:generic] on utilise `Generic`
     pour déduire une instance d'une de vos propres type class.
     On crée un exemple de type class pour
-    encoder des données *Scala* en
+    encoder des données Scala en
     Comma Separated Values (CSV),
     mais la technique utilisée
     peut être adaptée à de nombreuses situations.

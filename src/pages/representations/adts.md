@@ -53,9 +53,9 @@ area(circ)
 ### Les écritures alternatives
 
 Les sealed traits et les *case classes* sont sans aucun doute
-les encodages les plus pratique des *ADT*s en *Scala*.
+les encodages les plus pratique des *ADT*s en Scala.
 Mais ce ne sont pas les *seules* possibilités d'encodage.
-Par exemple, la bibliotèque standard de *Scala* fournit
+Par exemple, la bibliotèque standard de Scala fournit
 des produits génériques appelés `Tuples`
 ainsi qu'un coproduit générique : `Either`.
 Nous aurions pu choisir d'écrire notre `Shape` comme suit :
@@ -88,7 +88,7 @@ area2(circ2)
 Il est important de noter que `Shape2` est une écriture plus *générique* que `Shape`[^generic].
 Tout code qui fonctionne avec une paire de `Doubles`
 fonctionnera avec `Rectangle2` et vice versa.
-En tant que développeur *Scala* nous avons tendance à préférer
+En tant que développeur Scala nous avons tendance à préférer
 les types sémantiques comme `Rectangle` et `Circle`
 aux types génériques tels que `Rectangle2` et `Circle2`,
 précisément à cause de leur nature spécialisée.

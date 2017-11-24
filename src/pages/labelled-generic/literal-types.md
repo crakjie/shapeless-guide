@@ -1,6 +1,6 @@
 ## Types littéreaux.
 
-Une valeur de *Scala* peut avoir plusieurs types.
+Une valeur de Scala peut avoir plusieurs types.
 Par exemple, la string `"hello"` a au moins trois types :
 `String`, `AnyRef` et `Any`[^multiple-inheritance] :
 
@@ -31,7 +31,7 @@ Le type `Foo.type` est le type de `Foo`,
 et `Foo` est la seule et unique valeur pour ce type.
 
 Les types singleton appliqués aux valeurs littérales sont appelés *types littéraux*.
-Ils existent depuis longtemps dans *Scala*,
+Ils existent depuis longtemps dans Scala,
 mais il n'y a normalement pas d'interaction avec eux, car le compilateur "élargit" par défaut les littéraux au type non singleton le plus proche.
 Par exemple, ces deux expressions sont essentiellement équivalentes :
 
@@ -71,7 +71,7 @@ Si l'on fait des opérations sur `x`, on obtient bien un type normal pour résul
 x + 1
 ```
 
-Nous pouvons utiliser `narrow` avec n'importe quel type littéral *Scala* :
+Nous pouvons utiliser `narrow` avec n'importe quel type littéral Scala :
 
 ```tut:book
 1.narrow
@@ -89,7 +89,7 @@ math.sqrt(4).narrow
 <div class="callout callout-info">
 *Types littéraux en Scala*
 
-Jusque récemment, *Scala* ne disposait pas de syntaxe pour écrire les types littéraux.
+Jusque récemment, Scala ne disposait pas de syntaxe pour écrire les types littéraux.
 Les types étaient là, dans le compilateur, mais nous ne pouvions pas les écrire directement dans le code.
 Mais grâce aux versions de Lightbend Scala 2.12.1, Lightbend Scala 2.11.9,
 et Typelevel Scala 2.11.8, nous disposons désormais d'un support direct de la syntaxe pour les types littéraux.

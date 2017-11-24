@@ -14,4 +14,4 @@ Il existe de nombreux autres type classes qui apportent
 des fondations structurées sur lesquelles nous pouvons construire notre propre code.
 
 Cependant, la théorie décrite ici est suffisante pour comprendre la majorité des opérations nécessaires à la déduction de nos propre type classes.
-La code source du package `shapeless.ops` devrait vous être désormais suffisament compréhensible pour que vous y séléctionniez d'autre ops qui vous seronts utiles.
+La code source du package `shapeless.ops` devrait vous être désormais suffisament compréhensible pour que vous y séléctionniez d'autre ops qui vous seront utiles.

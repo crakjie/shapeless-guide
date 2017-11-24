@@ -13,7 +13,7 @@ Les concepts comme les functors et les monads
 sont apparues suite à des années de recherche :
 écrire du code, repérer les patterns,
 et créer des abstractions pour supprimer les redondances.
-Shapeless augmente le niveau d'abstraction dans *Scala*.
+Shapeless augmente le niveau d'abstraction dans Scala.
 Les outils comme `Generic` et `LabelledGeneric`
 fournissent une interface pour abstraire les types de données
 auparavant frustrants de part leur propriété unique.

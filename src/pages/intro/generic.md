@@ -74,7 +74,7 @@ Nous reformulons les problèmes pour pouvoir les résoudre
 avec des constructions génériques et ainsi écrire de petit bloc de code
 qui fonctionnent avec une large variété de types.
 Programmer avec shapeless nous permet d'éliminer une grande quantité de
-`boilerplate`, de rendre les applications *Scala* plus faciles à lire, écrire
+`boilerplate`, de rendre les applications Scala plus faciles à lire, écrire
 et entretenir.
 
 Votre curiosité a été piquée ? Alors c'est parti !

@@ -6,7 +6,7 @@ faisons un bref rappel des aspects importants des *types classes*.
 Les type classes sont un pattern de programmation emprunté à *Haskell*
 (le mot « classe » n'a rien a voir avec les classes
 de la programmation orientée object).
-Nous les écrivons en *Scala* avec des traits et des implicites.
+Nous les écrivons en Scala avec des traits et des implicites.
 Une *type class* est un trait paramétré représentant une
 fonctionalité générale que l'on voudrait appliquer à une grande
 variété de types :
@@ -96,7 +96,7 @@ writeCsv(iceCreams)
 Les *types classes* sont très flexibles mais elles nous imposent
 de définir une instance pour
 chaque type qui nous intéresse.
-Heureusement, le compilateur de *Scala* a plus d'un tour dans son sac,
+Heureusement, le compilateur de Scala a plus d'un tour dans son sac,
 si on lui donne certaines regles, il est capable de résoudre les instances pour nous.  
 Par exemple, on peut ecrire une règle qui créé un `CsvEncoder` pour `(A, B)` pour
 un `CsvEncoder` pour `A` et un pour `B` donnés :
@@ -115,7 +115,7 @@ implicit def pairEncoder[A, B](
   }
 ```
 
-Quand tous les parametres d'un `implicit def`
+Quand tous les paramètres d'un `implicit def`
 sont eux meme marquer `implicit`,
 alors le compilateur peut l'utiliser comme une règle de résolution
 pour crée des instance a partire d'autres instances.
@@ -136,7 +136,7 @@ pour retourner l'instance requise.
 
 
 Cette fonctionalité, connue sous le nom de *résolution d'`implicit`s*,
-est ce qui rend le pattern des *types classes* si puissant en *Scala*.
+est ce qui rend le pattern des *types classes* si puissant en Scala.
 
 Même avec cette puissance, le compilateur
 ne peut démanteler nos *case classes* et *sealed traits*.
