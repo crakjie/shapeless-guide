@@ -20,13 +20,13 @@ C'est pourquoi shapeless utilise un encodage générique différent
 pour les produits :  *heterogeneous lists* ou `HList`s[^hlist-name].
 
 [^hlist-name]: `Product` est probablement un meilleur nom pour `HList`,
-mais la bibliotèque standard dispose malheuresement déja d'un `scala.Product`.
+mais la bibliothèque standard dispose malheureusement déjà d'un `scala.Product`.
 
 La `HList` est soit une liste vide `HNil`,
 soit une paire `::[H, T]` où `H` est un type arbitraire
 et `T` une autre `HList`.
 Parce que chaque `::` a son propre `H` et `T`,
-le type de chaque élémment est encodé séparément
+le type de chaque élément est encodé séparément 
 dans le type de la liste global:
 
 ```tut:book:silent
@@ -37,8 +37,8 @@ val product: String :: Int :: Boolean :: HNil =
 ```
 Le type et la valeur de la `HList` ci-dessus se reflètent.
 Les deux représentent les 3 membres : une `String`, un `Int`, et un `Boolean`.
-On peut y retrouver la `tête` et la `queue`
-et le type des éléments y est préservé :
+On peut y retrouver la `tête` et la `queue`,
+et le type des éléments y est préservé : 
 
 ```tut:book
 val first = product.head

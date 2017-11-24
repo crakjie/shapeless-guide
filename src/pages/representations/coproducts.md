@@ -1,7 +1,7 @@
 ## Coproduit générique
 
-Maintenant que nous savons comment shapeless encode les types produit,
-qu'en est t'il des coproduits?
+Maintenant que nous savons comment Shapeless encode les types produit,
+qu'en est-il des coproduits ?
 Précédemment, nous avons abordé le `Either`, mais il souffre
 des mêmes inconvénients que les *tuples*.
 Encore une fois, shapeless fournit son propre encodage, similaire au `HList` :
@@ -38,7 +38,7 @@ On ne peut donc pas instancier `CNil` ou construire un `Coproduct` uniquement
 Il y a toujours exactement un `Inl` dans chaque valeur de coproduit.
 
 Encore une fois, il convient de signaler que `Coproduct`s n'a rien de spécial.
-La fonctionalité du dessus peut être obtenue en utilisant `Either` et `Nothing`
+La fonctionnalité du dessus peut être obtenue en utilisant `Either` et `Nothing`
 à la place de `:+:` et `CNil`.
 Utiliser `Nothing` induit des difficultés techniques,
 mais on aurait pu utiliser
