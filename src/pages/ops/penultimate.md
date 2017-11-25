@@ -3,13 +3,13 @@
 Si l'on trouve un ensemble d'ops utile, on peut les
 regrouper sous la forme d'une autre type classe ops.
 C'est un exemple du pattern « lemma », un terme que nous avions
-introduit dans la Section [@sec:type-level-programming:summary].
+introduit dans la section [@sec:type-level-programming:summary].
 
 Prenons comme exercise la création de notre propre op.
 Nous allons combiner la puissance de `Last` et de `Init` pour créer
-la type class `Penultimate` qui retrouve l'avant-dernier élément d'une `HList`.
-Voici la définition de la type classe,
-complétée par son type alias `Aux` et sa méthode `apply`:
+la *type class* `Penultimate` qui retrouve l'avant-dernier élément d'une `HList`.
+Voici la définition de la *type class*,
+complétée par son `type alias` `Aux` et sa méthode `apply`:
 
 
 ```tut:book:silent
@@ -27,14 +27,14 @@ object Penultimate {
 }
 ```
 
-Notez encore une fois que la méthode `apply` 
+Notez encore une fois que la méthode `apply`
 a comme type de retour `Aux[L, O]` au lieu de `Penultimate[L]`.
-Ce qui garanti que le membre de type est visible dans les instances invoquées, 
-comme souligné dans la Section [@sec:type-level-programming:depfun].
+Ce qui garanti que le membre de type est visible dans les instances invoquées,
+comme souligné dans la section [@sec:type-level-programming:depfun].
 
 Nous n'avons besoin que de définir une seule instance de `Penultimate`,
 qui combine `Init` et `Last` de la même façon
-que dans la Section [@sec:type-level-programming:chaining]:
+que dans la section [@sec:type-level-programming:chaining]:
 
 
 ```tut:book:silent
@@ -78,7 +78,7 @@ val tinyList = "bar" :: HNil
 Penultimate[TinyList].apply(tinyList)
 ```
 
-Nous pouvons rendre les chose plus simples pour les utilisateurs finaux si nous définissons 
+Nous pouvons rendre les chose plus simples pour les utilisateurs finaux si nous définissons
 une méthode d'extension sur `HList`:
 
 ```tut:book:silent

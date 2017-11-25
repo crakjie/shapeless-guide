@@ -6,9 +6,9 @@ Nous avons couvert aussi le type `Lazy`
 qui est un moyen de manipuler les types complexes/recursifs.
 Compte tenu de tout ceci,
 on peut écrire le squelette commun suivant
-qui permet de déduire des instances de type class.
+qui permet de déduire des instances de *type class*.
 
-Premièrement, définissons la type class :
+Premièrement, définissons la *type class* :
 
 ```tut:book:silent
 trait MyTC[A]
@@ -61,7 +61,7 @@ Dans le chapitre suivant nous verrons
 la théorie et des patterns de programmation utiles
 pour écrire ce genre de code.
 Dans le Chapitre [@sec:labelled-generic],
-nous reviendrons sur la déduction de type class
+nous reviendrons sur la déduction de *type class*
 en utilisant une variante de `Generic` qui
 permet d'inspecter les champs et les noms des types
 dans nos *ADT*s.

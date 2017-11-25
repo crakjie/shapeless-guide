@@ -1,4 +1,4 @@
-# Accéder aux noms durant la déduction d'implicit {#sec:labelled-generic}
+# Accéder aux noms durant la déduction d'`implicit` {#sec:labelled-generic}
 
 Souvent, les instances de *types classes* que l'on définit ont besoin d'accéder à plus de choses que les types uniquement.
 Dans ce chapitre nous découvririons une variante de `Generic` appelée `LabelledGeneric` qui donne accès aux noms des champs et aux noms des types.

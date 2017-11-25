@@ -39,11 +39,11 @@ Idéalement on aimerait être capables d'écrire le code suivant :
 IceCreamV1("Sundae", 1, false).migrateTo[IceCreamV2a]
 ```
 
-La type class doit prendre soin de la migration sans boilerplate additionel.
+La *type class* doit prendre soin de la migration sans boilerplate additionel.
 
-### La type class
+### La *type class*
 
-La type class `Migration` représente la transformation d'une source vers un type destination.
+La *type class* `Migration` représente la transformation d'une source vers un type destination.
 Ils seront tous les deux les paramètres de type pour notre déduction.
 Nous n'avons pas besoin d'alias de type `Aux`
 car il n'y a pas de membre de type à exposer :
@@ -255,7 +255,7 @@ Nous utilisons `Diff` uniquement pour calculer le type de données `Added`,
 mais nous n'avons pas besoin d'exécuter `diff.apply`.
 Au lieu de cela, nous utilisons notre `Monoid` pour invoquer une instance de `Added`.
 
-Avec cette dernière version de la type class nous pouvons utiliser
+Avec cette dernière version de la *type class* nous pouvons utiliser
 `Migration` pour tous les cas d'utilisation que nous avions données au
 début de cette étude de cas :
 

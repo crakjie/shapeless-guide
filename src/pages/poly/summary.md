@@ -9,6 +9,6 @@ Chaque opération est implémentée comme une méthode d'extension sur `HList`,
 basée sur une des type classes correspondantes :
 `Mapper`, `FlatMapper`, `LeftFolder` et les autres.
 Nous pouvons utiliser ces type classes, `Poly` et les
-techniques de la Section [@sec:type-level-programming:chaining]
+techniques de la section [@sec:type-level-programming:chaining]
 pour créer nos propres type classes comportant un enchaînement de transformations sophistiquées.
 

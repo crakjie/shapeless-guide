@@ -103,7 +103,7 @@ Il y a quelques différences notables par rapport à notre syntaxe précédente 
 
  3. Nous utilisons la méthode helper `at` pour définir nos cas.
     Elle agit à la façon d'une méthode constructrice d'instance,
-    comme traité dans la Section [@sec:generic:idiomatic-style]),
+    comme traité dans la section [@sec:generic:idiomatic-style]),
     elle sert principalement à éliminér le boilerplate.
 
 Une fois les différences de syntaxe mises de côté,

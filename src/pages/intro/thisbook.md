@@ -2,21 +2,21 @@
 
 Le livre est divisé en deux parties.
 
-Dans la Partie I, nous introduisons la *déduction de type class (type class derivation)*,
-qui permet de créer des instances de type class
+Dans la Partie I, nous introduisons la *déduction de *type class* (type class derivation)*,
+qui permet de créer des instances de *type class*
 pour tous types de données algébriques
 avec quelques règles génériques pour tout matériel.
 La Partie I comprend quatre chapitres :
 
   - Dans le chapitre [@sec:representations],
     nous introduisons les *generic representations*,
-    mais aussi la type class `Generic` de shapeless,
+    mais aussi la *type class* `Generic` de shapeless,
     qui permet de produire un encodage générique
     de n'importe quelle case class ou famille scellée.
 
   - Dans le chapitre [@sec:generic] on utilise `Generic`
     pour déduire une instance d'une de vos propres type class.
-    On crée un exemple de type class pour
+    On crée un exemple de *type class* pour
     encoder des données Scala en
     Comma Separated Values (CSV),
     mais la technique utilisée

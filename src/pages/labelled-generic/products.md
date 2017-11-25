@@ -20,7 +20,7 @@ case class JsonBoolean(value: Boolean) extends JsonValue
 case object JsonNull extends JsonValue
 ```
 
-puis la type class pour encoder les valeurs en *JSON* :
+puis la *type class* pour encoder les valeurs en *JSON* :
 
 ```tut:book:silent
 trait JsonEncoder[A] {

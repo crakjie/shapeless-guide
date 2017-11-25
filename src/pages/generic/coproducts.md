@@ -69,7 +69,7 @@ final case class Circle(radius: Double) extends Shape
 
 La repésentation générique de `Shape` est
 `Rectangle :+: Circle :+: CNil`.
-Dans la Section [@sec:generic:product-generic]
+Dans la section [@sec:generic:product-generic]
 nous avons définie des encodeurs de produit pour `Rectangle` et `Circle`.
 Maintenant, pour écrire des `CsvEncoders` générique pour `:+:` et `CNil`,
 nous alons utilisé les mêmes principes que pour `HList`s:
@@ -104,7 +104,7 @@ Il importe de noter deux choses :
     crée de valeur pour le type `CNil`,
     donc the `throw` et en fait du code mort.
 
-Si l'on utilise ces définitions avec celle de nos produit de la Section [@sec:generic:products],
+Si l'on utilise ces définitions avec celle de nos produit de la section [@sec:generic:products],
 on sera capable de sérializer une liste de shapes.
 Essayons:
 
@@ -165,4 +165,4 @@ espacer les colonnes en conséquence.
 Le repo d'exemple contenant
 l'implémentation complète d'un `CsvEncoder`
 traitant ce problème est
-linké dans la Section [@sec:intro:about-this-book]
+linké dans la section [@sec:intro:about-this-book]

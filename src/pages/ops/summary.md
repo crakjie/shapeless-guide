@@ -12,7 +12,7 @@ La facon la plus simple de les apprendre et
 de regarder directement leur code source dans
 `shapeless.ops` and `shapeless.syntax`.
 
-Dans le chapitre suivant, nous allons aborder deux ensembles de type classe ops
+Dans le chapitre suivant, nous allons aborder deux ensembles de *type class*e ops
 qui nécessitent davantage de théorie.
 Le Chapitre [@sec:poly] traite des opérations fonctionnelles comme
 `map` et `flatMap` sur les `HList`s, et le Chapitre [@sec:nat] nous explique

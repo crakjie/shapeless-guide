@@ -168,7 +168,7 @@ val numCherries = "numCherries" ->> someNumber
 ```
 
 Voila comment nous taggons `someNumber`
-avec la type fantome suivant:
+avec le type fantôme suivant :
 
 
 ```scala
@@ -178,7 +178,7 @@ KeyTag["numCherries", Int]
 Le tag détaille à la fois le nom et le type du champ ;
 la combinaison des deux est utile lorsque
 l'on recherche des éléments dans un `Repr` en
-utilisant la résolution d'implicit.
+utilisant la résolution d'`implicit`.
 
 La seconde syntaxe considère le tag comme un type plutôt qu'une valeur littérale.
 C'est utile lorsque vous connaissez le tag à utiliser

@@ -8,7 +8,7 @@ des opérations semblables sur les HLists` ?
 Les réponse est oui, mais nous devons faire les choses
 légèrement différemment par rapport au Scala classique.
 Nous ne serons pas surpris de constater que le mécanisme utilisé reste basé
-sur les type classes et un ensemble de type classes ops pour nous aider.
+sur les type classes et un ensemble de *type class*es ops pour nous aider.
 
 Avant de nous péncher directement sur les type classes,
 nous devons aborder la façon dont shapeless représente les

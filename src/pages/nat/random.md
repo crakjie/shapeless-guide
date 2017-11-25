@@ -3,7 +3,7 @@
 
 Les bibliothèques de test axées sur les propriétés comme [ScalaCheck][link-scalacheck]
 utilisent des type classes dont le but est de générer des valeurs aléatoires pour les test unitaires.
-Par exemple, ScalaCheck fournit la type class `Arbitrary` que nous pouvons utiliser de la façon suivante :
+Par exemple, ScalaCheck fournit la *type class* `Arbitrary` que nous pouvons utiliser de la façon suivante :
 
 ```tut:book:silent
 import org.scalacheck._
@@ -24,7 +24,7 @@ via des bibliothèques comme [scalacheck-shapeless][link-scalacheck-shapeless].
 Dans cette section, nous allons créer une simple type class `Random`
 pour générer des valeurs aléatoires pour un *ADT* donné.
 Nous allons voir comment `Length` et `Nat` font partie intégrante de l'implémentation.
-Comme toujours, nous commençons par définir la type class elle-même.
+Comme toujours, nous commençons par définir la *type class* elle-même.
 
 ```tut:book:invisible
 // Assure que nous avons toujours la même sortie :

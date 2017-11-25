@@ -11,7 +11,7 @@ Utilisons les deux idées suivantes :
    on peut en déduire l'instance de toute la `HList`.
 
 2. Si nous avons une case class `A`, un `Generic[A]`
-   et une instance de type class pour le `Repr` de ce générique,
+   et une instance de *type class* pour le `Repr` de ce générique,
    nous pouvons alors les combiner pour obtenir une instance de `A`.
 
 Prenons `CsvEncoder` et `IceCream` comme exemples :
@@ -301,7 +301,7 @@ Il n'y a pas de quoi se réjouir ici.
 Nous devons trouver nous-même la source
 des erreurs par un processus d'élimination.
 Nous aborderons les techniques de
-debuggage dans la Section [@sec:generic:debugging].
+debuggage dans la section [@sec:generic:debugging].
 Pour l'instant la seule fonctionalité qui compense c'est que
 la résolution d'implicite plantera toujours à la compilation.
 Il y a une petite chance que cela finisse

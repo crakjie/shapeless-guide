@@ -38,14 +38,14 @@ implicit def genericProductMapper[
 
 Il est intéressant de noter que nous définissons un type `P`
 pour notre `Poly`, mais nous ne faisons aucune référence à `P` dans notre code.
-La type class  `Mapper` utilise la résolution implicite pour trouver nos `Cases`,
+La *type class*  `Mapper` utilise la résolution implicite pour trouver nos `Cases`,
 le compilateur n'a donc besoin que de connaître le type singleton de `P`
 pour retrouver les instances.
 
 Créons une méthode d'extension pour simplifier l'utilisation de `ProductMapper`.
 Nous voulons que l'utilisateur n'ait qu'à spécifier le type de `B` au moment de l'appel,
 nous utilisons donc une voie détournée pour permettre au compilateur d'inférer le type de `Poly`
-à partir du type de la valeur en paramètre : 
+à partir du type de la valeur en paramètre :
 
 ```tut:book:silent
 implicit class ProductMapperOps[A](a: A) {

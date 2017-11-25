@@ -65,7 +65,7 @@ ou si un `Case` ne retourne pas de `HList` :
 
 `map` et `flatMap` sont basés sur les *types classes*
 `Mapper` et `FlatMapper`. Nous en verrons un exemple
-d'utilisation de `Mapper` dans la Section  [@sec:poly:product-mapper].
+d'utilisation de `Mapper` dans la section  [@sec:poly:product-mapper].
 
 ## Utiliser Fold avec *Poly*
 

@@ -2,7 +2,7 @@
 
 Dans la section précédente, nous avons présenté les *tuples*
 comme une représentation générique des produits.
-Malheuresement, les *tuples* présentent deux inconvénients qui les rendent
+Malheureusement, les *tuples* présentent deux inconvénients qui les rendent
 inappropriés aux besoins de shapeless.
 
  1. Chaque taille de tuple est dotée d'un type différent, ces types sont indépendants les uns des autres,
@@ -26,7 +26,7 @@ La `HList` est soit une liste vide `HNil`,
 soit une paire `::[H, T]` où `H` est un type arbitraire
 et `T` une autre `HList`.
 Parce que chaque `::` a son propre `H` et `T`,
-le type de chaque élément est encodé séparément 
+le type de chaque élément est encodé séparément
 dans le type de la liste global:
 
 ```tut:book:silent
@@ -38,7 +38,7 @@ val product: String :: Int :: Boolean :: HNil =
 Le type et la valeur de la `HList` ci-dessus se reflètent.
 Les deux représentent les 3 membres : une `String`, un `Int`, et un `Boolean`.
 On peut y retrouver la `tête` et la `queue`,
-et le type des éléments y est préservé : 
+et le type des éléments y est préservé :
 
 ```tut:book
 val first = product.head

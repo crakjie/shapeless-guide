@@ -20,7 +20,7 @@ trait CsvEncoder[A] {
 On implémente notre type class avec une *instance*
 pour chaque type visé.
 Si nous voulons avoir l'instance dans le scope automatiquement,
-on peut les placer dans l'objet compagnon de la type class.
+on peut les placer dans l'objet compagnon de la *type class*.
 Sinon, on peut les placer dans une objet séparé qui fera office de bibliothèque
 et que l'utilisateur pourra importer manuellement :
 
@@ -144,7 +144,7 @@ On est tenu de définir à la main les instances de nos *ADT*s.
 Les représentations génériques de shapeless changent la donne,
 car ils nous permettent de déduire automatiquement les instances de nimporte quel *ADT*.
 
-### Les définitions de type class idiomatique {#sec:generic:idiomatic-style}
+### Les définitions de *type class* idiomatique {#sec:generic:idiomatic-style}
 
 Le style généralement accépter pour la définition d'une type classe idiomatique
 Il est généralement accépte d'inclure un objet compagon contenant certaines methode standar
@@ -168,7 +168,7 @@ object CsvEncoder {
 ```
 
 La methode `apply` connue sous le nom de *summoner* ou *materializer*,
-nous permet d'invoquer une instance de type class selon un type donnée:
+nous permet d'invoquer une instance de *type class* selon un type donnée:
 
 
 ```tut:book
@@ -180,7 +180,7 @@ Dans les cas les plus simple le *summoner* fait la meme chose
 ```tut:book
 implicitly[CsvEncoder[IceCream]]
 ```
-Cependant, comme nous le verrons dans la Section [@sec:type-level-programming:depfun],
+Cependant, comme nous le verrons dans la section [@sec:type-level-programming:depfun],
 lors que l'on travaille avec shapeless il arrive que
 la methode `implicitly` n'infère pas les types correctement.
 On peut toujours définir une methode *summoner* pour avoir le bon comportement,
@@ -196,7 +196,7 @@ import shapeless._
 the[CsvEncoder[IceCream]]
 ```
 La methode `instance` parfois appelé `pure`,
-fournis une syntaxe simple pour crée de nouvelle instance de type classe,
+fournis une syntaxe simple pour crée de nouvelle instance de *type class*e,
 réduisant au passage le boilerplate pour les classes anoymes:
 
 
@@ -225,4 +225,4 @@ contenant beaucoup de méthodes et d'instances.
 Nous préférons donc décrire les définitons en
 dehors de leurs *object* compagnon.
 Ceci est à garder a l'esprit lorsque que vous lisez ce livre
-mais rappelez-vous que code complet se trouve dans le dépôt mentionné dans la Section [@sec:intro:about-this-book]
+mais rappelez-vous que code complet se trouve dans le dépôt mentionné dans la section [@sec:intro:about-this-book]
