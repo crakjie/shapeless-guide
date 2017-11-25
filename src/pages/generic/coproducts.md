@@ -58,7 +58,7 @@ implicit def genericEncoder[A, R](
 ```
 Dans la section précédente nous avons crée un ensemble de règle
 pour déduire automatiquement un `CsvEncoder` pour n'importe quel type de produits.
-Dans cette section allons appliqué les memes patterns aux coproduits.
+Dans cette section allons appliqué les mêmes patrons de conception aux coproduits.
 Retournons a notre exemple, l'*ADT* shape :
 
 ```tut:book:silent
@@ -67,7 +67,7 @@ final case class Rectangle(width: Double, height: Double) extends Shape
 final case class Circle(radius: Double) extends Shape
 ```
 
-La repésentation générique de `Shape` est
+La représentation générique de `Shape` est
 `Rectangle :+: Circle :+: CNil`.
 Dans la section [@sec:generic:product-generic]
 nous avons définie des encodeurs de produit pour `Rectangle` et `Circle`.

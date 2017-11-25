@@ -58,7 +58,7 @@ implicit def genericInstance[A, R](
 ```
 
 Dans le chapitre suivant nous verrons
-la théorie et des patterns de programmation utiles
+la théorie et des patrons de conception utiles
 pour écrire ce genre de code.
 Dans le Chapitre [@sec:labelled-generic],
 nous reviendrons sur la déduction de *type class*

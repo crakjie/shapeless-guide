@@ -7,8 +7,8 @@ et nous conduisent vers une solution lorsque l'on code.
 
 Pourtant, parfois, les types sont *trop* spécifiques.
 Il y a des situations où l'on veut pouvoir profiter des similarités
-entres les types pour eviter les répétitions.
-Prenons les définitions suivantes comme exemple :
+entres les types pour éviter les répétitions.
+Considérons par exemple les définitions suivantes :
 
 ```tut:book:silent
 case class Employee(name: String, number: Int, manager: Boolean)
@@ -53,7 +53,7 @@ val genericIceCream = Generic[IceCream].to(IceCream("Sundae", 1, false))
 ```
 
 Les deux valeurs sont maintenant du même type.
-Elle sont toutes les deux des liste hétérogène (des `HList`s)
+Elle sont toutes les deux des listes hétérogènes (des `HList`s)
 contenant une `String`, un `Int`, et un `Boolean`.
 Nous jetterons bientôt un œil aux `HList`s et à l'importance de leur rôle.
 Pour l'instant, le plus intéressant est que nous pouvons
@@ -72,9 +72,9 @@ Cet exemple est basique mais il pointe du doigt
 la nature de la programmation générique.
 Nous reformulons les problèmes pour pouvoir les résoudre
 avec des constructions génériques et ainsi écrire de petit bloc de code
-qui fonctionnent avec une large variété de types.
+qui fonctionne avec une large variété de types.
 Programmer avec shapeless nous permet d'éliminer une grande quantité de
-`boilerplate`, de rendre les applications Scala plus faciles à lire, écrire
-et entretenir.
+code *boilerplate*, de rendre les applications Scala plus faciles à lire, écrire
+et maintenir.
 
 Votre curiosité a été piquée ? Alors c'est parti !

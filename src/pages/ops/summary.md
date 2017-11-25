@@ -12,11 +12,11 @@ La facon la plus simple de les apprendre et
 de regarder directement leur code source dans
 `shapeless.ops` and `shapeless.syntax`.
 
-Dans le chapitre suivant, nous allons aborder deux ensembles de *type class*e ops
+Dans le chapitre suivant, nous allons aborder deux ensembles de *type class* `ops`
 qui nécessitent davantage de théorie.
-Le Chapitre [@sec:poly] traite des opérations fonctionnelles comme
+Le *Chapitre [@sec:poly]* traite des opérations fonctionnelles comme
 `map` et `flatMap` sur les `HList`s, et le Chapitre [@sec:nat] nous explique
-comment implémenter des type classes qui
-nécessitent une représentation au type level des nombres.
+comment implémenter des *type classes* qui
+nécessitent une représentation au *type level* des nombres.
 Ces informations vont nous aider à mieux comprendre
 l'ensemble des type classes de `shapeless.ops`.

@@ -147,7 +147,7 @@ il ne trouvera pas de quoi générer la bonne instance.
 
 ### *Lazy*
 
-La divergence d'`implicit` peut marquer un arrêt pour la bibliotèque shapeless.
+La divergence d'`implicit` peut marquer un arrêt pour la librairie shapeless.
 Heureusement, shapeless fournit un
 type appeler `Lazy` pour contourner ce problème.
 `Lazy` fait deux choses :

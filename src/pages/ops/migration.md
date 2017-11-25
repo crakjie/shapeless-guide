@@ -39,7 +39,7 @@ Idéalement on aimerait être capables d'écrire le code suivant :
 IceCreamV1("Sundae", 1, false).migrateTo[IceCreamV2a]
 ```
 
-La *type class* doit prendre soin de la migration sans boilerplate additionel.
+La *type class* doit prendre soin de la migration sans code *boilerplate* supplémentaire.
 
 ### La *type class*
 
@@ -222,7 +222,7 @@ Voici la liste complète des étapes :
  7. utiliser `LabelledGeneric` pour convertir le résultat de l'étape 6 vers `B`.
 
 [^monoid-pun]: Le jeu de mots est intentionel.
-(note du traducteur: jeu d emot intraduisible)
+(note du traducteur: jeu de mot intraduisible)
 
 Nous avons déja vu comment implémenter les étapes 1, 2, 4, 6 et 7.
 Nous pouvons implémenter l'étape 3 en utilisant un op appelé `Diff`

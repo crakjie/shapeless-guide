@@ -25,6 +25,7 @@ pages:
   - intro/index.md
   - intro/generic.md
   - intro/thisbook.md
+  - intro/source-code.md
   - intro/acknowledgements.md
 
   - parts/part1.md

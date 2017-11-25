@@ -81,7 +81,7 @@ Shapeless fournit une type class appelée `Generic`
 qui permet de convertir des *ADT* concrets en représentation générique
 et vice versa.
 Il y a quelques macros en coulisses qui permettent d'invoquer des instances
-de `Generic` sans boilerplate :
+de `Generic` sans code *boilerplate* :
 
 ```tut:book:silent
 import shapeless.Generic

@@ -193,5 +193,5 @@ Avec ces modifications, nous pouvons générer une valeur aléatoire pour n'impo
 for(i <- 1 to 5) println(random[Light])
 ```
 
-Générer des données de test pour ScalaCheck nécessite normalement beaucoup de boilerplate.
+Générer des données de test pour ScalaCheck nécessite normalement beaucoup de code *boilerplate*.
 La génération de valeurs aléatoires est un exemple fascinant de l'utilisation de shapeless où les `Nat` ont une place essentielle.

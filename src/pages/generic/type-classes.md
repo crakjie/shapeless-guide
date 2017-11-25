@@ -197,7 +197,7 @@ the[CsvEncoder[IceCream]]
 ```
 La methode `instance` parfois appelé `pure`,
 fournis une syntaxe simple pour crée de nouvelle instance de *type class*e,
-réduisant au passage le boilerplate pour les classes anoymes:
+réduisant au passage le code *boilerplate* pour les classes anoymes:
 
 
 ```tut:book:silent

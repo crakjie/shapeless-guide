@@ -55,7 +55,7 @@ area(circ)
 Les sealed traits et les *case classes* sont sans aucun doute
 les encodages les plus pratique des *ADT*s en Scala.
 Mais ce ne sont pas les *seules* possibilités d'encodage.
-Par exemple, la bibliotèque standard de Scala fournit
+Par exemple, la librairie standard de Scala fournit
 des produits génériques appelés `Tuples`
 ainsi qu'un coproduit générique : `Either`.
 Nous aurions pu choisir d'écrire notre `Shape` comme suit :
@@ -107,5 +107,5 @@ shapeless utilise son propre type de données pour
 représenter les produits et coproduits génériques.
 Nous présenterons ces types dans la section suivante.
 
-[^generic]: nous utilisons « générique » de façon informelle,
+[^generic]: Nous utilisons « générique » de façon informelle,
 au lieu du sens conventionnel : « un type paramétré ».
