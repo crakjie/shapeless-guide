@@ -55,7 +55,7 @@ val genericIceCream = Generic[IceCream].to(IceCream("Sundae", 1, false))
 Les deux valeurs sont maintenant du même type.
 Elle sont toutes les deux des liste hétérogène (des `HList`s)
 contenant une `String`, un `Int`, et un `Boolean`.
-Nous jetterons bientôt un œil au `HList`s et à l'importance de leur rôle.
+Nous jetterons bientôt un œil aux `HList`s et à l'importance de leur rôle.
 Pour l'instant, le plus intéressant est que nous pouvons
 sérialiser chaque valeur avec une seule fonction.
 

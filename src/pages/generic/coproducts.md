@@ -162,7 +162,7 @@ Pour remédier a a ce problème il faut changer
 la définition de `CsvEncoder`
 pour ajouter la largeur des type de données et ainsi
 espacer les colonnes en conséquence.
-Le repo d'exemple contenant
+Le dépôt d'exemple contenant
 l'implémentation complète d'un `CsvEncoder`
 traitant ce problème est
 linké dans la section [@sec:intro:about-this-book]

@@ -70,16 +70,16 @@ nous offrons une base théorique en trois chapitres :
 
 ## Code source et exemples
 
-Ce livre est opensource.
-Vous pouvez trouver [les sources Markdown sur Github][link-book-repo].
+Ce livre est *open source*.
+Vous pouvez trouver [les sources Markdown sur GitHub][link-book-repo].
 La communauté met constament à jour ce livre.
-Veillez donc à vérifier sur le repo Github
+Veillez donc à vérifier sur le dépôt GitHub
 que vous disposez de la dernière version.
 
 Il y existe aussi des implémentations complètes des
 exemples principaux dans un [repo compagnon][link-code-repo].
 Consultez le README pour plus de détails sur l'installation.
 
-Les exemples utilisent shapeless 2.3.2 et
-Typelevel Scala 2.11.8+ ou
-Lightbend Scala 2.11.9+ / 2.12.1+.
+Les exemples utilisent *shapeless 2.3.2* et
+*Typelevel Scala 2.11.8+* ou
+*Lightbend Scala 2.11.9+ / 2.12.1+*.

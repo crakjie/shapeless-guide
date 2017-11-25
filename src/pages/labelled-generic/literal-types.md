@@ -91,8 +91,8 @@ math.sqrt(4).narrow
 
 Jusque récemment, Scala ne disposait pas de syntaxe pour écrire les types littéraux.
 Les types étaient là, dans le compilateur, mais nous ne pouvions pas les écrire directement dans le code.
-Mais grâce aux versions de Lightbend Scala 2.12.1, Lightbend Scala 2.11.9,
-et Typelevel Scala 2.11.8, nous disposons désormais d'un support direct de la syntaxe pour les types littéraux.
+Mais grâce aux versions de *Lightbend Scala 2.12.1*, *Lightbend Scala 2.11.9*,
+et *Typelevel Scala 2.11.8*, nous disposons désormais d'un support direct de la syntaxe pour les types littéraux.
 Dans ces versions de Scala, nous pouvons écrire les déclarations de la façon suivante :
 
 ```scala

@@ -1,7 +1,7 @@
 ## Remerciements
 
 Merci à Miles Sabin, Richard Dallaway, Noel Welsh, Travis Brown,
-et nos [camarades de Github][link-contributors]
+et nos [camarades de GitHub][link-contributors]
 pour leur contribution inestimable.
 
 Un remerciement tout particulier à Sam Halliday pour sont excellent workshop.
