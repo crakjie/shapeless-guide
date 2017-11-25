@@ -65,7 +65,7 @@ val newProduct: Long :: String :: Int :: Boolean :: HNil =
 ```
 Shapeless fournit aussi des outils pour effectuer des opérations plus complexes
 comme un mapping, un filtrage ou une concaténation de listes.
-On abordera cela plus en détails dans la Partie II.
+On abordera cela plus en détails dans la *Partie II*.
 
 Les propriétés que l'on obtient avec `HList`s ne sont pas magiques.
 On aurait pu obtenir ces fonctionalités en utilisant `(A, B)` et `Unit`

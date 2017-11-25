@@ -2,11 +2,11 @@
 
 Le livre est divisé en deux parties.
 
-Dans la Partie I, nous introduisons la *déduction de *type class* (type class derivation)*,
+Dans la *Partie I*, nous introduisons la *déduction de *type class* (type class derivation)*,
 qui permet de créer des instances de *type class*
 pour tous types de données algébriques
 avec quelques règles génériques pour tout matériel.
-La Partie I comprend quatre chapitres :
+La *Partie I* comprend quatre chapitres :
 
   - Dans le chapitre [@sec:representations],
     nous introduisons les *generic representations*,
@@ -40,7 +40,7 @@ La Partie I comprend quatre chapitres :
     Nous illustrons `LabelledGeneric` en créant
     un encodeur *JSON* qui préserve les champs et les noms des types dans sa sortie.
 
-Dans la Partie II, nous présentons les "ops type classes"
+Dans la *Partie II*, nous présentons les "ops type classes"
 fournies dans le package `shapeless.ops`.
 Les ops type classes constituent une large bibliotèque d'outils
 pour manipuler les représentations génériques.

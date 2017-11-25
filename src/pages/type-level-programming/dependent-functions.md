@@ -3,7 +3,7 @@
 Shapeless utilise les types dépendants partout :
 dans `Generic`, dans `Witness` (que nous traiterons dans le chapitre suivant),
 et dans de nombreux type classes « ops » que
-nous traiterons dans la Partie II de ce guide.
+nous traiterons dans la *Partie II* de ce guide.
 Par exemple, shapeless fournit une case class appelée `Last`
 qui retourne le dernier élément d'une `HList`.
 Voici une version simplifiée de son implémentation :
