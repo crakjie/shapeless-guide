@@ -3,7 +3,7 @@
 
 Les bibliothèques de test axées sur les propriétés comme [ScalaCheck][link-scalacheck]
 utilisent des type classes dont le but est de générer des valeurs aléatoires pour les test unitaires.
-Par exemple, ScalaCheck fournit la type class `Arbitrary` que nous pouvons utiliser de la façon suivante :
+Par exemple, ScalaCheck fournit la *type class* `Arbitrary` que nous pouvons utiliser de la façon suivante :
 
 ```tut:book:silent
 import org.scalacheck._
@@ -14,17 +14,17 @@ for(i <- 1 to 3) println(Arbitrary.arbitrary[Int].sample)
 for(i <- 1 to 3) println(Arbitrary.arbitrary[(Boolean, Byte)].sample)
 ```
 
-ScalaCheck founit deja des instances d'`Arbitrary` 
+ScalaCheck founit deja des instances d'`Arbitrary`
 pour un grand nombre de types scala standards.
-Pourtant, créer des instances d'`Arbitrary` pour les utilisateurs d'ADTs
+Pourtant, créer des instances d'`Arbitrary` pour les utilisateurs d'*ADT*s
 reste un travail manuel et chronophage.
 C'est ce qui rend très intéressant l'intégration de shapeless
 via des bibliothèques comme [scalacheck-shapeless][link-scalacheck-shapeless].
 
-Dans cette section, nous allons créer une simple type class `Random` 
-pour générer des valeurs aléatoires pour un ADT donné.
+Dans cette section, nous allons créer une simple type class `Random`
+pour générer des valeurs aléatoires pour un *ADT* donné.
 Nous allons voir comment `Length` et `Nat` font partie intégrante de l'implémentation.
-Comme toujours, nous commençons par définir la type class elle-même.
+Comme toujours, nous commençons par définir la *type class* elle-même.
 
 ```tut:book:invisible
 // Assure que nous avons toujours la même sortie :
@@ -96,7 +96,7 @@ implicit def hlistRandom[H, T <: HList](
   createRandom(() => hRandom.value.get :: tRandom.get)
 ```
 
-Ce qui nous conduit à invoquer des instances aléatoires pour les case classes :
+Ce qui nous conduit à invoquer des instances aléatoires pour les *case classes* :
 
 ```tut:book:silent
 case class Cell(col: Char, row: Int)
@@ -141,7 +141,7 @@ case object Green extends Light
 Le `Repr` de `Light` est `Red :+: Amber :+: Green :+: CNil`.
 Pour ce type, une instance de `Random` choisira `Red` une fois sur deux et `Amber :+: Green :+: CNil`
 une fois sur deux.
-Alors qu'une distribution correcte 
+Alors qu'une distribution correcte
 serait à 33 % `Red` et 67 % `Amber :+: Green :+: CNil`.
 
 Et ce n'est pas tout.
@@ -193,5 +193,5 @@ Avec ces modifications, nous pouvons générer une valeur aléatoire pour n'impo
 for(i <- 1 to 5) println(random[Light])
 ```
 
-Générer des données de test pour ScalaCheck nécessite normalement beaucoup de boilerplate.
+Générer des données de test pour ScalaCheck nécessite normalement beaucoup de code *boilerplate*.
 La génération de valeurs aléatoires est un exemple fascinant de l'utilisation de shapeless où les `Nat` ont une place essentielle.

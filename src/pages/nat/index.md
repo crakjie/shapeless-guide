@@ -6,11 +6,11 @@ Nous pouvons représenter les nombres facilement avec les valeurs,
 mais si nous voulons influencer la résolution d'implicite,
 nous avons besoin de les représenter au niveau des types.
 Ce chapitre traite des théories qui permettent de compter avec les types,
-et nous fournirons quelques cas d'utilisation pour la déduction de type classes.
+et nous fournirons quelques cas d'utilisation pour la déduction de *type class*es.
 
 ## Représenter des nombres par des types.
 
-Shapeless utilise « le codage de Church » pour représenter 
+Shapeless utilise « le codage de Church » pour représenter
 les nombres naturels au niveau des types.
 Il introduit le type `Nat` avec deux sous-types :
 `_0` représente zero
@@ -35,7 +35,7 @@ Nat._3
 ```
 
 `Nat` n'a pas de sémantique à l'exécution.
-Nous devons utiliser la type class `ToInt` pour convertir un `Nat`
+Nous devons utiliser la *type class* `ToInt` pour convertir un `Nat`
 en un `Int` à l'exécution :
 
 ```tut:book:silent

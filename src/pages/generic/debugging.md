@@ -75,7 +75,7 @@ Voici quelques techniques à utiliser quand les choses vont mal.
 
 ### Débugger en utilisant *implicitly*
 
-Que peut-on faire quand les compilateurs 
+Que peut-on faire quand les compilateurs
 ne trouvent simplement pas la valeur implicite ?
 L'erreur peut être causée par la résolution de n'importe quel implicit.
 Par exemple :
@@ -87,11 +87,11 @@ case class Foo(bar: Int, baz: Float)
 ```tut:book:fail
 CsvEncoder[Foo]
 ```
-Nous avons une erreur car nous navons 
+Nous avons une erreur car nous navons
 pas défini `CsvEncoder` pour `Float`.
 Pourtant, cela n'est peut-être pas évident à voir dans le code de l'application.
 On peut chercher l'erreur en imaginant comment l'implicite est censé se développer,
-insérer des appels à `CsvEncoder.apply` ou à `implicitly` 
+insérer des appels à `CsvEncoder.apply` ou à `implicitly`
 au-dessus de l'erreur pour voir si cela compile.
 Commençons avec la représentation générique de `Foo`:
 
@@ -99,7 +99,7 @@ Commençons avec la représentation générique de `Foo`:
 ```tut:book:fail
 CsvEncoder[Int :: Float :: HNil]
 ```
-L'erreur ici nous en dit un peu plus, on doit continuer à 
+L'erreur ici nous en dit un peu plus, on doit continuer à
 chercher plus profondément dans la chaînes d'appel des implicites.
 L'étape suivante est de tester les composants de `HList` :
 
@@ -114,15 +114,15 @@ CsvEncoder[Float]
 `Int` fonctionne mais `Float` lève une erreur.
 `CsvEncoder[Float]` est une feuille dans le développement de notre abre,
 on sait donc que l'on doit commencer par implémenter l'instance manquante.
-Si ajouter l'instance ne corrige pas le problème, 
+Si ajouter l'instance ne corrige pas le problème,
 on répète le processus pour trouver le prochain point problématique.
 
 ### Debugger en utilisant *reify*
 
-La méthode `reify` de `scala.reflect` prend une 
-expression scala en paramètre et retourne
-un objet AST représentant l'expression sous 
-forme d'abre avec toutes les annotations de types. 
+La méthode `reify` de `scala.reflect` prend une
+expression Scala en paramètre et retourne
+un objet AST représentant l'expression sous
+forme d'abre avec toutes les annotations de types.
 
 ```tut:book:silent
 import scala.reflect.runtime.universe._
@@ -132,11 +132,10 @@ import scala.reflect.runtime.universe._
 println(reify(CsvEncoder[Int]))
 ```
 
-Les types inferés pendant la résolution d'implicite 
+Les types inferés pendant la résolution d'implicite
 peuvent nous donner un indice sur le problème.
 Après la résolution d'implicite,
-tous les types existentiels restants comme `A` ou `T` 
+tous les types existentiels restants comme `A` ou `T`
 indiquent que quelque-chose n'a pas bien fonctionné.
-Les types "top" et "bottom" comme `Any` and `Nothing` 
+Les types "top" et "bottom" comme `Any` and `Nothing`
 sont aussi la preuve d'une erreur.
-

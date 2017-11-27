@@ -91,10 +91,10 @@ final case class Circle(radius: Double) extends Shape
 // ----------------------------------------------
 ```
 
-Appliquer les `LabelledGeneric` aux `Coproducts` revient à
+Appliquer les `LabelledGeneric` aux `Coproduct`s revient à
 mélanger des concepts que nous avons déja traités.
 Commençons par examiner un type `Coproduct` déduit par `LabelledGeneric`.
-Nous allons revisiter notre ADT `Shape` du Chapitre [@sec:generic]:
+Nous allons revisiter notre *ADT* `Shape` du Chapitre [@sec:generic]:
 
 ```tut:book:silent
 import shapeless.LabelledGeneric

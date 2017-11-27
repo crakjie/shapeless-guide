@@ -2,8 +2,8 @@
 
 Shapeless utilise les types dépendants partout :
 dans `Generic`, dans `Witness` (que nous traiterons dans le chapitre suivant),
-et dans de nombreux type classes « ops » que 
-nous traiterons dans la Partie II de ce guide.
+et dans de nombreux type classes « ops » que
+nous traiterons dans la *Partie II* de ce guide.
 Par exemple, shapeless fournit une case class appelée `Last`
 qui retourne le dernier élément d'une `HList`.
 Voici une version simplifiée de son implémentation :
@@ -18,7 +18,7 @@ trait Last[L <: HList] {
 ```
 
 On peut invoquer des instances de `Last`
-pour inspecter les `HLists` dans notre code.
+pour inspecter les `HList`s dans notre code.
 Notez que dans les deux exemples ci-dessous
 les types de `Out` sont dépendants des types des `HList` :
 
@@ -42,8 +42,8 @@ last2(321 :: "bar" :: HNil)
 ```
 
 Nous avons deux formes de protection contre les erreurs.
-L'implicite définie pour `Last` nous garantit que 
-l'on peut construire une instance de `Last` uniquement si 
+L'implicite définie pour `Last` nous garantit que
+l'on peut construire une instance de `Last` uniquement si
 la `HList` en entrée est dotée d'au moins un élément :
 
 ```tut:book:fail
@@ -76,9 +76,9 @@ object Second {
 }
 ```
 
-Ce code utilise l'agencement idiomatique 
-décrit dans la Section [@sec:generic:idiomatic-style].
-On définit un type `Aux` dans l'objet compagnon aux cotés de la 
+Ce code utilise l'agencement idiomatique
+décrit dans la section [@sec:generic:idiomatic-style].
+On définit un type `Aux` dans l'objet compagnon aux cotés de la
 méthode standard `apply`, qui permet d'invoquer des instances.
 
 <div class="callout callout-warning">
@@ -86,11 +86,11 @@ méthode standard `apply`, qui permet d'invoquer des instances.
 
 Remarquez que le type de retour d'`apply` est `Aux[L, O]` et non pas `Second[L]`.
 C'est important.
-Utiliser `Aux` assure que la methode `apply` 
+Utiliser `Aux` assure que la methode `apply`
 n'écrase pas les membres de type de l'instance invoquée.
 Si l'on définit `Second[L]` comme type de retour,
-le membre de type `Out` sera perdu dans le type retourné et 
-la type class ne fonctionnera plus correctement.
+le membre de type `Out` sera perdu dans le type retourné et
+la *type class* ne fonctionnera plus correctement.
 
 La méthode `implicitly` de `scala.Predef` est dotée de cette propriété.
 Comparons le type d'une instance de `Last` invoqué par `implicitly` :
@@ -121,8 +121,8 @@ the[Last[String :: Int :: HNil]]
 ```
 </div>
 
-Nous n'avons besoin que d'une seule instance 
-définie pour une `HLists` d'au moins deux éléments :
+Nous n'avons besoin que d'une seule instance
+définie pour une `HList`s d'au moins deux éléments :
 
 
 ```tut:book:invisible
@@ -157,7 +157,7 @@ alors la résolution échoue et l'on obtient une erreur de compilation :
 ```tut:book:fail
 Second[String :: HNil]
 ```
-Les instances invoquées avec la méthode `apply` fonctionne 
+Les instances invoquées avec la méthode `apply` fonctionne
 avec les types de `HList` appropriés au niveau des valeurs (value level)
 
 ```tut:book
@@ -170,12 +170,12 @@ second1("baz" :: HNil)
 ```
 
 ## Enchaîner les fonctions dépendantes {#sec:type-level-programming:chaining}
-Les fonctions à type dépendant offrent un 
+Les fonctions à type dépendant offrent un
 moyen de calculer un type à partir d'un autre.
-On peut enchaîner les fonctions à type dépendant 
+On peut enchaîner les fonctions à type dépendant
 pour effectuer un calcul nécessitant plusieurs étapes.
-Par exemple, on pourrait utiliser `Generic` pour calculer 
-le `Repr` d'une case classe et utiliser `Last` 
+Par exemple, on pourrait utiliser `Generic` pour calculer
+le `Repr` d'une case classe et utiliser `Last`
 pour calculer le type du dernier élément.
 Essayons de coder ceci :
 
@@ -193,9 +193,9 @@ def lastField[A](input: A)(
 ```
 
 Malheureusement, notre code ne compile pas.
-Il s'agit du même problème que nous avions rencontré dans la Section [@sec:generic:product-generic] 
+Il s'agit du même problème que nous avions rencontré dans la section [@sec:generic:product-generic]
 avec notre définition de `genericEncoder`.
-Nous avions contourné le problème en remontant la variable 
+Nous avions contourné le problème en remontant la variable
 de type non-parametré dans la liste des paramètres de types :
 
 ```tut:book:silent
@@ -216,10 +216,10 @@ lastField(Rect(Vec(1, 2), Vec(3, 4)))
 ```
 
 En règle général, on écrit toujours du code dans ce style.
-En paramétrant toutes les variables de type, on permet au compilateur 
+En paramétrant toutes les variables de type, on permet au compilateur
 de les unifier avec les types appropriés.
 Cela vaut également pour des contraintes plus subtiles.
-Par exemple, imaginons qu'on veuille invoquer un `Generic` pour une case class 
+Par exemple, imaginons qu'on veuille invoquer un `Generic` pour une case class
 qui porte exactement un champ.
 On pourrait être tenté d'écrire le code suivant :
 
@@ -231,8 +231,8 @@ def getWrappedValue[A, H](input: A)(
 ```
 
 Le résultat est plus pernicieux.
-La définition de la méthode compilera 
-mais le compilateur ne trouvera jamais 
+La définition de la méthode compilera
+mais le compilateur ne trouvera jamais
 d'implicits au moment de l'appel :
 
 ```tut:book:silent
@@ -245,8 +245,8 @@ getWrappedValue(Wrapper(42))
 
 Le message d'erreur fait allusion au problème.
 L'apparition du type `H` est en fait notre indice.
-C'est le nom d'un des paramètres de type de la méthode, 
-il ne devrait pas apparaître 
+C'est le nom d'un des paramètres de type de la méthode,
+il ne devrait pas apparaître
 dans le type que le compilateur tente d'unifier.
 Le problème tient au fait que le paramètre `gen` est sur-contraint :*
 le compilateur ne peut pas trouver `Repr` *et* garantir sa taille en même temps.
@@ -258,7 +258,7 @@ La solution au problème ci-dessus est de diviser la résolution d'implicite en 
 1. trouver un `Generic` avec un `Repr` approprié pour `A` ;
 2. s'assurer que `Repr` a un élément en tête de type `H`.
 
-Voici une version revisitée de la méthode 
+Voici une version revisitée de la méthode
 utilisant `=:=` pour contraindre `Repr`:
 
 
@@ -289,22 +289,22 @@ def getWrappedValue[A, Repr <: HList, Head](in: A)(
 ```
 
 Ça corrige le bug.
-Maintenant la definition de la méthode et 
+Maintenant la definition de la méthode et
 l'appel de la méthode compile correctement :
 
 
 ```tut:book
 getWrappedValue(Wrapper(42))
 ```
-Le point important n'est pas que 
+Le point important n'est pas que
 l'on a résolu le problème en utilisant `IsHCons`.
-Shapeless fournit de nombreux outils comme celui-ci 
+Shapeless fournit de nombreux outils comme celui-ci
 (voir Chapitre [@sec:ops] à [@sec:nat]),
 et on peut les compléter si nécessaire
 avec nos propres type classes.
-Le point important est la compréhension du processus 
-que l'on utilise pour parvenir à ecrire un code qui compile 
+Le point important est la compréhension du processus
+que l'on utilise pour parvenir à ecrire un code qui compile
 et la capacité de trouver les solutions
-Cette section se conclue par un 
-guide pas à pas qui résume 
+Cette section se conclue par un
+guide pas à pas qui résume
 ce que nous avons découvert jusqu'ici.

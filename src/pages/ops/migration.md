@@ -4,7 +4,7 @@ La puissance des type classes ops se conrétise
 quand on assemble dans notre propre code.
 Nous allons conclure ce chapitre avec un exemple probant :
 une type classe visant à effectuer des « migrations » (ou « évolutions »)
-de case classes[^database-migrations].
+de *case classes*[^database-migrations].
 Par exemple, si la version 1 de notre application contient la case classe suivante :
 
 [^database-migrations]: Le terme est tiré de
@@ -39,11 +39,11 @@ Idéalement on aimerait être capables d'écrire le code suivant :
 IceCreamV1("Sundae", 1, false).migrateTo[IceCreamV2a]
 ```
 
-La type class doit prendre soin de la migration sans boilerplate additionel.
+La *type class* doit prendre soin de la migration sans code *boilerplate* supplémentaire.
 
-### La type class
+### La *type class*
 
-La type class `Migration` représente la transformation d'une source vers un type destination.
+La *type class* `Migration` représente la transformation d'une source vers un type destination.
 Ils seront tous les deux les paramètres de type pour notre déduction.
 Nous n'avons pas besoin d'alias de type `Aux`
 car il n'y a pas de membre de type à exposer :
@@ -97,7 +97,7 @@ implicit def genericMigration[A, B, ARepr <: HList, BRepr <: HList](
 Prenez un moment pour localiser [`Intersection`][code-ops-hlist-intersection]
 dans la base de code de shapeless.
 L'alias de type `Aux` prend en compte trois paramètres :
-deux `HLists` qui sont les entrées et une pour le type du résultat de l'intersection.
+deux `HList`s qui sont les entrées et une pour le type du résultat de l'intersection.
 Dans l'exemple au-dessus nous spécifions `ARepr` et `BRepr` comme type d'entrée et `BRepr` comme type de retour.
 Ce qui signifie que la résolution d'implicite ne fonctionnera que si `B` contient l'exact sous-ensemble des champs de `A`,
 avec exactement les mêmes noms et dans le même ordre :
@@ -178,7 +178,7 @@ et `combine` pour « fusionner » deux valeurs en une seule.
 Dans notre code nous n'avons besoin que de `empty`
 mais il serait trivial de définir également`combine`.
 
-Cats fournis une instance de `Monoid` pour chacun des type
+Cats fournit une instance de `Monoid` pour chacun des type
 primitf qui nous intéresse (`Int`, `Double`, `Boolean`, and `String`).
 Nous pouvons définir une instance pour `HNil`et `::`
 en utilisant les techniques du Chapitre [@sec:labelled-generic]:
@@ -222,7 +222,7 @@ Voici la liste complète des étapes :
  7. utiliser `LabelledGeneric` pour convertir le résultat de l'étape 6 vers `B`.
 
 [^monoid-pun]: Le jeu de mots est intentionel.
-(note du traducteur: jeu d emot intraduisible)
+(note du traducteur: jeu de mot intraduisible)
 
 Nous avons déja vu comment implémenter les étapes 1, 2, 4, 6 et 7.
 Nous pouvons implémenter l'étape 3 en utilisant un op appelé `Diff`
@@ -255,7 +255,7 @@ Nous utilisons `Diff` uniquement pour calculer le type de données `Added`,
 mais nous n'avons pas besoin d'exécuter `diff.apply`.
 Au lieu de cela, nous utilisons notre `Monoid` pour invoquer une instance de `Added`.
 
-Avec cette dernière version de la type class nous pouvons utiliser
+Avec cette dernière version de la *type class* nous pouvons utiliser
 `Migration` pour tous les cas d'utilisation que nous avions données au
 début de cette étude de cas :
 
@@ -268,7 +268,7 @@ IceCreamV1("Sundae", 1, true).migrateTo[IceCreamV2c]
 C'est incroyable tout ce que nous pouvons faire avec les type class ops.
 `Migration` ne contient qu'une `implicit def` avec une seul ligne d'implémentation
 au value-level.
-Cela nous permet d'automatiser les migrations entre *n'importe* quelle paire de case classes,
+Cela nous permet d'automatiser les migrations entre *n'importe* quelle paire de *case classes*,
 avec approximativement la même quantité de code
 nécessiare pour gérer une *seule* paire
 de types en utilisant une bibliothèque standard.

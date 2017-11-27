@@ -1,6 +1,6 @@
 ## Exemple d'ops simples
 
-`HList` dispose d'une méthode d'extension `init` 
+`HList` dispose d'une méthode d'extension `init`
 et d'un autre `last` basé sur deux type classes :
 `shapeless.ops.hlist.Init` et
 `shapeless.ops.hlist.Last`.
@@ -37,9 +37,9 @@ object Last {
 ```
 
 Nous pouvons faire quelques observations intéressantes sur cette implémentation.
-Premièrement, nous pouvons généralement implémenter les type classes 
+Premièrement, nous pouvons généralement implémenter les type classes
 ops avec un petit nombre d'instances (seulement deux dans cet exemple).
-Nous pouvons ainsi rassembler *toutes* les instances requises dans l'objet compagnon de la type classe,
+Nous pouvons ainsi rassembler *toutes* les instances requises dans l'objet compagnon de la *type class*,
 ce qui nous permet d'appeler les methodes d'extention de `shapeless.ops` qui n'ont aucun rapport :
 
 ```tut:book:silent
@@ -51,9 +51,9 @@ import shapeless._
 ("Hello" :: 123 :: true :: HNil).init
 ```
 
-Ensuite, la type classe n'est définie que pour les `HLists` qui contiennent au moins un élément.
+Ensuite, la *type class* n'est définie que pour les `HList`s qui contiennent au moins un élément.
 Ce qui nous donne quelques vérifications statiques.
-Si on essaie d'appeler `last` sur une `HList` vide, 
+Si on essaie d'appeler `last` sur une `HList` vide,
 cela provoque une erreur de compilation :
 
 

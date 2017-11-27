@@ -1,7 +1,7 @@
 ## Types dépendants
 
 Dans le dernier chapitre, nous avons passé beaucoup de temps à utiliser `Generic`,
-la type classe qui sert à lier un type ADT à sa représentation générique.
+la *type class* qui sert à lier un type *ADT* à sa représentation générique.
 Pourtant, nous n'avons pas encore abordé la théorie sous-jacente à `Generic` et à tout shapeless :
 *les types dépendants*.
 
@@ -30,7 +30,7 @@ def getRepr[A](value: A)(implicit gen: Generic[A]) =
 
 La réponse est : tout dépend de l'instance de `gen` que nous avons.
 En développant l'appel de `getRepr`,
-le compilateur va chercher un `Generic[A]` 
+le compilateur va chercher un `Generic[A]`
 et le type sera le `Repr` défini dans l'instance :
 
 ```tut:book:silent
@@ -43,11 +43,11 @@ getRepr(Vec(1, 2))
 getRepr(Rect(Vec(0, 0), Vec(5, 5)))
 ```
 
-Ce que nous voyons ici est appelé *typage dependent*: 
+Ce que nous voyons ici est appelé *typage dependent*:
 le type du résultat de `getRepr` dépend de la valeur de son
 paramètre de type via son membre de type.
-Imaginons que nous avons spécifié `Repr` comme paramètre de type 
-de `Generic` à la place du membre de type: 
+Imaginons que nous avons spécifié `Repr` comme paramètre de type
+de `Generic` à la place du membre de type:
 
 ```tut:book:silent
 trait Generic2[A, Repr]

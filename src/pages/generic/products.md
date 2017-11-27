@@ -1,17 +1,17 @@
 ## Déduire des instances pour les produits {#sec:generic:products}
 
-Dans cette section nous allons utiliser shapeless pour 
-déduire des instances de types classes pour des types de produits.
-(i.e. case classes).
+Dans cette section nous utilisons shapeless pour
+déduire des instances de *types classes* pour des types de produits.
+(*ie.* *case classes*).
 
-Utilisons deux intuitions :
+Utilisons les deux idées suivantes :
 
-1. Si l'on a une instance de type class 
+1. Si l'on a une instance de type *class*
    pour la tête et la queue d'une `HList`,
    on peut en déduire l'instance de toute la `HList`.
 
-2. Si nous avons une case class `A`, un `Generic[A]` 
-   et une instance de type class pour le `Repr` de ce générique,
+2. Si nous avons une case class `A`, un `Generic[A]`
+   et une instance de *type class* pour le `Repr` de ce générique,
    nous pouvons alors les combiner pour obtenir une instance de `A`.
 
 Prenons `CsvEncoder` et `IceCream` comme exemples :
@@ -21,7 +21,7 @@ Prenons `CsvEncoder` et `IceCream` comme exemples :
 
  - Le `Repr` est fait d'une
     `String`, d'un `Int`, d'un `Boolean` et d'une `HNil`.
-   Si nous avons un  `CsvEncoders` pour ces types alors nous 
+   Si nous avons un  `CsvEncoder` pour ces types alors nous
    disposons d'un encodeur pour le tout.
 
  - Si nous pouvons déduire un `CsvEncoder` pour le `Repr`,
@@ -104,7 +104,7 @@ implicit def hlistEncoder[H, T <: HList](
   }
 ```
 
-Prises toutes ensemble, ces cinq instances nous 
+Prises toutes ensemble, ces cinq instances nous
 permettent d'invoquer un `CsvEncoders` pour toute `HList`
 impliquant `Strings`, `Ints` et `Booleans`:
 
@@ -119,8 +119,8 @@ reprEncoder.encode("abc" :: 123 :: true :: HNil)
 
 ### Des instance pour nos produits {#sec:generic:product-generic}
 
-On peut combiner nos règles de déduction de `HLists` avec
-nos instances de `Generic` 
+On peut combiner nos règles de déduction de `HList`s avec
+nos instances de `Generic`
 pour produire un `CsvEncoder` pour `IceCream`:
 
 ```tut:book:silent
@@ -138,8 +138,8 @@ et l'utiliser comme suit :
 writeCsv(iceCreams)
 ```
 Mais cette solution est spécifique à `IceCream`.
-Idéalement on voudrait définir une 
-seule règle pour toutes les case classes
+Idéalement on voudrait définir une
+seule règle pour toutes les *case classes*
 qui ont un `Generic` et le `CsvEncoder` correspondant.
 Montrons pas à pas comment faire cette déduction.
 Voici la première étape :
@@ -166,9 +166,9 @@ implicit def genericEncoder[A](
 ```
 
 Nous avons ici un problème de scope :
-On ne peut faire référence à un membre de type d'un paramètre 
+On ne peut faire référence à un membre de type d'un paramètre
 à partir d'un autre paramètre du même bloc.
-L'astuce pour contourner ce problème 
+L'astuce pour contourner ce problème
 est d'ajouter un nouveau paramètre de type à notre méthode,
 et y faire référence dans chacune des valeurs associées :
 
@@ -182,7 +182,7 @@ implicit def genericEncoder[A, R](
 ```
 
 Nous traiterons ce style d'écriture dans le chapitre suivant.
-Maintenant, cette définiton compile et fonctionne comme attendu avec 
+Maintenant, cette définiton compile et fonctionne comme attendu avec
 n'importe quelle case class.
 Intuitivement, la définition nous dit :
 
@@ -211,9 +211,9 @@ writeCsv(iceCreams)(
         hlistEncoder(booleanEncoder, hnilEncoder)))))
 ```
 
-et il peut inférer les valeurs correctes pour 
+et il peut inférer les valeurs correctes pour
 un grand nombre de types différents.
-Tout comme moi, 
+Tout comme moi,
 je suis sur que vous appréciez ne pas avoir à écrire ce code à la main !
 
 <div class="callout callout-info">
@@ -242,8 +242,8 @@ implicit def genericEncoder[A, R](
   createEncoder(a => env.encode(gen.to(a)))
 ```
 
-Notez bien que le type `Aux` ne change pas la sémantique, 
-cela rend juste les chose plus faciles à lire. 
+Notez bien que le type `Aux` ne change pas la sémantique,
+cela rend juste les chose plus faciles à lire.
 Le pattern `Aux` est souvent utilisé dans le code de shapeless.
 
 </div>
@@ -268,16 +268,16 @@ writeCsv(List(new Foo("abc", 123)))
 ```
 
 Dans ce cas le message est relativement simple à comprendre.
-Si shapeless ne peut calculer un `Generic` cela veut dire que le type en question n'est pas un ADT 
+Si shapeless ne peut calculer un `Generic` cela veut dire que le type en question n'est pas un *ADT*
 (il y a quelque-part dans l'algèbre un type qui n'est pas une case class ou un trait scellé).
 
-L'autre source potentielle d'erreur 
-survient lorsque le compilateur ne peut calculer un 
+L'autre source potentielle d'erreur
+survient lorsque le compilateur ne peut calculer un
 `CsvEncoder` pour notre `HList`.
-Cela arrive normalement car l'on n'a pas 
-d'encodeur pour un des champs de notre ADT.
-Par exemple nous n'avons pas encore défini de 
-`CsvEncoder` pour `java.util.Date`, 
+Cela arrive normalement car l'on n'a pas
+d'encodeur pour un des champs de notre *ADT*.
+Par exemple nous n'avons pas encore défini de
+`CsvEncoder` pour `java.util.Date`,
 donc le code suivant ne fonctionne pas :
 
 ```tut:book:silent
@@ -291,18 +291,18 @@ writeCsv(List(Booking("Lecture hall", new Date())))
 ```
 
 Le messsage d'erreur ne nous aide pas vraiment.
-Tout ce que le compilateur sait, 
-c'est qu'il a essayé un grand nombre de combinaisons d'implicites 
+Tout ce que le compilateur sait,
+c'est qu'il a essayé un grand nombre de combinaisons d'implicites
 et qu'aucune ne fonctionnait.
 Il n'a aucune idée de quelle combinaison était la plus proche de celle attendue,
-donc il ne peut nous dire où se trouve la source du problème. 
+donc il ne peut nous dire où se trouve la source du problème.
 
 Il n'y a pas de quoi se réjouir ici.
-Nous devons trouver nous-même la source 
+Nous devons trouver nous-même la source
 des erreurs par un processus d'élimination.
-Nous aborderons les techniques de 
-debuggage dans la Section [@sec:generic:debugging].
-Pour l'instant la seule fonctionalité qui compense c'est que 
+Nous aborderons les techniques de
+debuggage dans la section [@sec:generic:debugging].
+Pour l'instant la seule fonctionalité qui compense c'est que
 la résolution d'implicite plantera toujours à la compilation.
-Il y a une petite chance que cela finisse 
+Il y a une petite chance que cela finisse
 par produire du code qui plante durant l'exécution.

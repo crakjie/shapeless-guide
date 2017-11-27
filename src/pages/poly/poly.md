@@ -61,7 +61,7 @@ et l'intègre comme à l'accoutumée :
 myPoly.apply(123)
 ```
 
-Il y a ici quelques subltilités de scoping, qui permettent 
+Il y a ici quelques subltilités de scoping, qui permettent
 au compilateur de trouver les instances de `Case` sans import supplémentaire.
 `Case` a un paramètre de type supplémentaire appelé `P`
 qui référence le type singleton de `Poly`.
@@ -103,13 +103,13 @@ Il y a quelques différences notables par rapport à notre syntaxe précédente 
 
  3. Nous utilisons la méthode helper `at` pour définir nos cas.
     Elle agit à la façon d'une méthode constructrice d'instance,
-    comme traité dans la Section [@sec:generic:idiomatic-style]),
-    elle sert principalement à éliminér le boilerplate.
+    comme traité dans la section [@sec:generic:idiomatic-style]),
+    elle sert principalement à éliminer le code *boilerplate*.
 
 Une fois les différences de syntaxe mises de côté,
 la version shapeless de `myPoly` a la même fonctionalité
 que notre version de démonstration.
-Nous pouvons l'appeler avec un paramètre de type `Int` ou `String` et 
+Nous pouvons l'appeler avec un paramètre de type `Int` ou `String` et
 obtenir en retour le type correspondant :
 
 ```tut:book
@@ -138,7 +138,7 @@ multiply(3, "4")
 Les `Cases` n'étant que des valeurs implicites,
 nous pouvons définir des cases basés sur des type classes
 et ainsi appliquer toutes les résolutions implicites sophistiquées que
-nous avions traitées dans le chapitre précédent. 
+nous avions traitées dans le chapitre précédent.
 
 Voici un exemple simple qui donne
 le total de nombre selon différents contextes :
@@ -170,7 +170,7 @@ total(List(1L, 2L, 3L))
 <div class="callout callout-warning">
 *Particularité de l'inférence de type*
 
-`Poly` amène l'inférence de type de scala en dehors de sa zone de confort.
+`Poly` amène l'inférence de type de Scala en dehors de sa zone de confort.
 Nous pouvons facilement embrouiller le compilateur en lui demandant trop d'inférences de type d'un seul coup.
 Par exemple, le code suivant compile correctement :
 

@@ -3,12 +3,12 @@
 Nous allons utiliser un exemple fonctionnel
 d'encodage de Json pour illustrer `LabelledGeneric`.
 Nous allons définir une type classe `JsonEncoder`
-qui va convertir nos valeurs en AST JSON.
+qui va convertir nos valeurs en *AST JSON*.
 C'est l'approche adoptée par
-Argonaut, Circe, Play JSON, Spray JSON
-et de nombreuses autres bibliothèques scala pour le JSON.
+*Argonaut*, *Circe*, *Play JSON*, *Spray JSON*
+et de nombreuses autres bibliothèques Scala pour le *JSON*.
 
-Tout d'abord, définissons le type de données de notre JSON :
+Tout d'abord, définissons le type de données de notre *JSON* :
 
 ```tut:book:silent
 sealed trait JsonValue
@@ -20,7 +20,7 @@ case class JsonBoolean(value: Boolean) extends JsonValue
 case object JsonNull extends JsonValue
 ```
 
-puis la type class pour encoder les valeurs en JSON :
+puis la *type class* pour encoder les valeurs en *JSON* :
 
 ```tut:book:silent
 trait JsonEncoder[A] {
@@ -65,8 +65,8 @@ implicit def optionEncoder[A]
   createEncoder(opt => opt.map(enc.encode).getOrElse(JsonNull))
 ```
 
-Idéalement, lorsqu'on encode un ADT en JSON,
-on voudrait utiliser les noms des champs dans la sortie JSON :
+Idéalement, lorsqu'on encode un *ADT* en *JSON*,
+on voudrait utiliser les noms des champs dans la sortie *JSON* :
 
 ```tut:book:silent
 case class IceCream(name: String, numCherries: Int, inCone: Boolean)
@@ -241,7 +241,7 @@ implicit def genericObjectEncoder[A, H](
 Et voilà tout ce dont nous avons besoin !
 Avec ces définitions en place nous pouvons
 sérialiser les instances de n'importe quelle case class
-et conserver les noms des champs dans le JSON obtenu :
+et conserver les noms des champs dans le *JSON* obtenu :
 
 ```tut:book
 JsonEncoder[IceCream].encode(iceCream)

@@ -8,7 +8,7 @@ des opérations semblables sur les HLists` ?
 Les réponse est oui, mais nous devons faire les choses
 légèrement différemment par rapport au Scala classique.
 Nous ne serons pas surpris de constater que le mécanisme utilisé reste basé
-sur les type classes et un ensemble de type classes ops pour nous aider.
+sur les type classes et un ensemble de *type class*es ops pour nous aider.
 
 Avant de nous péncher directement sur les type classes,
 nous devons aborder la façon dont shapeless représente les
@@ -42,5 +42,5 @@ des `HList`.
 
 ![mapper sur des listes hétérogènes ("polymorphic" map)](src/pages/poly/polymorphic-map.pdf+svg){#fig:poly:polymorphic-map}
 
-Malheureusement nous ne pouvons pas utiliser les fonctions scala pour implémenter
+Malheureusement nous ne pouvons pas utiliser les fonctions Scala pour implémenter
 ces opérations. Nous avons besoin d'une nouvelle infrastructure.
