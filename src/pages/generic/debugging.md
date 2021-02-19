@@ -90,7 +90,7 @@ CsvEncoder[Foo]
 Nous avons une erreur car nous navons
 pas défini `CsvEncoder` pour `Float`.
 Pourtant, cela n'est peut-être pas évident à voir dans le code de l'application.
-On peut chercher l'erreur en imaginant comment l'implicite est censé se développer,
+On peut chercher l'erreur en imaginant comment l'implicit est censé se développer,
 insérer des appels à `CsvEncoder.apply` ou à `implicitly`
 au-dessus de l'erreur pour voir si cela compile.
 Commençons avec la représentation générique de `Foo`:

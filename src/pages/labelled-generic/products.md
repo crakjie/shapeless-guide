@@ -219,7 +219,7 @@ implicit def hlistObjectEncoder[K <: Symbol, H, T <: HList](
 
 ```
 
-### Les instances pour les produits concrêt.
+### Les instances pour les produits concrets.
 
 Enfin, revenons à notre instance générique.
 Elle est identique aux définitions que nous avons vues précédemment,

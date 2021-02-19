@@ -22,6 +22,6 @@ hlist.take(Nat._3).drop(Nat._1)
 hlist.updatedAt(Nat._1, "bar").updatedAt(Nat._2, "baz")
 ```
 
-Ces opérations et leurs type classes associées
+Ces opérations et leurs *type classes* associées
 sont utiles pour manipuler individuellement
 les éléments d'un produit ou d'un coproduit.

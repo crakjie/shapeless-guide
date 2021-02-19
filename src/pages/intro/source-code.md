@@ -46,7 +46,7 @@ Mise à part la manière d'afficher le résultat
 (syntaxe *infix* contre *prefix*),
 ces types sont les mêmes.
 Si vous trouvez les *prefix types* difficiles à lire,
-nous vous recommendons de mettre à jour Scala.
+nous vous recommandons de mettre à jour Scala.
 Ajoutez simplement ceci au fichier `build.sbt`,
 ou remplacez le numéro de version de manière appropriée :
 
@@ -59,7 +59,7 @@ Le paramètre `scalaOrganization`
 n'est supporté que dans *sbt 0.13.13* ou supérieur.
 Vous pouvez spécifier une version *sbt*
 en écrivant ceci dans `project/build.properties`
-(crééz le fichier si il n'est pas déjà dans votre projet) :
+(créez le fichier s'il n'est pas déjà dans votre projet) :
 
 ```
 sbt.version=0.13.13

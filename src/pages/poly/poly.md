@@ -5,7 +5,7 @@ pour représenter les *fonctions polymorphiques*
 dont le type de retour dépend des paramètres de types.
 Voici une explication simplifiée de leur fonctionnement.
 Notez que la section suivante ne contient pas de vrai code shapeless,
-nous mettons de coté une partie de la flexibilité et des mécanismes qui servent à simplifier l'utilisation de la vraie bibliothèque de shapeless pour créer une version simplifiée dans le cadre de notre exemple.
+nous mettons de côté une partie de la flexibilité et des mécanismes qui servent à simplifier l'utilisation de la vraie bibliothèque de shapeless pour créer une version simplifiée dans le cadre de notre exemple.
 
 ### Comment *Poly* fonctionne
 
@@ -61,7 +61,7 @@ et l'intègre comme à l'accoutumée :
 myPoly.apply(123)
 ```
 
-Il y a ici quelques subltilités de scoping, qui permettent
+Il y a ici quelques subtilités de scoping, qui permettent
 au compilateur de trouver les instances de `Case` sans import supplémentaire.
 `Case` a un paramètre de type supplémentaire appelé `P`
 qui référence le type singleton de `Poly`.
@@ -70,7 +70,7 @@ Le scope de `Case[P, A]` contient comme implicit une référence
 Nous avons assigné  `myPoly.type` à `P` et
 l'objet compagnon de  `myPoly.type` est `myPoly` lui-même.
 En d'autre termes, `Cases` qui est défini dans le corps de `Poly`
-est toujours accesible dans le scope quel que soit l'emplacement de l'appel.
+est toujours accessible dans le scope quel que soit l'emplacement de l'appel.
 
 ### la syntaxe de *Poly*
 
@@ -107,7 +107,7 @@ Il y a quelques différences notables par rapport à notre syntaxe précédente 
     elle sert principalement à éliminer le code *boilerplate*.
 
 Une fois les différences de syntaxe mises de côté,
-la version shapeless de `myPoly` a la même fonctionalité
+la version shapeless de `myPoly` a la même fonctionnalité
 que notre version de démonstration.
 Nous pouvons l'appeler avec un paramètre de type `Int` ou `String` et
 obtenir en retour le type correspondant :
@@ -136,7 +136,7 @@ multiply(3, "4")
 ```
 
 Les `Cases` n'étant que des valeurs implicites,
-nous pouvons définir des cases basés sur des type classes
+nous pouvons définir des cases basés sur des *type classes*
 et ainsi appliquer toutes les résolutions implicites sophistiquées que
 nous avions traitées dans le chapitre précédent.
 

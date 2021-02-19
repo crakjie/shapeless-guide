@@ -6,7 +6,7 @@ Nous pouvons représenter les nombres facilement avec les valeurs,
 mais si nous voulons influencer la résolution d'implicite,
 nous avons besoin de les représenter au niveau des types.
 Ce chapitre traite des théories qui permettent de compter avec les types,
-et nous fournirons quelques cas d'utilisation pour la déduction de *type class*es.
+et nous fournirons quelques cas d'utilisation pour la déduction de *type classes*.
 
 ## Représenter des nombres par des types.
 

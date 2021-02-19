@@ -68,7 +68,7 @@ comme un mapping, un filtrage ou une concaténation de listes.
 On abordera cela plus en détails dans la *Partie II*.
 
 Les propriétés que l'on obtient avec `HList`s ne sont pas magiques.
-On aurait pu obtenir ces fonctionalités en utilisant `(A, B)` et `Unit`
+On aurait pu obtenir ces fonctionnalités en utilisant `(A, B)` et `Unit`
 comme alternative à  `::` et `HNil`.
 Néanmoins, il existe un avantage à garder nos
 types génériques séparés de nos types sémantiques
@@ -77,7 +77,7 @@ dans les applications.
 
 ### Changer de représentation en utilisant *Generic*
 
-Shapeless fournit une type class appelée `Generic`
+Shapeless fournit une *type class* appelée `Generic`
 qui permet de convertir des *ADT* concrets en représentation générique
 et vice versa.
 Il y a quelques macros en coulisses qui permettent d'invoquer des instances

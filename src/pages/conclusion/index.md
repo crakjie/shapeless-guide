@@ -15,7 +15,7 @@ sont apparus après des années de remise en question des pratiques de programma
 et à créer des abstractions pour supprimer les redondances.
 Shapeless porte l'abstraction dans Scala à un niveau supérieur.
 Les outils comme `Generic` et `LabelledGeneric`
-fournissent une interface d'abstration à des types de données
+fournissent une interface d'abstraction à des types de données
 qui paraissaient auparavant frustrants par leur côté singulier.
 
 Les nouveaux utilisateurs de shapeless rencontrent traditionnellement deux obstacles.
@@ -24,7 +24,7 @@ Nous espérons que ce guide vous a aidé sur ce point.
 
 Deuxièmement, la peur et l'hésitation à utiliser
 une librairie pouvant avoir une image
-trop *academique* ou *complexe*.
+trop *académique* ou *complexe*.
 Un remède à cela est de partager nos techniques (cas d'utilisations,
 avantages et inconvénients, stratégies d'implémentation *etc.*)
 et de diffuser l'information sur ces précieux outils.

@@ -104,7 +104,7 @@ The Type Astronaut’s Guide to Shapeless
 <li><a href="#résumé"><span class="toc-section-number">2.4</span> Résumé</a></li>
 </ul></li>
 <li><a href="#sec:generic"><span class="toc-section-number">3</span> Déduire automatiquement les instances de <em>type class</em></a><ul>
-<li><a href="#sec:generic:type-classes"><span class="toc-section-number">3.1</span> Bref rappel : les type classes</a><ul>
+<li><a href="#sec:generic:type-classes"><span class="toc-section-number">3.1</span> Bref rappel : les <em>type classes</em></a><ul>
 <li><a href="#résoudre-les-instances"><span class="toc-section-number">3.1.1</span> Résoudre les instances</a></li>
 <li><a href="#sec:generic:idiomatic-style"><span class="toc-section-number">3.1.2</span> Les définitions de <em>type class</em> idiomatique</a></li>
 </ul></li>
@@ -139,7 +139,7 @@ The Type Astronaut’s Guide to Shapeless
 </ul></li>
 <li><a href="#déduire-linstance-dun-produit-avec-labelledgeneric"><span class="toc-section-number">5.3</span> Déduire l’instance d’un produit avec <em>LabelledGeneric</em></a><ul>
 <li><a href="#les-instances-de-hlists-1"><span class="toc-section-number">5.3.1</span> Les instances de <em>HLists</em></a></li>
-<li><a href="#les-instances-pour-les-produits-concrêt."><span class="toc-section-number">5.3.2</span> Les instances pour les produits concrêt.</a></li>
+<li><a href="#les-instances-pour-les-produits-concrets."><span class="toc-section-number">5.3.2</span> Les instances pour les produits concrets.</a></li>
 </ul></li>
 <li><a href="#déduire-les-instances-de-coproduits-avec-labelledgeneric"><span class="toc-section-number">5.4</span> Déduire les instances de coproduits avec <em>LabelledGeneric</em></a></li>
 <li><a href="#résumé-1"><span class="toc-section-number">5.5</span> Résumé</a></li>
@@ -193,14 +193,14 @@ The Type Astronaut’s Guide to Shapeless
 
 <article>
 <h1 id="avant-propos" class="unnumbered">Avant-propos</h1>
-<p>Début 2011, alors que j’initiais mes travaux sur la programmation générique, qui aboutiront plus tard à <em>shapeless</em>, je n’aurais alors pas pensé que cinq ans plus tard, shapeless deviendrait une librairie autant utilisée. Je suis profondément reconnaissant envers les personnes qui ont cru en moi et qui ont ajouté shapeless à leurs dépendances. Le vote d’adhésion unanime est une source d’encouragements pour perserver dans tout projet <em>open source</em>. Je suis aussi reconnaissant envers les nombreuses personnes qui ont contribué à shapeless au fil des années, quatre-vingt-une au moment où j’écris ces lignes. Sans leur aide, shapeless serait une librairie bien moins intéressante.</p>
-<p>Malgré ces points positifs, shapeless a souffert d’une carence qui caractérise les projets <em>open source</em> : le manque de documentation compréhensible, précise et accessible. La reponsabilité me revient en partie : bien que conscient de ce problème, je n’ai jamais trouvé le temps d’y remédier. Dans une certaine mesure, shapeless a été sauvé par le travail héroïque de Travis Brown sur Stack Overflow ainsi que par de nombreuses personnes qui ont organisé des conférences et des ateliers sur shapeless (notamment l’atelier <em>Shapeless for Mortals</em> de Sam Halliday).</p>
+<p>Début 2011, alors que j’initiais mes travaux sur la programmation générique, qui aboutiront plus tard à <em>shapeless</em>, je n’aurais alors pas pensé que cinq ans plus tard, shapeless deviendrait une librairie autant utilisée. Je suis profondément reconnaissant envers les personnes qui ont cru en moi et qui ont ajouté shapeless à leurs dépendances. Le vote d’adhésion unanime est une source d’encouragements pour persévérer dans tout projet <em>open source</em>. Je suis aussi reconnaissant envers les nombreuses personnes qui ont contribué à shapeless au fil des années, quatre-vingt-une au moment où j’écris ces lignes. Sans leur aide, shapeless serait une librairie bien moins intéressante.</p>
+<p>Malgré ces points positifs, shapeless a souffert d’une carence qui caractérise les projets <em>open source</em> : le manque de documentation compréhensible, précise et accessible. La responsabilité me revient en partie : bien que conscient de ce problème, je n’ai jamais trouvé le temps d’y remédier. Dans une certaine mesure, shapeless a été sauvé par le travail héroïque de Travis Brown sur Stack Overflow ainsi que par de nombreuses personnes qui ont organisé des conférences et des ateliers sur shapeless (notamment l’atelier <em>Shapeless for Mortals</em> de Sam Halliday).</p>
 <p>Mais Dave Gurnell est parvenu à changer cela : nous disposons maintenant de ce superbe livre qui traite de manière approfondie de la partie la plus importante de shapeless : la déduction de <em>type class</em> par la programmation générique. Il a pour ainsi dire regroupé des fragments de folklore et de documentation, m’a poussé à la réflexion, et a transformé un enchevêtrement impénétrable en quelque chose de clair, concis et très concret. Avec un peu de chance, il sera capable de montrer comme j’essaie de le dire souvent qu’au fond shapeless est une librairie assez simple regroupant un ensemble de concepts tout aussi simples.</p>
 <p>Merci Dave, tu nous rends à tous un grand service.</p>
 <p>Miles Sabin<br />
 Créateur de shapeless</p>
 <h1 id="introduction"><span class="header-section-number">1</span> Introduction</h1>
-<p>Ce livre est un guide d’utilisation de <a href="https://github.com/milessabin/shapeless"><em>shapeless</em></a>, une librairie de <em>programmation générique</em> en Scala. Shapeless est une vaste librairie ; plutôt que de tout couvrir, nous nous concentrerons sur quelques cas d’utilisation intéréssants, puis nous utiliserons ces derniers pour dresser un panorama des outils et patrons de conception existants.</p>
+<p>Ce livre est un guide d’utilisation de <a href="https://github.com/milessabin/shapeless"><em>shapeless</em></a>, une librairie de <em>programmation générique</em> en Scala. Shapeless est une vaste librairie ; plutôt que de tout couvrir, nous nous concentrerons sur quelques cas d’utilisation intéressants, puis nous utiliserons ces derniers pour dresser un panorama des outils et patrons de conception existants.</p>
 <p>Avant de commencer, disons deux mots sur la programmation générique et expliquons en quoi shapeless est intéressant pour les développeurs Scala.</p>
 <h2 id="la-programmation-générique-quest-ce-que-cest"><span class="header-section-number">1.1</span> La programmation générique, qu’est-ce que c’est ?</h2>
 <p>Les types sont utiles car ils sont spécifiques : ils nous aident a comprendre comment les différents morceaux de code s’imbriquent les uns aux autres, ils nous aident à éviter les bugs et nous conduisent vers une solution lorsque l’on code.</p>
@@ -222,7 +222,7 @@ Créateur de shapeless</p>
 
 <span class="kw">val</span> genericIceCream = Generic[IceCream].<span class="fu">to</span>(<span class="fu">IceCream</span>(<span class="st">&quot;Sundae&quot;</span>, <span class="dv">1</span>, <span class="kw">false</span>))
 <span class="co">// genericIceCream: shapeless.::[String,shapeless.::[Int,shapeless.::[Boolean,shapeless.HNil]]] = Sundae :: 1 :: false :: HNil</span></code></pre></div>
-<p>Les deux valeurs sont maintenant du même type. Elle sont toutes les deux des listes hétérogènes (des <code>HList</code>s) contenant une <code>String</code>, un <code>Int</code>, et un <code>Boolean</code>. Nous jetterons bientôt un œil aux <code>HList</code>s et à l’importance de leur rôle. Pour l’instant, le plus intéressant est que nous pouvons sérialiser chaque valeur avec une seule fonction.</p>
+<p>Les deux valeurs sont maintenant du même type. Elles sont toutes les deux des listes hétérogènes (des <code>HList</code>s) contenant une <code>String</code>, un <code>Int</code>, et un <code>Boolean</code>. Nous jetterons bientôt un œil aux <code>HList</code>s et à l’importance de leur rôle. Pour l’instant, le plus intéressant est que nous pouvons sérialiser chaque valeur avec une seule fonction.</p>
 <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala"><span class="kw">def</span> <span class="fu">genericCsv</span>(gen: String :: Int :: Boolean :: HNil): List[String] =
   List(<span class="fu">gen</span>(<span class="dv">0</span>), <span class="fu">gen</span>(<span class="dv">1</span>).<span class="fu">toString</span>, <span class="fu">gen</span>(<span class="dv">2</span>).<span class="fu">toString</span>)</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala"><span class="fu">genericCsv</span>(genericEmployee)
@@ -239,7 +239,7 @@ Créateur de shapeless</p>
 <li><p>Le <em>Chapitre 2</em> introduit les <em>generic representations</em>, mais aussi la <em>type class</em> <code>Generic</code> de shapeless, qui permet de produire un encodage générique de n’importe quelle <em>case class</em> ou <em>sealed trait</em>.</p></li>
 <li><p>Le <em>Chapitre 3</em> utilise <code>Generic</code> pour déduire des instances d’une <em>type class</em> particulière. On créé un exemple de <em>type class</em> pour encoder des données Scala en <em>Comma Separated Values</em> (<em>CSV</em>), mais la technique utilisée peut être adaptée à de nombreuses situations. Le type <code>Lazy</code> de shapeless est également présenté, il permet de manipuler les types de données récursives comme les listes ou les arbres.</p></li>
 <li><p>Le <em>Chapitre 4</em> présente la théorie et les patrons de conception nécessaires à la généralisation des techniques du chapitre précédent. On se penchera sur les types dépendants, les fonctions à type dépendant et la programmation au <em>type level</em>. C’est l’occasion d’utiliser des applications plus avancées de shapeless.</p></li>
-<li><p>Le <em>Chapitre 5</em> présente <code>LabelledGeneric</code>, une variante de <code>Generic</code> qui divulgue les champs et les noms des types dans sa représentation générique. Davantages d’éléments théoriques sont donnés sur les <em>types littéraux</em>, les <em>types singletons</em>, les <em>types fantômes</em> et les <em>type tagging</em>. <code>LabelledGeneric</code> est illustré en créant un encodeur <em>JSON</em> qui préserve les champs et les noms des types dans sa sortie.</p></li>
+<li><p>Le <em>Chapitre 5</em> présente <code>LabelledGeneric</code>, une variante de <code>Generic</code> qui divulgue les champs et les noms des types dans sa représentation générique. D’avantages d’éléments théoriques sont donnés sur les <em>types littéraux</em>, les <em>types singletons</em>, les <em>types fantômes</em> et les <em>type tagging</em>. <code>LabelledGeneric</code> est illustré en créant un encodeur <em>JSON</em> qui préserve les champs et les noms des types dans sa sortie.</p></li>
 </ul>
 <p>La <em>Partie II</em> présente les <em>ops type classes</em> fournies dans le package <code>shapeless.ops</code>. Les <em>ops type classes</em> comprennent une gamme d’outils permettant de manipuler les représentations génériques. Plutôt que d’expliquer en détails chaque <code>op</code>, une synthèse théorique est réalisée en trois chapitres :</p>
 <ul>
@@ -257,10 +257,10 @@ Créateur de shapeless</p>
 <p>Si vous utilisez une version antérieure de Scala vous devrez utiliser l’impression de <em>type prefix</em> ainsi :</p>
 <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala"><span class="kw">val</span> repr = <span class="st">&quot;Hello&quot;</span> :: <span class="dv">123</span> :: <span class="kw">true</span> :: HNil
 <span class="co">// repr: shapeless.::[String,shapeless.::[Int,shapeless.::[Boolean,shapeless.HNil]]] = &quot;Hello&quot; :: 123 :: true :: HNil</span></code></pre></div>
-<p>Pas de panique ! Mise à part la manière d’afficher le résultat (syntaxe <em>infix</em> contre <em>prefix</em>), ces types sont les mêmes. Si vous trouvez les <em>prefix types</em> difficiles à lire, nous vous recommendons de mettre à jour Scala. Ajoutez simplement ceci au fichier <code>build.sbt</code>, ou remplacez le numéro de version de manière appropriée :</p>
+<p>Pas de panique ! Mise à part la manière d’afficher le résultat (syntaxe <em>infix</em> contre <em>prefix</em>), ces types sont les mêmes. Si vous trouvez les <em>prefix types</em> difficiles à lire, nous vous recommandons de mettre à jour Scala. Ajoutez simplement ceci au fichier <code>build.sbt</code>, ou remplacez le numéro de version de manière appropriée :</p>
 <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala">scalaOrganization := <span class="st">&quot;org.typelevel&quot;</span>
 scalaVersion      := <span class="st">&quot;2.12.1&quot;</span></code></pre></div>
-<p>Le paramètre <code>scalaOrganization</code> n’est supporté que dans <em>sbt 0.13.13</em> ou supérieur. Vous pouvez spécifier une version <em>sbt</em> en écrivant ceci dans <code>project/build.properties</code> (crééz le fichier si il n’est pas déjà dans votre projet) :</p>
+<p>Le paramètre <code>scalaOrganization</code> n’est supporté que dans <em>sbt 0.13.13</em> ou supérieur. Vous pouvez spécifier une version <em>sbt</em> en écrivant ceci dans <code>project/build.properties</code> (créez le fichier s’il n’est pas déjà dans votre projet) :</p>
 <pre><code>sbt.version=0.13.13</code></pre>
 <h2 id="remerciements"><span class="header-section-number">1.4</span> Remerciements</h2>
 <p>Je remercie Miles Sabin, Richard Dallaway, Noel Welsh et Travis Brown pour leur contribution inestimable.</p>
@@ -273,7 +273,7 @@ scalaVersion      := <span class="st">&quot;2.12.1&quot;</span></code></pre></di
 <li><p>Un ensemble de types de donnée générique qui peuvent être inspectés, itérés et manipulés au <code>type-level</code></p></li>
 <li><p>Le mapping automatique entre <em>algebraic data types (</em>ADT<em>s)</em> (encodé en Scala par les <em>case classes</em> et les <em>sealed traits</em>) et leurs représentations génériques.</p></li>
 </ol>
-<p>Dans ce chapitre, nous commençons par un récapitulatif sur la théorie des types alébriques et la raison pour laquelle ils peuvent être familiers pour le développeur Scala. Puis, nous verrons les représentations génériques utilisées par shapeless et nous traiterons de la façon dont ils sont reliés aux <em>ADT</em>s concrets. Enfin, nous présenterons une type class appelée <code>Generic</code> qui fournit un mapping automatique bidirectionnel entre un <em>ADT</em> et sa représentation générique. Enfin, nous utiliserons <code>Generic</code> dans quelques exemples pour convertir des valeurs d’un type vers un autre.</p>
+<p>Dans ce chapitre, nous commençons par un récapitulatif sur la théorie des types algébriques et la raison pour laquelle ils peuvent être familiers pour le développeur Scala. Puis, nous verrons les représentations génériques utilisées par shapeless et nous traiterons de la façon dont ils sont reliés aux <em>ADT</em>s concrets. Enfin, nous présenterons une <em>type class</em> appelée <code>Generic</code> qui fournit un mapping automatique bidirectionnel entre un <em>ADT</em> et sa représentation générique. Enfin, nous utiliserons <code>Generic</code> dans quelques exemples pour convertir des valeurs d’un type vers un autre.</p>
 <h2 id="rappel-types-de-données-algébriques"><span class="header-section-number">2.1</span> Rappel: types de données algébriques</h2>
 <p><em>Algebraic data types (</em>ADT<em>s)</em><a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a> est un nom raffiné qui cache un concept très simple. C’est un moyen idiomatique de représenter une donnée en utilisant les « et » et « ou » logiques. Par exemple :</p>
 <ul>
@@ -288,7 +288,7 @@ scalaVersion      := <span class="st">&quot;2.12.1&quot;</span></code></pre></di
 
 <span class="kw">val</span> rect: Shape = Rectangle(<span class="fl">3.0</span>, <span class="fl">4.0</span>)
 <span class="kw">val</span> circ: Shape = <span class="fu">Circle</span>(<span class="fl">1.0</span>)</code></pre></div>
-<p>Ce qui est beau avec les <em>ADT</em>s, c’est qu’ils sont complètement type safe. Le compilateur a une connaisence complète de l’algèbre<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a> que nous définissons, il peut donc nous aider à écrire des méthodes correctement typées avec nos types.</p>
+<p>Ce qui est beau avec les <em>ADT</em>s, c’est qu’ils sont complètement type safe. Le compilateur a une connaissance complète de l’algèbre<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a> que nous définissons, il peut donc nous aider à écrire des méthodes correctement typées avec nos types.</p>
 <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala"><span class="kw">def</span> <span class="fu">area</span>(shape: Shape): Double =
   shape <span class="kw">match</span> {
     <span class="kw">case</span> Rectangle(w, h) =&gt; w * h
@@ -300,7 +300,7 @@ scalaVersion      := <span class="st">&quot;2.12.1&quot;</span></code></pre></di
 <span class="fu">area</span>(circ)
 <span class="co">// res2: Double = 3.141592653589793</span></code></pre></div>
 <h3 id="les-écritures-alternatives"><span class="header-section-number">2.1.1</span> Les écritures alternatives</h3>
-<p>Les sealed traits et les <em>case classes</em> sont sans aucun doute les encodages les plus pratique des <em>ADT</em>s en Scala. Mais ce ne sont pas les <em>seules</em> possibilités d’encodage. Par exemple, la librairie standard de Scala fournit des produits génériques appelés <code>Tuples</code> ainsi qu’un coproduit générique : <code>Either</code>. Nous aurions pu choisir d’écrire notre <code>Shape</code> comme suit :</p>
+<p>Les sealed traits et les <em>case classes</em> sont sans aucun doute les encodages les plus pratiques des <em>ADT</em>s en Scala. Mais ce ne sont pas les <em>seules</em> possibilités d’encodage. Par exemple, la librairie standard de Scala fournit des produits génériques appelés <code>Tuples</code> ainsi qu’un coproduit générique : <code>Either</code>. Nous aurions pu choisir d’écrire notre <code>Shape</code> comme suit :</p>
 <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala"><span class="kw">type</span> Rectangle2 = (Double, Double)
 <span class="kw">type</span> Circle2    = Double
 <span class="kw">type</span> Shape2     = Either[Rectangle2, Circle2]
@@ -351,14 +351,14 @@ scalaVersion      := <span class="st">&quot;2.12.1&quot;</span></code></pre></di
 <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala"><span class="kw">val</span> newProduct: Long :: String :: Int :: Boolean :: HNil =
   42L :: product</code></pre></div>
 <p>Shapeless fournit aussi des outils pour effectuer des opérations plus complexes comme un mapping, un filtrage ou une concaténation de listes. On abordera cela plus en détails dans la <em>Partie II</em>.</p>
-<p>Les propriétés que l’on obtient avec <code>HList</code>s ne sont pas magiques. On aurait pu obtenir ces fonctionalités en utilisant <code>(A, B)</code> et <code>Unit</code> comme alternative à <code>::</code> et <code>HNil</code>. Néanmoins, il existe un avantage à garder nos types génériques séparés de nos types sémantiques dans les applications. <code>HList</code> fournit cette séparation.</p>
+<p>Les propriétés que l’on obtient avec <code>HList</code>s ne sont pas magiques. On aurait pu obtenir ces fonctionnalités en utilisant <code>(A, B)</code> et <code>Unit</code> comme alternative à <code>::</code> et <code>HNil</code>. Néanmoins, il existe un avantage à garder nos types génériques séparés de nos types sémantiques dans les applications. <code>HList</code> fournit cette séparation.</p>
 <h3 id="changer-de-représentation-en-utilisant-generic"><span class="header-section-number">2.2.1</span> Changer de représentation en utilisant <em>Generic</em></h3>
-<p>Shapeless fournit une type class appelée <code>Generic</code> qui permet de convertir des <em>ADT</em> concrets en représentation générique et vice versa. Il y a quelques macros en coulisses qui permettent d’invoquer des instances de <code>Generic</code> sans code <em>boilerplate</em> :</p>
+<p>Shapeless fournit une <em>type class</em> appelée <code>Generic</code> qui permet de convertir des <em>ADT</em> concrets en représentation générique et vice versa. Il y a quelques macros en coulisses qui permettent d’invoquer des instances de <code>Generic</code> sans code <em>boilerplate</em> :</p>
 <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala"><span class="kw">import</span> shapeless.<span class="fu">Generic</span>
 
 <span class="kw">case</span> <span class="kw">class</span> <span class="fu">IceCream</span>(name: String, numCherries: Int, inCone: Boolean)</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala"><span class="kw">val</span> iceCreamGen = Generic[IceCream]
-<span class="co">// iceCreamGen: shapeless.Generic[IceCream]{type Repr = shapeless.::[String,shapeless.::[Int,shapeless.::[Boolean,shapeless.HNil]]]} = anon$macro$4$1@2db79572</span></code></pre></div>
+<span class="co">// iceCreamGen: shapeless.Generic[IceCream]{type Repr = shapeless.::[String,shapeless.::[Int,shapeless.::[Boolean,shapeless.HNil]]]} = anon$macro$4$1@42511a35</span></code></pre></div>
 <p>Notez que les instance de <code>Generic</code> ont un membre de type <code>Repr</code> qui contient le type de sa représentation générique. Dans notre cas <code>iceCreamGen.Repr</code> est <code>String :: Int :: Boolean :: HNil</code>. Les instances de <code>Generic</code> disposent de deux méthodes : Une pour convertir vers le type <code>Repr</code> appelé <code>to</code> et la méthode inverse <code>from</code> :</p>
 <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala"><span class="kw">val</span> iceCream = <span class="fu">IceCream</span>(<span class="st">&quot;Sundae&quot;</span>, <span class="dv">1</span>, <span class="kw">false</span>)
 <span class="co">// iceCream: IceCream = IceCream(Sundae,1,false)</span>
@@ -402,7 +402,7 @@ Generic[BigData].<span class="fu">from</span>(Generic[BigData].<span class="fu">
 <span class="kw">case</span> <span class="kw">class</span> <span class="fu">Green</span>()
 
 <span class="kw">type</span> Light = Red :+: Amber :+: Green :+: CNil</code></pre></div>
-<p>En général, les coproduits prennent la forme de <code>A :+: B :+: C :+: CNil</code> signifiant « A ou B ou C, » où <code>:+:</code> peut être librement interprété comme <code>Either</code>. Globalement, le type d’un coproduit encode tous les types possibles d’une disjonction, mais ces instances contiennent uniquement la valeur de l’une des possibilités. <code>:+:</code> dispose de deux sous types, <code>Inl</code> et <code>Inr</code>, qui correspondent vagument à <code>Left</code> et <code>Right</code>. On crée des instances de coproduit en imbriquant des constructeurs de <code>Inl</code> et de <code>Inr</code> :</p>
+<p>En général, les coproduits prennent la forme de <code>A :+: B :+: C :+: CNil</code> signifiant « A ou B ou C, » où <code>:+:</code> peut être librement interprété comme <code>Either</code>. Globalement, le type d’un coproduit encode tous les types possibles d’une disjonction, mais ces instances contiennent uniquement la valeur de l’une des possibilités. <code>:+:</code> dispose de deux sous types, <code>Inl</code> et <code>Inr</code>, qui correspondent vaguement à <code>Left</code> et <code>Right</code>. On crée des instances de coproduit en imbriquant des constructeurs de <code>Inl</code> et de <code>Inr</code> :</p>
 <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala"><span class="kw">val</span> red: Light = <span class="fu">Inl</span>(<span class="fu">Red</span>())
 <span class="co">// red: Light = Inl(Red())</span>
 
@@ -418,7 +418,7 @@ Generic[BigData].<span class="fu">from</span>(Generic[BigData].<span class="fu">
 <span class="kw">final</span> <span class="kw">case</span> <span class="kw">class</span> Rectangle(width: Double, height: Double) <span class="kw">extends</span> Shape
 <span class="kw">final</span> <span class="kw">case</span> <span class="kw">class</span> <span class="fu">Circle</span>(radius: Double) <span class="kw">extends</span> Shape</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala"><span class="kw">val</span> gen = Generic[Shape]
-<span class="co">// gen: shapeless.Generic[Shape]{type Repr = shapeless.:+:[Rectangle,shapeless.:+:[Circle,shapeless.CNil]]} = anon$macro$1$1@1d254277</span></code></pre></div>
+<span class="co">// gen: shapeless.Generic[Shape]{type Repr = shapeless.:+:[Rectangle,shapeless.:+:[Circle,shapeless.CNil]]} = anon$macro$1$1@5963e3fc</span></code></pre></div>
 <p>Le <code>Repr</code> du <code>Generic</code> de <code>Shape</code> est un coproduit des sous-types de <code>Shape</code>: <code>Rectangle :+: Circle :+: CNil</code>. On peut utiliser les méthodes <code>to</code> et <code>from</code> de l’instance de <code>Generic</code> pour convertir <code>Shape</code> en <code>gen.Repr</code> et vice versa :</p>
 <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala">gen.<span class="fu">to</span>(Rectangle(<span class="fl">3.0</span>, <span class="fl">4.0</span>))
 <span class="co">// res3: gen.Repr = Inl(Rectangle(3.0,4.0))</span>
@@ -427,17 +427,17 @@ gen.<span class="fu">to</span>(<span class="fu">Circle</span>(<span class="fl">1
 <span class="co">// res4: gen.Repr = Inr(Inl(Circle(1.0)))</span></code></pre></div>
 <h2 id="résumé"><span class="header-section-number">2.4</span> Résumé</h2>
 <p>Dans ce chapitre, nous avons abordé les représentations génériques que Shapeless fournit pour les types de données algébriques de Scala. <code>HList</code>s pour les types produits et <code>Coproduct</code>s pour les types coproduits. Nous avons aussi présenté la <em>type class</em> <code>Generic</code> qui fournit mapping bidirectionnel entre un <em>ADT</em> et sa représentation générique. Nous n’avons pas encore abordé ce qui rend les écritures génériques si attractives. Le cas d’utilisation que nous avons couvert (conversion entre <em>ADT</em>s) est amusant mais pas particulièrement utile.</p>
-<p>La vraie puissance de <code>HList</code>s et de <code>Coproduct</code>s provient de leur structure récursive. On peut écrire du code qui traverse leur représentation et calcule des valeurs à partir des éléments qui les constituent. Dans le prochain chapitre nous verrons notre premier véritable cas d’utilisation : la déduction automatique d’instance de <em>type class</em>es.</p>
+<p>La vraie puissance de <code>HList</code>s et de <code>Coproduct</code>s provient de leur structure récursive. On peut écrire du code qui traverse leur représentation et calcule des valeurs à partir des éléments qui les constituent. Dans le prochain chapitre nous verrons notre premier véritable cas d’utilisation : la déduction automatique d’instance de <em>type classes</em>.</p>
 <h1 id="sec:generic"><span class="header-section-number">3</span> Déduire automatiquement les instances de <em>type class</em></h1>
 <p>Dans le dernier chapitre, nous avons vu comment le type <code>Generic</code> nous permet de convertir toute instance d’un <em>ADT</em> en un encodage générique composé de <code>HList</code>s et <code>Coproduct</code>s. Dans ce chapitre, nous verrons notre premier véritable cas d’utilisation : la déduction automatique d’instances de <em>type class</em>.</p>
-<h2 id="sec:generic:type-classes"><span class="header-section-number">3.1</span> Bref rappel : les type classes</h2>
+<h2 id="sec:generic:type-classes"><span class="header-section-number">3.1</span> Bref rappel : les <em>type classes</em></h2>
 <p>Avant d’entrer dans les détails de la déduction d’instance, faisons un bref rappel des aspects importants des <em>types classes</em>.</p>
-<p>Les type classes sont un pattern de programmation emprunté à <em>Haskell</em> (le mot « classe » n’a rien a voir avec les classes de la programmation orientée object). Nous les écrivons en Scala avec des traits et des implicites. Une <em>type class</em> est un trait paramétré représentant une fonctionalité générale que l’on voudrait appliquer à une grande variété de types :</p>
+<p>Les <em>type classes</em> sont un pattern de programmation emprunté à <em>Haskell</em> (le mot « classe » n’a rien a voir avec les classes de la programmation orientée object). Nous les écrivons en Scala avec des traits et des implicites. Une <em>type class</em> est un trait paramétré représentant une fonctionnalité générale que l’on voudrait appliquer à une grande variété de types :</p>
 <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala"><span class="co">// Turn a value of type A into a row of cells in a CSV file:</span>
 <span class="kw">trait</span> CsvEncoder[A] {
   <span class="kw">def</span> <span class="fu">encode</span>(value: A): List[String]
 }</code></pre></div>
-<p>On implémente notre type class avec une <em>instance</em> pour chaque type visé. Si nous voulons avoir l’instance dans le scope automatiquement, on peut les placer dans l’objet compagnon de la <em>type class</em>. Sinon, on peut les placer dans une objet séparé qui fera office de bibliothèque et que l’utilisateur pourra importer manuellement :</p>
+<p>On implémente notre <em>type class</em> avec une <em>instance</em> pour chaque type visé. Si nous voulons avoir l’instance dans le scope automatiquement, on peut les placer dans l’objet compagnon de la <em>type class</em>. Sinon, on peut les placer dans une objet séparé qui fera office de bibliothèque et que l’utilisateur pourra importer manuellement :</p>
 <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala"><span class="co">// Custom data type:</span>
 <span class="kw">case</span> <span class="kw">class</span> <span class="fu">Employee</span>(name: String, number: Int, manager: Boolean)
 
@@ -510,7 +510,7 @@ Par exemple, on peut ecrire une règle qui créé un <code>CsvEncoder</code> pou
 <span class="co">// Peter,2,no,Cornetto,0,yes</span>
 <span class="co">// Milton,3,no,Banana Split,0,no</span></code></pre></div>
 <p>À partir d’une liste de règles écrites à partir d’ <code>implicit val</code>s et d’<code>implicit def</code>s, le compilateur est capable de <em>rechercher</em> les combinaisons pour retourner l’instance requise.</p>
-<p>Cette fonctionalité, connue sous le nom de <em>résolution d’<code>implicit</code>s</em>, est ce qui rend le pattern des <em>types classes</em> si puissant en Scala.</p>
+<p>Cette fonctionnalité, connue sous le nom de <em>résolution d’<code>implicit</code>s</em>, est ce qui rend le pattern des <em>types classes</em> si puissant en Scala.</p>
 <p>Même avec cette puissance, le compilateur ne peut démanteler nos <em>case classes</em> et <em>sealed traits</em>. On est tenu de définir à la main les instances de nos <em>ADT</em>s. Les représentations génériques de shapeless changent la donne, car ils nous permettent de déduire automatiquement les instances de nimporte quel <em>ADT</em>.</p>
 <h3 id="sec:generic:idiomatic-style"><span class="header-section-number">3.1.2</span> Les définitions de <em>type class</em> idiomatique</h3>
 <p>Le style généralement accépter pour la définition d’une type classe idiomatique Il est généralement accépte d’inclure un objet compagon contenant certaines methode standar lors de la définition d’une type classe idiomatique :</p>
@@ -530,14 +530,14 @@ Par exemple, on peut ecrire une règle qui créé un <code>CsvEncoder</code> pou
 }</code></pre></div>
 <p>La methode <code>apply</code> connue sous le nom de <em>summoner</em> ou <em>materializer</em>, nous permet d’invoquer une instance de <em>type class</em> selon un type donnée:</p>
 <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala">CsvEncoder[IceCream]
-<span class="co">// res9: CsvEncoder[IceCream] = $anon$1@1ab6e866</span></code></pre></div>
+<span class="co">// res9: CsvEncoder[IceCream] = $anon$1@5f31faf9</span></code></pre></div>
 <p>Dans les cas les plus simple le <em>summoner</em> fait la meme chose que la méhode <code>implicitly</code> définie dans <code>scala.Predef</code>:</p>
 <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala">implicitly[CsvEncoder[IceCream]]
-<span class="co">// res10: CsvEncoder[IceCream] = $anon$1@1ab6e866</span></code></pre></div>
+<span class="co">// res10: CsvEncoder[IceCream] = $anon$1@5f31faf9</span></code></pre></div>
 <p>Cependant, comme nous le verrons dans la section 4.2, lors que l’on travaille avec shapeless il arrive que la methode <code>implicitly</code> n’infère pas les types correctement. On peut toujours définir une methode <em>summoner</em> pour avoir le bon comportement, donc cela vaut le coup d’en écrire une pour chaque <em>type class</em> que l’on créé. On peut aussi utiliser une methode de shapeless appelée “<code>the</code>” (nous y reviendrons):</p>
 <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala"><span class="kw">import</span> shapeless._</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala">the[CsvEncoder[IceCream]]
-<span class="co">// res11: CsvEncoder[IceCream] = $anon$1@1ab6e866</span></code></pre></div>
+<span class="co">// res11: CsvEncoder[IceCream] = $anon$1@5f31faf9</span></code></pre></div>
 <p>La methode <code>instance</code> parfois appelé <code>pure</code>, fournis une syntaxe simple pour crée de nouvelle instance de <em>type class</em>e, réduisant au passage le code <em>boilerplate</em> pour les classes anoymes:</p>
 <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala"><span class="kw">implicit</span> <span class="kw">val</span> booleanEncoder: CsvEncoder[Boolean] =
   <span class="kw">new</span> CsvEncoder[Boolean] {
@@ -683,14 +683,14 @@ Par exemple, on peut ecrire une règle qui créé un <code>CsvEncoder</code> pou
 <span class="co">// &lt;console&gt;:33: error: could not find implicit value for parameter encoder: CsvEncoder[Booking]</span>
 <span class="co">//        writeCsv(List(Booking(&quot;Lecture hall&quot;, new Date())))</span>
 <span class="co">//                ^</span></code></pre></div>
-<p>Le messsage d’erreur ne nous aide pas vraiment. Tout ce que le compilateur sait, c’est qu’il a essayé un grand nombre de combinaisons d’implicites et qu’aucune ne fonctionnait. Il n’a aucune idée de quelle combinaison était la plus proche de celle attendue, donc il ne peut nous dire où se trouve la source du problème.</p>
-<p>Il n’y a pas de quoi se réjouir ici. Nous devons trouver nous-même la source des erreurs par un processus d’élimination. Nous aborderons les techniques de debuggage dans la section 3.5. Pour l’instant la seule fonctionalité qui compense c’est que la résolution d’implicite plantera toujours à la compilation. Il y a une petite chance que cela finisse par produire du code qui plante durant l’exécution.</p>
+<p>Le message d’erreur ne nous aide pas vraiment. Tout ce que le compilateur sait, c’est qu’il a essayé un grand nombre de combinaisons d’implicites et qu’aucune ne fonctionnait. Il n’a aucune idée de quelle combinaison était la plus proche de celle attendue, donc il ne peut nous dire où se trouve la source du problème.</p>
+<p>Il n’y a pas de quoi se réjouir ici. Nous devons trouver nous-même la source des erreurs par un processus d’élimination. Nous aborderons les techniques de debuggage dans la section 3.5. Pour l’instant la seule fonctionnalité qui compense c’est que la résolution d’implicite plantera toujours à la compilation. Il y a une petite chance que cela finisse par produire du code qui plante durant l’exécution.</p>
 <h2 id="sec:generic:coproducts"><span class="header-section-number">3.3</span> Déduire les instances pour les coproduits</h2>
-<p>Dans la section précédente nous avons crée un ensemble de règle pour déduire automatiquement un <code>CsvEncoder</code> pour n’importe quel type de produits. Dans cette section allons appliqué les mêmes patrons de conception aux coproduits. Retournons a notre exemple, l’<em>ADT</em> shape :</p>
+<p>Dans la section précédente nous avons créé un ensemble de règles pour déduire automatiquement un <code>CsvEncoder</code> pour n’importe quel type de produits. Dans cette section allons nous appliquer les mêmes patrons de conception aux coproduits. Retournons à notre exemple, l’<em>ADT</em> shape :</p>
 <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala"><span class="kw">sealed</span> <span class="kw">trait</span> Shape
 <span class="kw">final</span> <span class="kw">case</span> <span class="kw">class</span> Rectangle(width: Double, height: Double) <span class="kw">extends</span> Shape
 <span class="kw">final</span> <span class="kw">case</span> <span class="kw">class</span> <span class="fu">Circle</span>(radius: Double) <span class="kw">extends</span> Shape</code></pre></div>
-<p>La représentation générique de <code>Shape</code> est <code>Rectangle :+: Circle :+: CNil</code>. Dans la section 3.2.2 nous avons définie des encodeurs de produit pour <code>Rectangle</code> et <code>Circle</code>. Maintenant, pour écrire des <code>CsvEncoders</code> générique pour <code>:+:</code> et <code>CNil</code>, nous alons utilisé les mêmes principes que pour <code>HList</code>s:</p>
+<p>La représentation générique de <code>Shape</code> est <code>Rectangle :+: Circle :+: CNil</code>. Dans la section 3.2.2 nous avons défini des encodeurs de produit pour <code>Rectangle</code> et <code>Circle</code>. Maintenant, pour écrire des <code>CsvEncoders</code> génériques pour <code>:+:</code> et <code>CNil</code>, nous allons utiliser les mêmes principes que pour <code>HList</code>s:</p>
 <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala"><span class="kw">import</span> shapeless.{Coproduct, :+:, CNil, Inl, Inr}
 
 <span class="kw">implicit</span> <span class="kw">val</span> cnilEncoder: CsvEncoder[CNil] =
@@ -706,10 +706,10 @@ Par exemple, on peut ecrire une règle qui créé un <code>CsvEncoder</code> pou
 }</code></pre></div>
 <p>Il importe de noter deux choses :</p>
 <ol style="list-style-type: decimal">
-<li><p>Comme <code>Coproduct</code>s est une <em>disjonction</em> de types, l’encoder de <code>:+:</code> doit <em>choisir</em> si il a à encoder la valeur de droit ou de gauche. On fait un pattern matching sur les deux sous types de <code>:+:</code>, qui sont <code>Inl</code> pour la gauche et <code>Inr</code> pour la droite.</p></li>
-<li><p>Etonnament, l’encoder de <code>CNil</code> lève une exception! Mais pas de panique. Rappelez vous que l’on ne peut crée de valeur pour le type <code>CNil</code>, donc the <code>throw</code> et en fait du code mort.</p></li>
+<li><p>Comme <code>Coproduct</code>s est une <em>disjonction</em> de types, l’encoder de <code>:+:</code> doit <em>choisir</em> s’il a à encoder la valeur de droit ou de gauche. On fait un pattern matching sur les deux sous types de <code>:+:</code>, qui sont <code>Inl</code> pour la gauche et <code>Inr</code> pour la droite.</p></li>
+<li><p>Étonnamment, l’encoder de <code>CNil</code> lève une exception ! Mais pas de panique. Rappelez-vous que l’on ne peut créer de valeur pour le type <code>CNil</code>, donc le <code>throw</code> est en fait du code mort. Pas de problème pour échouer violemment ici, nous n’atteindrons jamais ce point.</p></li>
 </ol>
-<p>Si l’on utilise ces définitions avec celle de nos produit de la section 3.2, on sera capable de sérializer une liste de shapes. Essayons:</p>
+<p>Si l’on utilise ces définitions avec celle de nos produit de la section 3.2, on sera capable de sérializer une liste de shapes. Essayons :</p>
 <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala"><span class="kw">val</span> shapes: List[Shape] = List(
   Rectangle(<span class="fl">3.0</span>, <span class="fl">4.0</span>),
   <span class="fu">Circle</span>(<span class="fl">1.0</span>)
@@ -721,38 +721,39 @@ Par exemple, on peut ecrire une règle qui créé un <code>CsvEncoder</code> pou
 <p>Oh non, ca n’a pas fonctionné ! Le message d’erreur ne nous aide pas comme prévu. Nous avons cette erreur car nous n’avons pas d’instance de <code>CsvEncoder</code> pour <code>Double</code> :</p>
 <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala"><span class="kw">implicit</span> <span class="kw">val</span> doubleEncoder: CsvEncoder[Double] =
   <span class="fu">createEncoder</span>(d =&gt; List(d.<span class="fu">toString</span>))</code></pre></div>
-<p>Avec cette nouvelle définition, tout fonctionne comme prévus:</p>
+<p>Avec cette nouvelle définition, tout fonctionne comme prévu :</p>
 <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala"><span class="fu">writeCsv</span>(shapes)
 <span class="co">// res7: String =</span>
 <span class="co">// 3.0,4.0</span>
 <span class="co">// 1.0</span></code></pre></div>
 <div class="callout callout-warning">
-<p><em>SI-7046 et vous</em> Il y a dans Scala un bug du compilateur appelé <a href="https://issues.scala-lang.org/browse/SI-7046">SI-7046</a> qui peut amener la résolution de générique pour comproduct a ne pas fonctionner. Le bug provoque dans certaines partie de l’API de macro, dont shapeless dépend, deviens sensible a l’ordre des définitions dans le code source. C’est un problème qui peut souvant etre contourner en réordonant le code et en renoment les fichiers, mais ces solution on tendence a ne durée qu’un temps et sont peut fiable.</p>
-<p>Si vous utilisez <em>Lightbend Scala 2.11.8</em> ou une version plus ancienne et que vous ètes toucher par ce problème, pensez a mettre a jour vers la version <em>Lightbend Scala 2.11.9</em> ou <em>Typelevel Scala 2.11.8</em>. SI-7046 est corrigée dans chacune de de ces versions.</p>
+<p><em>SI-7046 et vous</em></p>
+<p>Il y a dans Scala un bug du compilateur appelé <a href="https://issues.scala-lang.org/browse/SI-7046">SI-7046</a> qui peut amener la résolution de générique pour les coproduits à ne pas fonctionner. Le bug fait que certaines parties de l’API de macro, dont shapeless dépend, deviennent sensible à l’ordre des définitions dans le code source. C’est un problème qui peut souvent être contourné en réordonnant le code et en renommant les fichiers, mais ces solutions ont tendance à ne durer qu’un temps et sont peu fiables.</p>
+<p>Si vous utilisez <em>Lightbend Scala 2.11.8</em> ou une version plus ancienne et que vous êtes touché par ce problème, pensez à mettre à jour vers la version <em>Lightbend Scala 2.11.9</em> ou <em>Typelevel Scala 2.11.8</em>. SI-7046 est corrigée dans chacune de ces versions.</p>
 </div>
 <h3 id="aligner-les-colonnes-dans-la-sortie-csv"><span class="header-section-number">3.3.1</span> Aligner les colonnes dans la sortie CSV</h3>
-<p>Notre encodeur de CSV n’est idéal dans ca forme courante. Il permet au champs de <code>Rectangle</code> et <code>Circle</code> de se retrouver dans la meme colonne. Pour remédier a a ce problème il faut changer la définition de <code>CsvEncoder</code> pour ajouter la largeur des type de données et ainsi espacer les colonnes en conséquence. Le dépôt d’exemple contenant l’implémentation complète d’un <code>CsvEncoder</code> traitant ce problème est linké dans la section 1.2</p>
+<p>Notre encodeur de CSV n’est idéal dans sa forme courante. Il autorise les champs de <code>Rectangle</code> et <code>Circle</code> à se retrouver dans la même colonne. Pour remédier à ce problème il faut changer la définition de <code>CsvEncoder</code> pour ajouter la largeur des types de données et ainsi espacer les colonnes en conséquence. Le dépôt d’exemples contenant l’implémentation complète d’un <code>CsvEncoder</code> traitant ce problème est référencé dans la section 1.2</p>
 <h2 id="la-déduction-dinstance-pour-les-type-récursif."><span class="header-section-number">3.4</span> La déduction d’instance pour les type récursif.</h2>
 <p>Essayons quelque chose de plus ambitieu : un arbre binaire :</p>
 <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala"><span class="kw">sealed</span> <span class="kw">trait</span> Tree[A]
 <span class="kw">case</span> <span class="kw">class</span> Branch[A](left: Tree[A], right: Tree[A]) <span class="kw">extends</span> Tree[A]
 <span class="kw">case</span> <span class="kw">class</span> Leaf[A](value: A) <span class="kw">extends</span> Tree[A]</code></pre></div>
-<p>En théorie nous devrions deja avoir toutes les définiton pour instancier un CSV writer pour notre arbre. Pourtant, appler <code>writeCsv</code> provoque une erreur : However, calls to <code>writeCsv</code> fail to compile:</p>
+<p>En théorie nous devrions déjà avoir toutes les définitons pour instancier un CSV writer pour notre arbre. Pourtant, appeler <code>writeCsv</code> provoque une erreur :</p>
 <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala">CsvEncoder[Tree[Int]]
 <span class="co">// &lt;console&gt;:25: error: could not find implicit value for parameter enc: CsvEncoder[Tree[Int]]</span>
 <span class="co">//        CsvEncoder[Tree[Int]]</span>
 <span class="co">//                  ^</span></code></pre></div>
-<p>Le problème est que notre type est qu’il est récusif. Le compilateur rentre dans une boucle infie en essayant d’appliquer nos implicits puis il abandonne.</p>
+<p>Le problème est que notre type est qu’il est récursif. Le compilateur rentre dans une boucle infinie en essayant d’appliquer nos implicits puis il abandonne.</p>
 <h3 id="les-divergences-dimplicits"><span class="header-section-number">3.4.1</span> Les divergences d’implicits</h3>
 <p>La résolution d’<code>implicit</code> est un processus de recherche. Le compilateur utilise des heuristiques pour s’orienter vers la bonne solution. Le compilateur effectue ses recherches branche par branche, si l’une d’elle ne donne pas de résultat favorable, le compilateur considère que cette branche n’aboutira pas et continue ses recherches sur une autre branche.</p>
-<p>Une des heuristique est conçue spécifiquement pour éviter les boucles infinies. Si le compilateur rencontre le type cible deux fois dans une branche de recherche; il abandonne cette branche et passe a une autre. On peut l’observer si on regarde l’expression <code>CsvEncoder[Tree[Int]]</code>. Le processus de résolution d’implicits suit les étapes suivantes :</p>
+<p>Une des heuristiques est conçue spécifiquement pour éviter les boucles infinies. Si le compilateur rencontre le type cible deux fois dans une branche de recherche, il abandonne cette branche et passe à une autre. On peut l’observer si on regarde l’expression <code>CsvEncoder[Tree[Int]]</code>. Le processus de résolution d’implicits suit les étapes suivantes :</p>
 <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala">CsvEncoder[Tree[Int]]                          <span class="co">// 1</span>
 CsvEncoder[Branch[Int] :+: Leaf[Int] :+: CNil] <span class="co">// 2</span>
 CsvEncoder[Branch[Int]]                        <span class="co">// 3</span>
 CsvEncoder[Tree[Int] :: Tree[Int] :: HNil]     <span class="co">// 4</span>
 CsvEncoder[Tree[Int]]                          <span class="co">// 5 uh oh</span></code></pre></div>
-<p>On rencontre <code>Tree[A]</code> deux fois lignes 1 et 5, donc le compilateur abandonne la recherche dans cette branche. La conséquence est que le compilateur echoue à trouver le bon <em>implicit</em>.</p>
-<p>En fait, la situation est pire. Si le compilateur voit le même constructeur de types deux fois et que la complexité du paramètre de type <em>augmente</em> il suppose que la branche n’aboutira pas.* C’est un problème avec shapeless car les types comme <code>::[H, T]</code> et <code>:+:[H, T]</code> peuvent apparaître plusieurs fois lorsque le compilateur développe les représentations génériques. Ce qui pousse le compilateur a abandonner prématurément même si il aurait pu trouver la solution si il avait persisté à chercher dans cette voie.</p>
+<p>On rencontre <code>Tree[A]</code> deux fois lignes 1 et 5, donc le compilateur abandonne la recherche dans cette branche. La conséquence est que le compilateur échoue à trouver le bon <em>implicit</em>.</p>
+<p>En fait, la situation est pire. Si le compilateur voit le même constructeur de types deux fois et que la complexité du paramètre de type <em>augmente</em> il suppose que la branche n’aboutira pas.* C’est un problème avec shapeless car les types comme <code>::[H, T]</code> et <code>:+:[H, T]</code> peuvent apparaître plusieurs fois lorsque le compilateur développe les représentations génériques. Ce qui pousse le compilateur à abandonner prématurément même s’il aurait pu trouver la solution s’il avait persisté à chercher dans cette voie.</p>
 <p>Compte-tenu des types suivants :</p>
 <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala"><span class="kw">case</span> <span class="kw">class</span> <span class="fu">Bar</span>(baz: Int, qux: String)
 <span class="kw">case</span> <span class="kw">class</span> <span class="fu">Foo</span>(bar: Bar)</code></pre></div>
@@ -763,7 +764,7 @@ CsvEncoder[Bar]                   <span class="co">// 3</span>
 CsvEncoder[Int :: String :: HNil] <span class="co">// 4 uh oh</span></code></pre></div>
 <p>Le compilateur essait de résoudre <code>CsvEncoder[::[H, T]]</code> deux fois dans cette branche, une fois a la ligne 2 et une fois a la ligne 4. Le paramètre de type <code>T</code> est plus complexe à la ligne 4 qu’à la ligne 2, donc le compilateur pense (de façon erronée dans ce cas) que la recherche dans cette branche n’aboutira pas. Il change de branche encore et encore, il ne trouvera pas de quoi générer la bonne instance.</p>
 <h3 id="lazy"><span class="header-section-number">3.4.2</span> <em>Lazy</em></h3>
-<p>La divergence d’<code>implicit</code> peut marquer un arrêt pour la librairie shapeless. Heureusement, shapeless fournit un type appeler <code>Lazy</code> pour contourner ce problème. <code>Lazy</code> fait deux choses :</p>
+<p>La divergence d’<code>implicit</code> peut marquer un arrêt pour la librairie shapeless. Heureusement, shapeless fournit un type appelé <code>Lazy</code> pour contourner ce problème. <code>Lazy</code> fait deux choses :</p>
 <ol style="list-style-type: decimal">
 <li><p>Il supprime la divergence d’<code>implicit</code> à la compilation en se protégeant des heuristiques trop défensives.</p></li>
 <li><p>Il reporte l’évaluation des paramètres implicites au runtime, ce qui permet la déduction des implicits récursifs.</p></li>
@@ -794,7 +795,7 @@ CsvEncoder[Int :: String :: HNil] <span class="co">// 4 uh oh</span></code></pre
 }</code></pre></div>
 <p>Ceci permet au compilateur de ne pas jeter l’éponge prématurément et donc permet aux types complex/récursif comme <code>Tree</code> de fonctionner :</p>
 <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala">CsvEncoder[Tree[Int]]
-<span class="co">// res2: CsvEncoder[Tree[Int]] = $anon$1@624d14b2</span></code></pre></div>
+<span class="co">// res2: CsvEncoder[Tree[Int]] = $anon$1@69451c89</span></code></pre></div>
 <h2 id="sec:generic:debugging"><span class="header-section-number">3.5</span> Débugger les résolutions d’implicites</h2>
 <p>Les erreurs dans la résolution d’implicites peuvent être déconcertantes et frustrantes. Voici quelques techniques à utiliser quand les choses vont mal.</p>
 <h3 id="débugger-en-utilisant-implicitly"><span class="header-section-number">3.5.1</span> Débugger en utilisant <em>implicitly</em></h3>
@@ -804,7 +805,7 @@ CsvEncoder[Int :: String :: HNil] <span class="co">// 4 uh oh</span></code></pre
 <span class="co">// &lt;console&gt;:31: error: could not find implicit value for parameter enc: CsvEncoder[Foo]</span>
 <span class="co">//        CsvEncoder[Foo]</span>
 <span class="co">//                  ^</span></code></pre></div>
-<p>Nous avons une erreur car nous navons pas défini <code>CsvEncoder</code> pour <code>Float</code>. Pourtant, cela n’est peut-être pas évident à voir dans le code de l’application. On peut chercher l’erreur en imaginant comment l’implicite est censé se développer, insérer des appels à <code>CsvEncoder.apply</code> ou à <code>implicitly</code> au-dessus de l’erreur pour voir si cela compile. Commençons avec la représentation générique de <code>Foo</code>:</p>
+<p>Nous avons une erreur car nous navons pas défini <code>CsvEncoder</code> pour <code>Float</code>. Pourtant, cela n’est peut-être pas évident à voir dans le code de l’application. On peut chercher l’erreur en imaginant comment l’implicit est censé se développer, insérer des appels à <code>CsvEncoder.apply</code> ou à <code>implicitly</code> au-dessus de l’erreur pour voir si cela compile. Commençons avec la représentation générique de <code>Foo</code>:</p>
 <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala">CsvEncoder[Int :: Float :: HNil]
 <span class="co">// &lt;console&gt;:29: error: could not find implicit value for parameter enc: CsvEncoder[shapeless.::[Int,shapeless.::[Float,shapeless.HNil]]]</span>
 <span class="co">//        CsvEncoder[Int :: Float :: HNil]</span>
@@ -823,7 +824,7 @@ CsvEncoder[Int :: String :: HNil] <span class="co">// 4 uh oh</span></code></pre
 <span class="co">// Expr[CsvEncoder[Int]]($read.$iw.$iw.$iw.$iw.CsvEncoder.apply[Int]($read.$iw.$iw.$iw.$iw.intEncoder))</span></code></pre></div>
 <p>Les types inferés pendant la résolution d’implicite peuvent nous donner un indice sur le problème. Après la résolution d’implicite, tous les types existentiels restants comme <code>A</code> ou <code>T</code> indiquent que quelque-chose n’a pas bien fonctionné. Les types “top” et “bottom” comme <code>Any</code> and <code>Nothing</code> sont aussi la preuve d’une erreur.</p>
 <h2 id="en-résumé"><span class="header-section-number">3.6</span> En résumé</h2>
-<p>Dans ce chapitre nous avons expliqué comment utiliser <code>Generic</code>, <code>HList</code>s, et <code>Coproduct</code>s pour déduire automatiquement l’instance d’une <em>type class</em>. Nous avons couvert aussi le type <code>Lazy</code> qui est un moyen de manipuler les types complexes/recursifs. Compte tenu de tout ceci, on peut écrire le squelette commun suivant qui permet de déduire des instances de <em>type class</em>.</p>
+<p>Dans ce chapitre nous avons expliqué comment utiliser <code>Generic</code>, <code>HList</code>s, et <code>Coproduct</code>s pour déduire automatiquement l’instance d’une <em>type class</em>. Nous avons couvert aussi le type <code>Lazy</code> qui est un moyen de manipuler les types complexes/récursifs. Compte tenu de tout ceci, on peut écrire le squelette commun suivant qui permet de déduire des instances de <em>type class</em>.</p>
 <p>Premièrement, définissons la <em>type class</em> :</p>
 <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala"><span class="kw">trait</span> MyTC[A]</code></pre></div>
 <p>Définissons les instances pour les types primitifs :</p>
@@ -859,7 +860,7 @@ CsvEncoder[Int :: String :: HNil] <span class="co">// 4 uh oh</span></code></pre
 <p>Dans le chapitre précédent, nous avons vu l’un des cas d’utilisation les plus fascinants de shapeless : la déduction automatique d’instance de case class. Nous allons découvrir qu’il existe plusieurs autres exemples au moins aussi saisissants. Cependant, avant d’en arriver là, nous devons prendre un peu de temps pour traiter la théorie que nous avons évité jusqu’ici et établir un ensemble de patrons de conception pour écrire et débugger du code hautement implicite et hautement typé.</p>
 <h2 id="types-dépendants"><span class="header-section-number">4.1</span> Types dépendants</h2>
 <p>Dans le dernier chapitre, nous avons passé beaucoup de temps à utiliser <code>Generic</code>, la <em>type class</em> qui sert à lier un type <em>ADT</em> à sa représentation générique. Pourtant, nous n’avons pas encore abordé la théorie sous-jacente à <code>Generic</code> et à tout shapeless : <em>les types dépendants</em>.</p>
-<p>Pour illustrer tout ca, intéressons-nous de plus près à <code>Generic</code>. Voici une version simplifié de sa définition :</p>
+<p>Pour illustrer tout ca, intéressons-nous de plus près à <code>Generic</code>. Voici une version simplifiée de sa définition :</p>
 <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala"><span class="kw">trait</span> Generic[A] {
   <span class="kw">type</span> Repr
   <span class="kw">def</span> <span class="fu">to</span>(value: A): Repr
@@ -883,9 +884,9 @@ CsvEncoder[Int :: String :: HNil] <span class="co">// 4 uh oh</span></code></pre
 
 <span class="kw">def</span> getRepr2[A, R](value: A)(<span class="kw">implicit</span> generic: Generic2[A, R]): R =
   ???</code></pre></div>
-<p>Nous aurions dû passer la valeur désirée de <code>Repr</code> dans le paramètre de type de <code>getRepr</code>, ce qui finit par rendre <code>getRepr</code> inutile. On peut en déduire que les paramètres de type sont utiles en tant « qu’inputs » et les membre de type sont utiles en tant « qu’outputs. »</p>
+<p>Nous aurions dû passer la valeur désirée de <code>Repr</code> dans le paramètre de type de <code>getRepr</code>, ce qui finit par rendre <code>getRepr</code> inutile. On peut en déduire que les paramètres de type sont utiles en tant « qu’inputs » et les membres de type sont utiles en tant « qu’outputs. »</p>
 <h2 id="sec:type-level-programming:depfun"><span class="header-section-number">4.2</span> Fonctions à type dépendant</h2>
-<p>Shapeless utilise les types dépendants partout : dans <code>Generic</code>, dans <code>Witness</code> (que nous traiterons dans le chapitre suivant), et dans de nombreux type classes « ops » que nous traiterons dans la <em>Partie II</em> de ce guide. Par exemple, shapeless fournit une case class appelée <code>Last</code> qui retourne le dernier élément d’une <code>HList</code>. Voici une version simplifiée de son implémentation :</p>
+<p>Shapeless utilise les types dépendants partout : dans <code>Generic</code>, dans <code>Witness</code> (que nous traiterons dans le chapitre suivant), et dans de nombreux <em>type classes</em> « ops » que nous traiterons dans la <em>Partie II</em> de ce guide. Par exemple, shapeless fournit une case class appelée <code>Last</code> qui retourne le dernier élément d’une <code>HList</code>. Voici une version simplifiée de son implémentation :</p>
 <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala"><span class="kw">package</span> shapeless.<span class="fu">ops</span>.<span class="fu">hlist</span>
 
 <span class="kw">trait</span> Last[L &lt;: HList] {
@@ -897,10 +898,10 @@ CsvEncoder[Int :: String :: HNil] <span class="co">// 4 uh oh</span></code></pre
 
 <span class="kw">import</span> shapeless.<span class="fu">ops</span>.<span class="fu">hlist</span>.<span class="fu">Last</span></code></pre></div>
 <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala"><span class="kw">val</span> last1 = Last[String :: Int :: HNil]
-<span class="co">// last1: shapeless.ops.hlist.Last[shapeless.::[String,shapeless.::[Int,shapeless.HNil]]]{type Out = Int} = shapeless.ops.hlist$Last$$anon$34@697ed93b</span>
+<span class="co">// last1: shapeless.ops.hlist.Last[shapeless.::[String,shapeless.::[Int,shapeless.HNil]]]{type Out = Int} = shapeless.ops.hlist$Last$$anon$34@77ecc68e</span>
 
 <span class="kw">val</span> last2 = Last[Int :: String :: HNil]
-<span class="co">// last2: shapeless.ops.hlist.Last[shapeless.::[Int,shapeless.::[String,shapeless.HNil]]]{type Out = String} = shapeless.ops.hlist$Last$$anon$34@6266c63f</span></code></pre></div>
+<span class="co">// last2: shapeless.ops.hlist.Last[shapeless.::[Int,shapeless.::[String,shapeless.HNil]]]{type Out = String} = shapeless.ops.hlist$Last$$anon$34@2d25d1fd</span></code></pre></div>
 <p>Une fois les instances de <code>Last</code> invoquées, et on peut les utiliser au value level via leurs méthodes <code>apply</code> :</p>
 <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala"><span class="fu">last1</span>(<span class="st">&quot;foo&quot;</span> :: <span class="dv">123</span> :: HNil)
 <span class="co">// res1: last1.Out = 123</span>
@@ -937,15 +938,15 @@ CsvEncoder[Int :: String :: HNil] <span class="co">// 4 uh oh</span></code></pre
 <p>Remarquez que le type de retour d’<code>apply</code> est <code>Aux[L, O]</code> et non pas <code>Second[L]</code>. C’est important. Utiliser <code>Aux</code> assure que la methode <code>apply</code> n’écrase pas les membres de type de l’instance invoquée. Si l’on définit <code>Second[L]</code> comme type de retour, le membre de type <code>Out</code> sera perdu dans le type retourné et la <em>type class</em> ne fonctionnera plus correctement.</p>
 <p>La méthode <code>implicitly</code> de <code>scala.Predef</code> est dotée de cette propriété. Comparons le type d’une instance de <code>Last</code> invoqué par <code>implicitly</code> :</p>
 <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala">implicitly[Last[String :: Int :: HNil]]
-<span class="co">// res6: shapeless.ops.hlist.Last[shapeless.::[String,shapeless.::[Int,shapeless.HNil]]] = shapeless.ops.hlist$Last$$anon$34@4ce01309</span></code></pre></div>
+<span class="co">// res6: shapeless.ops.hlist.Last[shapeless.::[String,shapeless.::[Int,shapeless.HNil]]] = shapeless.ops.hlist$Last$$anon$34@14659876</span></code></pre></div>
 <p>au type retourné par <code>Last.apply</code> :</p>
 <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala">Last[String :: Int :: HNil]
-<span class="co">// res7: shapeless.ops.hlist.Last[shapeless.::[String,shapeless.::[Int,shapeless.HNil]]]{type Out = Int} = shapeless.ops.hlist$Last$$anon$34@b46b74a</span></code></pre></div>
+<span class="co">// res7: shapeless.ops.hlist.Last[shapeless.::[String,shapeless.::[Int,shapeless.HNil]]]{type Out = Int} = shapeless.ops.hlist$Last$$anon$34@2e8dfd75</span></code></pre></div>
 <p>Le type invoqué par <code>implicitly</code> n’a pas de membre de type <code>Out</code>. C’est pourquoi on doit éviter d’utiliser <code>implicitly</code> lorsque l’on travaille avec des fonctions à type dépendant. On peut utiliser une méthode d’invocation custom ou directement la méthode <code>the</code> de shapeless :</p>
 <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala"><span class="kw">import</span> shapeless._
 
 the[Last[String :: Int :: HNil]]
-<span class="co">// res8: shapeless.ops.hlist.Last[shapeless.::[String,shapeless.::[Int,shapeless.HNil]]]{type Out = Int} = shapeless.ops.hlist$Last$$anon$34@357a953d</span></code></pre></div>
+<span class="co">// res8: shapeless.ops.hlist.Last[shapeless.::[String,shapeless.::[Int,shapeless.HNil]]]{type Out = Int} = shapeless.ops.hlist$Last$$anon$34@597fac3a</span></code></pre></div>
 </div>
 <p>Nous n’avons besoin que d’une seule instance définie pour une <code>HList</code>s d’au moins deux éléments :</p>
 <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala"><span class="kw">implicit</span> <span class="kw">def</span> hlistSecond[A, B, Rest &lt;: HList]: Aux[A :: B :: Rest, B] =
@@ -956,10 +957,10 @@ the[Last[String :: Int :: HNil]]
   }</code></pre></div>
 <p>On peut invoquer les instances en utilisant <code>Second.apply</code> :</p>
 <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala"><span class="kw">val</span> second1 = Second[String :: Boolean :: Int :: HNil]
-<span class="co">// second1: Second[shapeless.::[String,shapeless.::[Boolean,shapeless.::[Int,shapeless.HNil]]]]{type Out = Boolean} = $anon$1@13acefad</span>
+<span class="co">// second1: Second[shapeless.::[String,shapeless.::[Boolean,shapeless.::[Int,shapeless.HNil]]]]{type Out = Boolean} = $anon$1@b976779</span>
 
 <span class="kw">val</span> second2 = Second[String :: Int :: Boolean :: HNil]
-<span class="co">// second2: Second[shapeless.::[String,shapeless.::[Int,shapeless.::[Boolean,shapeless.HNil]]]]{type Out = Int} = $anon$1@780348f1</span></code></pre></div>
+<span class="co">// second2: Second[shapeless.::[String,shapeless.::[Int,shapeless.::[Boolean,shapeless.HNil]]]]{type Out = Int} = $anon$1@590ff9cf</span></code></pre></div>
 <p>L’invocation est sujette aux mêmes contraintes que <code>Last</code>. Si l’on essaie d’invoquer une instance pour une <code>HList</code> incompatible, alors la résolution échoue et l’on obtient une erreur de compilation :</p>
 <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala">Second[String :: HNil]
 <span class="co">// &lt;console&gt;:27: error: could not find implicit value for parameter inst: Second[shapeless.::[String,shapeless.HNil]]</span>
@@ -1031,13 +1032,13 @@ the[Last[String :: Int :: HNil]]
 <p>Ça corrige le bug. Maintenant la definition de la méthode et l’appel de la méthode compile correctement :</p>
 <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala"><span class="fu">getWrappedValue</span>(<span class="fu">Wrapper</span>(<span class="dv">42</span>))
 <span class="co">// res16: Int = 42</span></code></pre></div>
-<p>Le point important n’est pas que l’on a résolu le problème en utilisant <code>IsHCons</code>. Shapeless fournit de nombreux outils comme celui-ci (voir Chapitre 6 à 8), et on peut les compléter si nécessaire avec nos propres type classes. Le point important est la compréhension du processus que l’on utilise pour parvenir à ecrire un code qui compile et la capacité de trouver les solutions Cette section se conclue par un guide pas à pas qui résume ce que nous avons découvert jusqu’ici.</p>
+<p>Le point important n’est pas que l’on a résolu le problème en utilisant <code>IsHCons</code>. Shapeless fournit de nombreux outils comme celui-ci (voir Chapitre 6 à 8), et on peut les compléter si nécessaire avec nos propres <em>type classes</em>. Le point important est la compréhension du processus que l’on utilise pour parvenir à écrire un code qui compile et la capacité de trouver les solutions Cette section se conclue par un guide pas à pas qui résume ce que nous avons découvert jusqu’ici.</p>
 <h2 id="sec:type-level-programming:summary"><span class="header-section-number">4.4</span> Résumé</h2>
 <p>Lorsque l’on code avec shapeless, on cherche souvent à trouver un type qui dépend de valeurs présentes dans le code. Cette relation est appelée <em>Types dépendants</em>.</p>
 <p>Les problèmes impliquant les types dépendants peuvent être aisément exprimés via la recherche d’implicites, ce qui permet au compilateur de déterminer les types intermédaires et les types ciblés d’après un point de départ à l’emplacement d’appel.</p>
-<p>Plusieurs étapes sont souvent nécessiares pour calculer le resultat (par exemple : utiliser <code>Generic</code> pour avoir un <code>Repr</code>, puis utiliser une autre type class pour avoir un autre type). Dans ce cas, on peut suivre quelques règles pour nous assuer que notre code compile et fonctionne comme prévu :</p>
+<p>Plusieurs étapes sont souvent nécessiares pour calculer le resultat (par exemple : utiliser <code>Generic</code> pour avoir un <code>Repr</code>, puis utiliser une autre <em>type class</em> pour avoir un autre type). Dans ce cas, on peut suivre quelques règles pour nous assuer que notre code compile et fonctionne comme prévu :</p>
 <ol style="list-style-type: decimal">
-<li><p>Il faut placer tout les types intermédiaires dans la liste des paramètres de types. De nombreux paramètres de type ne seront pas utilisés dans le résultat mais le compilateur en a besoin pour savoir quel type il doit unifier.</p></li>
+<li><p>Il faut placer tous les types intermédiaires dans la liste des paramètres de types. De nombreux paramètres de type ne seront pas utilisés dans le résultat mais le compilateur en a besoin pour savoir quel type il doit unifier.</p></li>
 <li><p>Le compilateur résoud les implicites de gauche à droite et effectue du backtracking s’il ne peut pas trouver une combinaison qui fonctionne. Nous devons donc écrire les implicites dans l’ordre où nous en avons besoin, à l’aide d’une ou plusieurs variables de types pour les connecter aux implicites précédents.</p></li>
 <li><p>Le compilateur ne peut résoudre qu’une contrainte à la fois, nous ne devons donc pas sur-contraindre un implicite.</p></li>
 <li><p>Il faut énoncer le type de retour explicitement, spécifier tout paramètre de types et tout membre de types qui pourrait être utilisé ailleurs. Les membres de types sont souvent importants, il faut donc utiliser les types <code>Aux</code> pour les préserver le cas échéant. Si on ne les énonce pas dans le type de retour ils ne seront pas disponibles pour les recherches d’implicites suivantes.</p></li>
@@ -1060,7 +1061,7 @@ the[Last[String :: Int :: HNil]]
 <p><code>&quot;hello&quot;</code> a aussi un autre type : un “type singleton” qui appartient exclusivement à cette valeur. Le résultat est similaire à ce que l’on obtient lorsqu’on définit un object compagnon.</p>
 <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala"><span class="kw">object</span> Foo</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala">Foo
-<span class="co">// res3: Foo.type = Foo$@59e2a3ed</span></code></pre></div>
+<span class="co">// res3: Foo.type = Foo$@480ae31a</span></code></pre></div>
 <p>Le type <code>Foo.type</code> est le type de <code>Foo</code>, et <code>Foo</code> est la seule et unique valeur pour ce type.</p>
 <p>Les types singleton appliqués aux valeurs littérales sont appelés <em>types littéraux</em>. Ils existent depuis longtemps dans Scala, mais il n’y a normalement pas d’interaction avec eux, car le compilateur “élargit” par défaut les littéraux au type non singleton le plus proche. Par exemple, ces deux expressions sont essentiellement équivalentes :</p>
 <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala"><span class="st">&quot;hello&quot;</span>
@@ -1134,7 +1135,7 @@ the[Last[String :: Int :: HNil]]
 <p><code>FieldType</code> est un alias de type qui simplifie l’extraction du tag et du type de base du type tagger :</p>
 <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala"><span class="kw">type</span> FieldType[K, V] = V <span class="kw">with</span> KeyTag[K, V]</code></pre></div>
 <p>Comme nous le verrons plus tard, Shapeless emploie ce mécanisme pour tagger les champs et les sous-types avec leurs noms dans notre code source.</p>
-<p>Les tags n’existent qu’à la compilation et n’ont pas de représentation à l’exécution. Alors, comment pouvons-nous les convertir en valeurs utilisables à l’exécution ? Shapeless fournit à cette fin une type class appelée <code>Witness</code>[^witness]. Si l’on combine <code>Witness</code> et <code>FieldType</code>, on obtient quelque chose de vraiment intéressant : la possibilité d’extraire le nom d’un champ à partir d’un champ tagger :</p>
+<p>Les tags n’existent qu’à la compilation et n’ont pas de représentation à l’exécution. Alors, comment pouvons-nous les convertir en valeurs utilisables à l’exécution ? Shapeless fournit à cette fin une <em>type class</em> appelée <code>Witness</code>[^witness]. Si l’on combine <code>Witness</code> et <code>FieldType</code>, on obtient quelque chose de vraiment intéressant : la possibilité d’extraire le nom d’un champ à partir d’un champ taggé :</p>
 <p>[^witness] : le terme “witness” est emprunté aux <a href="https://en.wikipedia.org/wiki/Witness_(mathematics)">preuves mathématiques</a></p>
 <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala"><span class="kw">import</span> shapeless.<span class="fu">Witness</span></code></pre></div>
 <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala"><span class="kw">val</span> numCherries = <span class="st">&quot;numCherries&quot;</span> -&gt;&gt; <span class="dv">123</span>
@@ -1160,7 +1161,7 @@ the[Last[String :: Int :: HNil]]
 <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala"><span class="co">// FieldType[&quot;cat&quot;,    String]  ::</span>
 <span class="co">// FieldType[&quot;orange&quot;, Boolean] ::</span>
 <span class="co">// HNil</span></code></pre></div>
-<p>Nous n’avons pas besoin ici d’approfondir les records : en bref, les records sont les représentations génériques utilisées par <code>LabelledGeneric</code>. <code>LabelledGeneric</code> tag chaque champ ou nom de type d’un <em>ADT</em> dans des produits ou des coproduits (bien que les noms soient représentés par des <code>Symbols</code> et non des <code>Strings</code>). Shapeless fournit un ensemble d’operations semblables à celles de <code>Map</code> pour manipuler les records, certaines seront traitées dans la section 6.4. Pour l’instant, contentons-nous de déduire quelquess type class à l’aide de <code>LabelledGeneric</code>.</p>
+<p>Nous n’avons pas besoin ici d’approfondir les records : en bref, les records sont les représentations génériques utilisées par <code>LabelledGeneric</code>. <code>LabelledGeneric</code> tag chaque champ ou nom de type d’un <em>ADT</em> dans des produits ou des coproduits (bien que les noms soient représentés par des <code>Symbols</code> et non des <code>Strings</code>). Shapeless fournit un ensemble d’opérations semblables à celles de <code>Map</code> pour manipuler les records, certaines seront traitées dans la section 6.4. Pour l’instant, contentons-nous de déduire quelques <em>type classes</em> à l’aide de <code>LabelledGeneric</code>.</p>
 <h2 id="déduire-linstance-dun-produit-avec-labelledgeneric"><span class="header-section-number">5.3</span> Déduire l’instance d’un produit avec <em>LabelledGeneric</em></h2>
 <p>Nous allons utiliser un exemple fonctionnel d’encodage de Json pour illustrer <code>LabelledGeneric</code>. Nous allons définir une type classe <code>JsonEncoder</code> qui va convertir nos valeurs en <em>AST JSON</em>. C’est l’approche adoptée par <em>Argonaut</em>, <em>Circe</em>, <em>Play JSON</em>, <em>Spray JSON</em> et de nombreuses autres bibliothèques Scala pour le <em>JSON</em>.</p>
 <p>Tout d’abord, définissons le type de données de notre <em>JSON</em> :</p>
@@ -1291,7 +1292,7 @@ the[Last[String :: Int :: HNil]]
     <span class="fu">JsonObject</span>((fieldName, head) :: tail.<span class="fu">fields</span>)
   }
 }</code></pre></div>
-<h3 id="les-instances-pour-les-produits-concrêt."><span class="header-section-number">5.3.2</span> Les instances pour les produits concrêt.</h3>
+<h3 id="les-instances-pour-les-produits-concrets."><span class="header-section-number">5.3.2</span> Les instances pour les produits concrets.</h3>
 <p>Enfin, revenons à notre instance générique. Elle est identique aux définitions que nous avons vues précédemment, à l’exception que nous utilisons <code>LabelledGeneric</code> à la place de <code>Generic</code>:</p>
 <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala"><span class="kw">import</span> shapeless.<span class="fu">LabelledGeneric</span>
 
@@ -1348,23 +1349,23 @@ the[Last[String :: Int :: HNil]]
 <p>D’autres encodages sont possibles avec un peu plus de travail. Par exemple, on peut ajouter un champ <code>&quot;type&quot;</code> dans la sortie, ou encore permetre à l’utilisateur de configurer le format. La code base de Sam Halliday sur <a href="https://github.com/fommil/spray-json-shapeless">spray-json-shapeless</a> est un parfait exemple de code qui est accessible tout en offrant beaucoup de flexibilité.</p>
 <h2 id="résumé-1"><span class="header-section-number">5.5</span> Résumé</h2>
 <p>Dans ce chapitre, nous avons abordé <code>LabelledGeneric</code>, une variante de <code>Generic</code> qui donne accès aux noms des champs et aux noms des types dans sa représentation générique.</p>
-<p>Les noms accessible grâce à <code>LabelledGeneric</code> sont encodés par des tags au type-level afin de les utiliser durant la résolution d’implicites. Nous avons commencer ce chapitre en abordant les <em>types littéraux</em> et la façon dont shapeless les utilise dans ces tags. Nous avons également abordé la <em>type class</em> <code>Witness</code> utilisée pour extraire les valeurs des types littéraux.</p>
+<p>Les noms accessibles grâce à <code>LabelledGeneric</code> sont encodés par des tags au type-level afin de les utiliser durant la résolution d’implicites. Nous avons commencé ce chapitre en abordant les <em>types littéraux</em> et la façon dont shapeless les utilise dans ces tags. Nous avons également abordé la <em>type class</em> <code>Witness</code> utilisée pour extraire les valeurs des types littéraux.</p>
 <p>Enfin, nous avons combiné <code>LabelledGeneric</code>, les types littéraux et <code>Witness</code> pour construire une bibliothèque d’encodage <em>JSON</em> qui permet d’inclure les noms présents dans les <em>ADT</em> dans la sortie <em>JSON</em>.</p>
 <p>Le plus important dans ce chapitre est que tout ce code n’utilise jamais la réflexion. Tout est implémenté avec des types, des implicits et le petit ensemble de macros interne à shapeless. Le code que nous générons est par conséquent très rapide à exécuter.</p>
 
 <h1 id="sec:ops"><span class="header-section-number">6</span> Travailler avec <em>HLists</em> et <em>Coproducts</em></h1>
-<p>Dans la <em>Partie I</em> nous avons abordé des méthodes visant à déduire des instances de type class pour des types de données algébriques. Nous pouvons utiliser la déduction automatique d’instance pour enrichir presque toutes les type class, cependant dans les cas les plus compliqués, cela nous amène à rédiger beaucoup de code pour manipuler les <code>HList</code>s et les <code>Coproduct</code>s.</p>
+<p>Dans la <em>Partie I</em> nous avons abordé des méthodes visant à déduire des instances de type class pour des types de données algébriques. Nous pouvons utiliser la déduction automatique d’instance pour enrichir presque toutes les <em>type classes</em>, cependant dans les cas les plus compliqués, cela nous amène à rédiger beaucoup de code pour manipuler les <code>HList</code>s et les <code>Coproduct</code>s.</p>
 <p>Dans la <em>Partie II</em>, nous allons regarder de plus près le package <code>shapeless.ops</code>, il fournit un ensemble utile d’outils que l’on peut utiliser comme brique de construction pour nos programmes.</p>
 <p>Chacun des op se présente en deux parties : une <em>type class</em> que nous pouvons utiliser pendant la résolution d’implicite et des <em>méthodes d’extension</em> que nous pouvons appeler sur <code>HList</code> et <code>Coproduct</code>.</p>
 <p>Il existe trois ensembles d’ops, chacun disponible dans un des trois packages suivants :</p>
 <ul>
-<li><p><code>shapeless.ops.hlist</code> définit des type classes pour <code>HList</code>s. Elles peuvent être utilisées directement sur les <code>HList</code> via les méthodes d’extension définies dans <code>shapeless.syntax.hlist</code>.</p></li>
-<li><p><code>shapeless.ops.coproduct</code> définit des type classes pour <code>Coproduct</code>s. Elles peuvent être utilisées directement sur les <code>Coproduct</code> via les méthodes d’extension définies dans <code>shapeless.syntax.coproduct</code>.</p></li>
-<li><p><code>shapeless.ops.record</code> définit des type classes pour shapeless records (des <code>HList</code>s contenant des éléments taggés : Section 5.2). Elles peuvent être utilisées directement sur les <code>HList</code>s importées de <code>shapeless.record</code> via les méthodes d’extension définies dans <code>shapeless.syntax.record</code>.</p></li>
+<li><p><code>shapeless.ops.hlist</code> définit des <em>type classes</em> pour <code>HList</code>s. Elles peuvent être utilisées directement sur les <code>HList</code> via les méthodes d’extension définies dans <code>shapeless.syntax.hlist</code>.</p></li>
+<li><p><code>shapeless.ops.coproduct</code> définit des <em>type classes</em> pour <code>Coproduct</code>s. Elles peuvent être utilisées directement sur les <code>Coproduct</code> via les méthodes d’extension définies dans <code>shapeless.syntax.coproduct</code>.</p></li>
+<li><p><code>shapeless.ops.record</code> définit des <em>type classes</em> pour shapeless records (des <code>HList</code>s contenant des éléments taggés : Section 5.2). Elles peuvent être utilisées directement sur les <code>HList</code>s importées de <code>shapeless.record</code> via les méthodes d’extension définies dans <code>shapeless.syntax.record</code>.</p></li>
 </ul>
 <p>Nous n’avons pas le temps dans ce livre d’aborder tous les ops disponibles. Par chance, dans la majorité des cas le code est compréhensible et bien documenté. Plutôt que d’établir un guide exhaustif, nous allons aborder les points théoriques et structurels les plus importants et vous montrer comment obtenir davantage d’informations de la base de code de shapeless.</p>
 <h2 id="exemple-dops-simples"><span class="header-section-number">6.1</span> Exemple d’ops simples</h2>
-<p><code>HList</code> dispose d’une méthode d’extension <code>init</code> et d’un autre <code>last</code> basé sur deux type classes : <code>shapeless.ops.hlist.Init</code> et <code>shapeless.ops.hlist.Last</code>. <code>Coproduct</code> a des méthodes et des type classes similaires. Ils représentent un exemple parfait du pattern ops. Voici une définition simplifiée des méthodes d’extension :</p>
+<p><code>HList</code> dispose d’une méthode d’extension <code>init</code> et d’un autre <code>last</code> basé sur deux <em>type classes</em> : <code>shapeless.ops.hlist.Init</code> et <code>shapeless.ops.hlist.Last</code>. <code>Coproduct</code> a des méthodes et des <em>type classes</em> similaires. Ils représentent un exemple parfait du pattern ops. Voici une définition simplifiée des méthodes d’extension :</p>
 <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala"><span class="kw">package</span> shapeless
 <span class="kw">package</span> syntax
 
@@ -1372,7 +1373,7 @@ the[Last[String :: Int :: HNil]]
   <span class="kw">def</span> <span class="fu">last</span>(<span class="kw">implicit</span> last: Last[L]): last.<span class="fu">Out</span> = last.<span class="fu">apply</span>(l)
   <span class="kw">def</span> <span class="fu">init</span>(<span class="kw">implicit</span> init: Init[L]): init.<span class="fu">Out</span> = init.<span class="fu">apply</span>(l)
 }</code></pre></div>
-<p>Le type de retour de chaque méthode est déterminé par le type dépendant du paramètre implicite. Ce sont les instances de chaque type class qui fournissent la relation. Voici le squelette de l’implémentation de <code>Last</code> en guise d’exemple :</p>
+<p>Le type de retour de chaque méthode est déterminé par le type dépendant du paramètre implicite. Ce sont les instances de chaque <em>type class</em> qui fournissent la relation. Voici le squelette de l’implémentation de <code>Last</code> en guise d’exemple :</p>
 <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala"><span class="kw">trait</span> Last[L &lt;: HList] {
   <span class="kw">type</span> Out
   <span class="kw">def</span> <span class="fu">apply</span>(in: L): Out
@@ -1384,7 +1385,7 @@ the[Last[String :: Int :: HNil]]
   <span class="kw">implicit</span> <span class="kw">def</span> list[H, T &lt;: HList]
     (<span class="kw">implicit</span> last: Last[T]): Aux[H :: T, last.<span class="fu">Out</span>] = ???
 }</code></pre></div>
-<p>Nous pouvons faire quelques observations intéressantes sur cette implémentation. Premièrement, nous pouvons généralement implémenter les type classes ops avec un petit nombre d’instances (seulement deux dans cet exemple). Nous pouvons ainsi rassembler <em>toutes</em> les instances requises dans l’objet compagnon de la <em>type class</em>, ce qui nous permet d’appeler les methodes d’extention de <code>shapeless.ops</code> qui n’ont aucun rapport :</p>
+<p>Nous pouvons faire quelques observations intéressantes sur cette implémentation. Premièrement, nous pouvons généralement implémenter les <em>type classes</em> ops avec un petit nombre d’instances (seulement deux dans cet exemple). Nous pouvons ainsi rassembler <em>toutes</em> les instances requises dans l’objet compagnon de la <em>type class</em>, ce qui nous permet d’appeler les méthodes d’extension de <code>shapeless.ops</code> qui n’ont aucun rapport :</p>
 <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala"><span class="kw">import</span> shapeless._</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala">(<span class="st">&quot;Hello&quot;</span> :: <span class="dv">123</span> :: <span class="kw">true</span> :: HNil).<span class="fu">last</span>
 <span class="co">// res0: Boolean = true</span>
@@ -1463,7 +1464,7 @@ the[Last[String :: Int :: HNil]]
 <span class="co">// res9: Int = 1</span></code></pre></div>
 <p>Voici le point important à retenir : en définissant <code>Penultimate</code> comme une autre type class, nous avons créé un outil réutilisable que nous pouvons utiliser ailleurs. Shapeless fournit de nombreux outils pour de nombreux usages, mais il est simple d’ajouter le nôtre à la boîte à outils.</p>
 <h2 id="sec:ops:migration"><span class="header-section-number">6.3</span> Étude de cas : migration de case class</h2>
-<p>La puissance des type classes ops se conrétise quand on assemble dans notre propre code. Nous allons conclure ce chapitre avec un exemple probant : une type classe visant à effectuer des « migrations » (ou « évolutions ») de <em>case classes</em><a href="#fn7" class="footnoteRef" id="fnref7"><sup>7</sup></a>. Par exemple, si la version 1 de notre application contient la case classe suivante :</p>
+<p>La puissance des <em>type classes</em> ops se concrétise quand on assemble dans notre propre code. Nous allons conclure ce chapitre avec un exemple probant : une type classe visant à effectuer des « migrations » (ou « évolutions ») de <em>case classes</em><a href="#fn7" class="footnoteRef" id="fnref7"><sup>7</sup></a>. Par exemple, si la version 1 de notre application contient la case classe suivante :</p>
 <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala"><span class="kw">case</span> <span class="kw">class</span> <span class="fu">IceCreamV1</span>(name: String, numCherries: Int, inCone: Boolean)</code></pre></div>
 <p>Notre bibliothèque de migration doit pouvoir faire certaines mises à jour « mécanique » pour nous :</p>
 <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala"><span class="co">// Remove fields:</span>
@@ -1544,7 +1545,7 @@ the[Last[String :: Int :: HNil]]
 <span class="co">//        IceCreamV1(&quot;Sundae&quot;, 1, true).migrateTo[IceCreamV2c]</span>
 <span class="co">//                                               ^</span></code></pre></div>
 <h3 id="etape-3.-ajouter-de-nouveaux-champs"><span class="header-section-number">6.3.4</span> Etape 3. Ajouter de nouveaux champs</h3>
-<p>Pour soutenir l’ajout de champs nous avons besoin d’un mécanisme pour fournir les valeurs par défaut. Shapeless ne fournit pas une type class pour cette raison, mais Cats le fait, sous la forme d’un <code>Monoid</code>. En voici une définition simplifiée :</p>
+<p>Pour soutenir l’ajout de champs nous avons besoin d’un mécanisme pour fournir les valeurs par défaut. Shapeless ne fournit pas une <em>type class</em> pour cette raison, mais Cats le fait, sous la forme d’un <code>Monoid</code>. En voici une définition simplifiée :</p>
 <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala"><span class="kw">package</span> cats
 
 <span class="kw">trait</span> Monoid[A] {
@@ -1604,7 +1605,7 @@ the[Last[String :: Int :: HNil]]
     <span class="kw">def</span> <span class="fu">apply</span>(a: A): B =
       bGen.<span class="fu">from</span>(<span class="fu">align</span>(<span class="fu">prepend</span>(monoid.<span class="fu">empty</span>, <span class="fu">inter</span>(aGen.<span class="fu">to</span>(a)))))
   }</code></pre></div>
-<p>Notez que ce code n’évalue pas toutes les type classes. Nous utilisons <code>Diff</code> uniquement pour calculer le type de données <code>Added</code>, mais nous n’avons pas besoin d’exécuter <code>diff.apply</code>. Au lieu de cela, nous utilisons notre <code>Monoid</code> pour invoquer une instance de <code>Added</code>.</p>
+<p>Notez que ce code n’évalue pas toutes les <em>type classes</em>. Nous utilisons <code>Diff</code> uniquement pour calculer le type de données <code>Added</code>, mais nous n’avons pas besoin d’exécuter <code>diff.apply</code>. Au lieu de cela, nous utilisons notre <code>Monoid</code> pour invoquer une instance de <code>Added</code>.</p>
 <p>Avec cette dernière version de la <em>type class</em> nous pouvons utiliser <code>Migration</code> pour tous les cas d’utilisation que nous avions données au début de cette étude de cas :</p>
 <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala"><span class="fu">IceCreamV1</span>(<span class="st">&quot;Sundae&quot;</span>, <span class="dv">1</span>, <span class="kw">true</span>).<span class="fu">migrateTo</span>[IceCreamV2a]
 <span class="co">// res14: IceCreamV2a = IceCreamV2a(Sundae,true)</span>
@@ -1614,9 +1615,9 @@ the[Last[String :: Int :: HNil]]
 
 <span class="fu">IceCreamV1</span>(<span class="st">&quot;Sundae&quot;</span>, <span class="dv">1</span>, <span class="kw">true</span>).<span class="fu">migrateTo</span>[IceCreamV2c]
 <span class="co">// res16: IceCreamV2c = IceCreamV2c(Sundae,true,1,0)</span></code></pre></div>
-<p>C’est incroyable tout ce que nous pouvons faire avec les type class ops. <code>Migration</code> ne contient qu’une <code>implicit def</code> avec une seul ligne d’implémentation au value-level. Cela nous permet d’automatiser les migrations entre <em>n’importe</em> quelle paire de <em>case classes</em>, avec approximativement la même quantité de code nécessiare pour gérer une <em>seule</em> paire de types en utilisant une bibliothèque standard. C’est la grande puissance de shapeless !</p>
+<p>C’est incroyable tout ce que nous pouvons faire avec les <em>type class</em> ops. <code>Migration</code> ne contient qu’une <code>implicit def</code> avec une seul ligne d’implémentation au value-level. Cela nous permet d’automatiser les migrations entre <em>n’importe</em> quelle paire de <em>case classes</em>, avec approximativement la même quantité de code nécessiare pour gérer une <em>seule</em> paire de types en utilisant une bibliothèque standard. C’est la grande puissance de shapeless !</p>
 <h2 id="sec:ops:record"><span class="header-section-number">6.4</span> Record ops</h2>
-<p>Nous avons passé un certain temps dans ce chapitre à travailler avec les type classes du package <code>shapeless.ops.hlist</code> et <code>shapeless.ops.coproduct</code>. Nous ne devons pas passer à côté du troisième package :<code>shapeless.ops.record</code>.</p>
+<p>Nous avons passé un certain temps dans ce chapitre à travailler avec les <em>type classes</em> du package <code>shapeless.ops.hlist</code> et <code>shapeless.ops.coproduct</code>. Nous ne devons pas passer à côté du troisième package :<code>shapeless.ops.record</code>.</p>
 <p>« Record ops » de shapeless fournissent des opérations semblables à celles des <code>Map</code> sur les <code>HList</code>s d’éléments taggés. Voici quelques exemples mettant en scène IceCreams :</p>
 <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala"><span class="kw">import</span> shapeless._
 
@@ -1627,7 +1628,7 @@ the[Last[String :: Int :: HNil]]
 <p>Contrairement aux ops de <code>HList</code> et de <code>Coproduct</code> que nous avons vus précédemment la syntaxe des record ops nécessite un import explicite de <code>shapeless.record</code> :</p>
 <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala"><span class="kw">import</span> shapeless.<span class="fu">record</span>._</code></pre></div>
 <h3 id="sélectionner-les-champs"><span class="header-section-number">6.4.1</span> Sélectionner les champs</h3>
-<p>La méthode d’extension <code>get</code> et sa type classe <code>Selector</code> nous permettent d’extraire un champ par son tag :</p>
+<p>La méthode d’extension <code>get</code> et sa <em>type classe</em> <code>Selector</code> nous permettent d’extraire un champ par son tag :</p>
 <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala">sundae.<span class="fu">get</span>('name)
 <span class="co">// res1: String = Sundae</span></code></pre></div>
 <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala">sundae.<span class="fu">get</span>('numCherries)
@@ -1638,27 +1639,27 @@ the[Last[String :: Int :: HNil]]
 <span class="co">//        sundae.get('nomCherries)</span>
 <span class="co">//                  ^</span></code></pre></div>
 <h3 id="mettre-à-jour-ou-enlever-des-champs"><span class="header-section-number">6.4.2</span> Mettre à jour ou enlever des champs</h3>
-<p>La méthode <code>updated</code> ce type class <code>Updater</code> nous permet de modifier un champ via sa clé. La méthode <code>remove</code> ce type class <code>Remover</code> nous permet de supprimer un champ via sa clé :</p>
+<p>La méthode <code>updated</code> et sa <em>type class</em> <code>Updater</code> nous permettent de modifier un champ via sa clé. La méthode <code>remove</code> et sa <em>type class</em> <code>Remover</code> nous permetteny de supprimer un champ via sa clé :</p>
 <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala">sundae.<span class="fu">updated</span>('numCherries, <span class="dv">3</span>)
 <span class="co">// res4: shapeless.::[String with shapeless.labelled.KeyTag[Symbol with shapeless.tag.Tagged[String(&quot;name&quot;)],String],shapeless.::[Int with shapeless.labelled.KeyTag[Symbol with shapeless.tag.Tagged[String(&quot;numCherries&quot;)],Int],shapeless.::[Boolean with shapeless.labelled.KeyTag[Symbol with shapeless.tag.Tagged[String(&quot;inCone&quot;)],Boolean],shapeless.HNil]]] = Sundae :: 3 :: false :: HNil</span></code></pre></div>
 <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala">sundae.<span class="fu">remove</span>('inCone)
 <span class="co">// res5: (Boolean, shapeless.::[String with shapeless.labelled.KeyTag[Symbol with shapeless.tag.Tagged[String(&quot;name&quot;)],String],shapeless.::[Int with shapeless.labelled.KeyTag[Symbol with shapeless.tag.Tagged[String(&quot;numCherries&quot;)],Int],shapeless.HNil]]) = (false,Sundae :: 1 :: HNil)</span></code></pre></div>
-<p>La méthode <code>updateWith</code> et sa case class <code>Modifier</code> nous permettent de modifier un champ avec une fonction de mise à jour :</p>
+<p>La méthode <code>updateWith</code> et sa <em>type class</em> <code>Modifier</code> nous permettent de modifier un champ avec une fonction de mise à jour :</p>
 <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala">sundae.<span class="fu">updateWith</span>('name)(<span class="st">&quot;MASSIVE &quot;</span> + _)
 <span class="co">// res6: shapeless.::[String with shapeless.labelled.KeyTag[Symbol with shapeless.tag.Tagged[String(&quot;name&quot;)],String],shapeless.::[Int with shapeless.labelled.KeyTag[Symbol with shapeless.tag.Tagged[String(&quot;numCherries&quot;)],Int],shapeless.::[Boolean with shapeless.labelled.KeyTag[Symbol with shapeless.tag.Tagged[String(&quot;inCone&quot;)],Boolean],shapeless.HNil]]] = MASSIVE Sundae :: 1 :: false :: HNil</span></code></pre></div>
 <h3 id="convertir-en-une-map-conventionnelle"><span class="header-section-number">6.4.3</span> Convertir en une <em>Map</em> conventionnelle</h3>
-<p>La méthode <code>toMap</code> et sa case class <code>ToMap</code> nous permettent de convertir un record en <code>Map</code> :</p>
+<p>La méthode <code>toMap</code> et sa <em>type class</em> <code>ToMap</code> nous permettent de convertir un record en <code>Map</code> :</p>
 <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala">sundae.<span class="fu">toMap</span>
 <span class="co">// res7: Map[Symbol with shapeless.tag.Tagged[_ &gt;: String(&quot;inCone&quot;) with String(&quot;numCherries&quot;) with String(&quot;name&quot;) &lt;: String],Any] = Map('inCone -&gt; false, 'numCherries -&gt; 1, 'name -&gt; Sundae)</span></code></pre></div>
 <h3 id="les-autres-opérations"><span class="header-section-number">6.4.4</span> Les autres opérations</h3>
 <p>Il existe d’autres ops pour les records mais nous n’avons pas le temps de les aborder ici. Nous pouvons renommer un champ, fusionner deux records, utiliser une fonction map sur leurs valeurs et bien plus. Consultez le code source de <code>shapeless.ops.record</code> et <code>shapeless.syntax.record</code> pour de plus amples informations.</p>
 <h2 id="résumé-2"><span class="header-section-number">6.5</span> Résumé</h2>
-<p>Dans ce chapitre, nous avons exploré quelques-unes des <em>types classes</em> qui sont fournies par le package <code>shapeless.ops</code>. Nous nous somme intéréssés à deux exemples simples du pattern ops : <code>Last</code> et <code>Init</code>, et nous avons construit nos propres type classes <code>Penultimate</code> et <code>Migration</code> en associant des briques de construction pré-existantes.</p>
+<p>Dans ce chapitre, nous avons exploré quelques-unes des <em>types classes</em> qui sont fournies par le package <code>shapeless.ops</code>. Nous nous sommes intéressés à deux exemples simples du pattern ops : <code>Last</code> et <code>Init</code>, et nous avons construit nos propres <em>type classes</em> <code>Penultimate</code> et <code>Migration</code> en associant des briques de construction pré-existantes.</p>
 <p>De nombreuses type classe ops partagent les mêmes techniques que celui des ops que nous avons vus jusqu’ici. La facon la plus simple de les apprendre et de regarder directement leur code source dans <code>shapeless.ops</code> and <code>shapeless.syntax</code>.</p>
-<p>Dans le chapitre suivant, nous allons aborder deux ensembles de <em>type class</em> <code>ops</code> qui nécessitent davantage de théorie. Le <em>Chapitre 7</em> traite des opérations fonctionnelles comme <code>map</code> et <code>flatMap</code> sur les <code>HList</code>s, et le Chapitre 8 nous explique comment implémenter des <em>type classes</em> qui nécessitent une représentation au <em>type level</em> des nombres. Ces informations vont nous aider à mieux comprendre l’ensemble des type classes de <code>shapeless.ops</code>.</p>
+<p>Dans le chapitre suivant, nous allons aborder deux ensembles de <em>type class</em> <code>ops</code> qui nécessitent davantage de théorie. Le <em>Chapitre 7</em> traite des opérations fonctionnelles comme <code>map</code> et <code>flatMap</code> sur les <code>HList</code>s, et le Chapitre 8 nous explique comment implémenter des <em>type classes</em> qui nécessitent une représentation au <em>type level</em> des nombres. Ces informations vont nous aider à mieux comprendre l’ensemble des <em>type classes</em> de <code>shapeless.ops</code>.</p>
 <h1 id="sec:poly"><span class="header-section-number">7</span> Opération fonctionnelle sur les <em>HLists</em></h1>
-<p>Les programmes Scala « classiques » utilisent beaucoup les opérations fonctionnelles telles que <code>map</code> et <code>flatMap</code>. Une question se pose : peut-on effectuer des opérations semblables sur les HLists` ? Les réponse est oui, mais nous devons faire les choses légèrement différemment par rapport au Scala classique. Nous ne serons pas surpris de constater que le mécanisme utilisé reste basé sur les type classes et un ensemble de <em>type class</em>es ops pour nous aider.</p>
-<p>Avant de nous péncher directement sur les type classes, nous devons aborder la façon dont shapeless représente les <em>fonctions polymorphiques</em> qui seront capables de mapper sur une structure de données hétérogènes.</p>
+<p>Les programmes Scala « classiques » utilisent beaucoup les opérations fonctionnelles telles que <code>map</code> et <code>flatMap</code>. Une question se pose : peut-on effectuer des opérations semblables sur les HLists` ? La réponse est oui, mais nous devons faire les choses légèrement différemment par rapport au Scala classique. Nous ne serons pas surpris de constater que le mécanisme utilisé reste basé sur les <em>type classes</em> et un ensemble de <em>type classes</em> ops pour nous aider.</p>
+<p>Avant de nous pencher directement sur les <em>type classes</em>, nous devons aborder la façon dont shapeless représente les <em>fonctions polymorphiques</em> qui seront capables de mapper sur une structure de données hétérogènes.</p>
 <h2 id="motivation-mapper-sur-une-hlist"><span class="header-section-number">7.1</span> Motivation : mapper sur une <em>HList</em></h2>
 <p>Nous allons traiter les fonctions polymorphiques à l’aide de la méthode <code>.map</code> La Figure 1 montre un diagramme des types d’une fonction map classique sur les listes. Nous commençons avec une <code>List[A]</code>, nous fournissons une fonction <code>A =&gt; B</code>, et nous terminons par <code>List[B]</code>.</p>
 <div class="figure">
@@ -1666,14 +1667,14 @@ the[Last[String :: Int :: HNil]]
 <p class="caption">Figure 1: Mapper sur une liste classique (“monomorphic” map)</p>
 </div>
 <p>Le fait qu’il y ait des éléments hétérogènes dans une <code>HList</code> met ce modèle à mal. Les fonctions Scala ont des types d’entrée et de sortie fixés, le résultat de notre map devra donc avoir le même type pour toutes les positions.</p>
-<p>Dans l’idéal, nous voulons que notre fonction <code>map</code> corresponde à la Figure 2, où la fonction inspecte le type de chaque entrée pour déterminer le type de chaque sortie. Ce qui nous donne un environement clos et composable qui conserve la nature hétérogène des <code>HList</code>.</p>
+<p>Dans l’idéal, nous voulons que notre fonction <code>map</code> corresponde à la Figure 2, où la fonction inspecte le type de chaque entrée pour déterminer le type de chaque sortie. Ce qui nous donne un environnement clos et composable qui conserve la nature hétérogène des <code>HList</code>.</p>
 <div class="figure">
 <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjxzdmcgd2lkdGg9IjE3NjFweCIgaGVpZ2h0PSI0MjJweCIgdmlld0JveD0iMCAwIDE3NjEgNDIyIiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPgogICAgPCEtLSBHZW5lcmF0b3I6IFNrZXRjaCA0MC4zICgzMzgzOSkgLSBodHRwOi8vd3d3LmJvaGVtaWFuY29kaW5nLmNvbS9za2V0Y2ggLS0+CiAgICA8dGl0bGU+cG9seW1vcnBoaWMtbWFwPC90aXRsZT4KICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBTa2V0Y2guPC9kZXNjPgogICAgPGRlZnM+CiAgICAgICAgPHBvbHlnb24gaWQ9InBhdGgtMSIgcG9pbnRzPSIxMDM3LjU5NTA5IDEwNy43MjA0NDMgMTAwMC43NjMzIDEyNy4wODQwNiAxMDA3Ljc5NzU0IDg2LjA3MTI2MDMgOTc4IDU3LjAyNTgzNDIgMTAxOS4xNzkxOSA1MS4wNDIxNDc0IDEwMzcuNTk1MDkgMTMuNzI3NDY5NCAxMDU2LjAxMDk4IDUxLjA0MjE0NzQgMTA5Ny4xOTAxNyA1Ny4wMjU4MzQyIDEwNjcuMzkyNjMgODYuMDcxMjYwMyAxMDc0LjQyNjg4IDEyNy4wODQwNiI+PC9wb2x5Z29uPgogICAgICAgIDxtYXNrIGlkPSJtYXNrLTIiIG1hc2tDb250ZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiBtYXNrVW5pdHM9Im9iamVjdEJvdW5kaW5nQm94IiB4PSIwIiB5PSIwIiB3aWR0aD0iMTE5LjE5MDE3MyIgaGVpZ2h0PSIxMTMuMzU2NTkxIiBmaWxsPSJ3aGl0ZSI+CiAgICAgICAgICAgIDx1c2UgeGxpbms6aHJlZj0iI3BhdGgtMSI+PC91c2U+CiAgICAgICAgPC9tYXNrPgogICAgICAgIDxwb2x5Z29uIGlkPSJwYXRoLTMiIHBvaW50cz0iODQ5IDU2IDg4OSA1NiA4ODkgMzYgOTI5IDc1LjQ5Nzc2NzEgODg5IDExNiA4ODkgOTYgODQ5IDk2Ij48L3BvbHlnb24+CiAgICAgICAgPG1hc2sgaWQ9Im1hc2stNCIgbWFza0NvbnRlbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIG1hc2tVbml0cz0ib2JqZWN0Qm91bmRpbmdCb3giIHg9IjAiIHk9IjAiIHdpZHRoPSI4MCIgaGVpZ2h0PSI4MCIgZmlsbD0id2hpdGUiPgogICAgICAgICAgICA8dXNlIHhsaW5rOmhyZWY9IiNwYXRoLTMiPjwvdXNlPgogICAgICAgIDwvbWFzaz4KICAgICAgICA8cG9seWdvbiBpZD0icGF0aC01IiBwb2ludHM9IjEwMzcuNTk1MDkgMjA5Ljk5Mjk3MyAxMDA2LjI2NDEgMjMyLjkyODg1MSAxMDEwLjQ2MTY1IDE5NC4zMjc0NzggOTc0LjkzMzEwNCAxNzguNjYxOTgyIDEwMTAuNDYxNjUgMTYyLjk5NjQ4NyAxMDA2LjI2NDEgMTI0LjM5NTExNCAxMDM3LjU5NTA5IDE0Ny4zMzA5OTEgMTA2OC45MjYwOCAxMjQuMzk1MTE0IDEwNjQuNzI4NTIgMTYyLjk5NjQ4NyAxMTAwLjI1NzA3IDE3OC42NjE5ODIgMTA2NC43Mjg1MiAxOTQuMzI3NDc4IDEwNjguOTI2MDggMjMyLjkyODg1MSI+PC9wb2x5Z29uPgogICAgICAgIDxtYXNrIGlkPSJtYXNrLTYiIG1hc2tDb250ZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiBtYXNrVW5pdHM9Im9iamVjdEJvdW5kaW5nQm94IiB4PSIwIiB5PSIwIiB3aWR0aD0iMTE5LjE5MDE3MyIgaGVpZ2h0PSIxMTMuMzU2NTkxIiBmaWxsPSJ3aGl0ZSI+CiAgICAgICAgICAgIDx1c2UgeGxpbms6aHJlZj0iI3BhdGgtNSI+PC91c2U+CiAgICAgICAgPC9tYXNrPgogICAgICAgIDxwb2x5Z29uIGlkPSJwYXRoLTciIHBvaW50cz0iODQ5IDE1MyA4ODkgMTUzIDg4OSAxMzMgOTI5IDE3Mi40OTc3NjcgODg5IDIxMyA4ODkgMTkzIDg0OSAxOTMiPjwvcG9seWdvbj4KICAgICAgICA8bWFzayBpZD0ibWFzay04IiBtYXNrQ29udGVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgbWFza1VuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeD0iMCIgeT0iMCIgd2lkdGg9IjgwIiBoZWlnaHQ9IjgwIiBmaWxsPSJ3aGl0ZSI+CiAgICAgICAgICAgIDx1c2UgeGxpbms6aHJlZj0iI3BhdGgtNyI+PC91c2U+CiAgICAgICAgPC9tYXNrPgogICAgICAgIDxwb2x5Z29uIGlkPSJwYXRoLTkiIHBvaW50cz0iMTAzNy41OTUwOSAzMTAuOTkyOTczIDEwMTAuNDA3MDcgMzM2LjExODQ3NyAxMDEzLjA5OTUzIDI5OS4xOTY1MzYgOTc2LjUwNDE3MSAyOTMuNjA1NTg1IDEwMDcuMDQ5NjMgMjcyLjY5MDE4MSA5ODguNjAzOTc2IDI0MC41OTI4NzUgMTAyNC4wMDEwOCAyNTEuNDMzNzM1IDEwMzcuNTk1MDkgMjE3IDEwNTEuMTg5MDkgMjUxLjQzMzczNSAxMDg2LjU4NjIgMjQwLjU5Mjg3NSAxMDY4LjE0MDU0IDI3Mi42OTAxODEgMTA5OC42ODYgMjkzLjYwNTU4NSAxMDYyLjA5MDY0IDI5OS4xOTY1MzYgMTA2NC43ODMxIDMzNi4xMTg0NzciPjwvcG9seWdvbj4KICAgICAgICA8bWFzayBpZD0ibWFzay0xMCIgbWFza0NvbnRlbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIG1hc2tVbml0cz0ib2JqZWN0Qm91bmRpbmdCb3giIHg9IjAiIHk9IjAiIHdpZHRoPSIxMTkuMTkwMTczIiBoZWlnaHQ9IjExMy4zNTY1OTEiIGZpbGw9IndoaXRlIj4KICAgICAgICAgICAgPHVzZSB4bGluazpocmVmPSIjcGF0aC05Ij48L3VzZT4KICAgICAgICA8L21hc2s+CiAgICAgICAgPHBvbHlnb24gaWQ9InBhdGgtMTEiIHBvaW50cz0iODQ5IDI1NCA4ODkgMjU0IDg4OSAyMzQgOTI5IDI3My40OTc3NjcgODg5IDMxNCA4ODkgMjk0IDg0OSAyOTQiPjwvcG9seWdvbj4KICAgICAgICA8bWFzayBpZD0ibWFzay0xMiIgbWFza0NvbnRlbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIG1hc2tVbml0cz0ib2JqZWN0Qm91bmRpbmdCb3giIHg9IjAiIHk9IjAiIHdpZHRoPSI4MCIgaGVpZ2h0PSI4MCIgZmlsbD0id2hpdGUiPgogICAgICAgICAgICA8dXNlIHhsaW5rOmhyZWY9IiNwYXRoLTExIj48L3VzZT4KICAgICAgICA8L21hc2s+CiAgICA8L2RlZnM+CiAgICA8ZyBpZD0iUGFnZS0xIiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMSIgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4KICAgICAgICA8ZyBpZD0icG9seW1vcnBoaWMtbWFwIj4KICAgICAgICAgICAgPHJlY3QgaWQ9IkJhY2tncm91bmQiIGZpbGw9IiNGRkZGRkYiIHg9IjAiIHk9IjAiIHdpZHRoPSIxNzYxIiBoZWlnaHQ9IjQyMiI+PC9yZWN0PgogICAgICAgICAgICA8dXNlIGlkPSJTdGFyLTEtQ29weSIgc3Ryb2tlPSIjMDAwMDAwIiBtYXNrPSJ1cmwoI21hc2stMikiIHN0cm9rZS13aWR0aD0iOCIgZmlsbD0iI0ZGRkZGRiIgeGxpbms6aHJlZj0iI3BhdGgtMSI+PC91c2U+CiAgICAgICAgICAgIDx1c2UgaWQ9IlBhdGgtMS1Db3B5IiBzdHJva2U9IiMwMDAwMDAiIG1hc2s9InVybCgjbWFzay00KSIgc3Ryb2tlLXdpZHRoPSI4IiBmaWxsPSIjMDAwMDAwIiB4bGluazpocmVmPSIjcGF0aC0zIj48L3VzZT4KICAgICAgICAgICAgPHBvbHlnb24gaWQ9IlBhdGgtMS1Db3B5LTIiIGZpbGw9IiNGNkE2MjMiIHBvaW50cz0iMTE3OSAxNTMgMTIxOSAxNTMgMTIxOSAxMzMgMTI1OSAxNzIuNDk3NzY3IDEyMTkgMjEzIDEyMTkgMTkzIDExNzkgMTkzIj48L3BvbHlnb24+CiAgICAgICAgICAgIDx0ZXh0IGlkPSJBLTo6LUItOjotQy06Oi1ITmlsIiBmb250LWZhbWlseT0iRmlyYU1vbm8tUmVndWxhciwgRmlyYSBNb25vIiBmb250LXNpemU9IjQyIiBmb250LXdlaWdodD0ibm9ybWFsIiBmaWxsPSIjMDAwMDAwIj4KICAgICAgICAgICAgICAgIDx0c3BhbiB4PSIxMjAuMSIgeT0iMzk5Ij5BIDo6IEIgOjogQyA6OiBITmlsPC90c3Bhbj4KICAgICAgICAgICAgPC90ZXh0PgogICAgICAgICAgICA8dGV4dCBpZD0ibWFwLWNvcHkiIGZvbnQtZmFtaWx5PSJGaXJhTW9uby1Cb2xkLCBGaXJhIE1vbm8iIGZvbnQtc2l6ZT0iNjQiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjRjZBNjIzIj4KICAgICAgICAgICAgICAgIDx0c3BhbiB4PSI0OTYuNCIgeT0iMTg3Ij5tYXA8L3RzcGFuPgogICAgICAgICAgICA8L3RleHQ+CiAgICAgICAgICAgIDx0ZXh0IGlkPSJELTo6LUUtOjotRi06Oi1ITmlsIiBmb250LWZhbWlseT0iRmlyYU1vbm8tUmVndWxhciwgRmlyYSBNb25vIiBmb250LXNpemU9IjQyIiBmb250LXdlaWdodD0ibm9ybWFsIiBmaWxsPSIjMDAwMDAwIj4KICAgICAgICAgICAgICAgIDx0c3BhbiB4PSIxMTYzLjYiIHk9IjM5OSI+RCA6OiBFIDo6IEYgOjogSE5pbDwvdHNwYW4+CiAgICAgICAgICAgIDwvdGV4dD4KICAgICAgICAgICAgPHRleHQgaWQ9IlBvbHkiIGZvbnQtZmFtaWx5PSJGaXJhTW9uby1SZWd1bGFyLCBGaXJhIE1vbm8iIGZvbnQtc2l6ZT0iNDIiIGZvbnQtd2VpZ2h0PSJub3JtYWwiIGZpbGw9IiMwMDAwMDAiPgogICAgICAgICAgICAgICAgPHRzcGFuIHg9IjgzNy4xIiB5PSIzOTkiPlBvbHk8L3RzcGFuPgogICAgICAgICAgICA8L3RleHQ+CiAgICAgICAgICAgIDxwb2x5Z29uIGlkPSJQb2x5Z29uIiBzdHJva2U9IiMwMDAwMDAiIHN0cm9rZS13aWR0aD0iNCIgZmlsbD0iI0ZGRkZGRiIgcG9pbnRzPSIzMTQuOTk1OTE4IDIzIDM2NS45OTE4MzYgNjAuMDUwNzAzMSAzNDYuNTEzMTI4IDEyMCAyODMuNDc4NzA3IDEyMCAyNjQgNjAuMDUwNzAzMSI+PC9wb2x5Z29uPgogICAgICAgICAgICA8cG9seWdvbiBpZD0iUG9seWdvbiIgc3Ryb2tlPSIjMDAwMDAwIiBzdHJva2Utd2lkdGg9IjQiIGZpbGw9IiNGRkZGRkYiIHBvaW50cz0iNzI3Ljk5NTkxOCAyMiA3NzguOTkxODM2IDU5LjA1MDcwMzEgNzU5LjUxMzEyOCAxMTkgNjk2LjQ3ODcwNyAxMTkgNjc3IDU5LjA1MDcwMzEiPjwvcG9seWdvbj4KICAgICAgICAgICAgPHVzZSBpZD0iU3Rhci0xLUNvcHkiIHN0cm9rZT0iIzAwMDAwMCIgbWFzaz0idXJsKCNtYXNrLTYpIiBzdHJva2Utd2lkdGg9IjgiIGZpbGw9IiNGRkZGRkYiIHhsaW5rOmhyZWY9IiNwYXRoLTUiPjwvdXNlPgogICAgICAgICAgICA8dXNlIGlkPSJQYXRoLTEtQ29weSIgc3Ryb2tlPSIjMDAwMDAwIiBtYXNrPSJ1cmwoI21hc2stOCkiIHN0cm9rZS13aWR0aD0iOCIgZmlsbD0iIzAwMDAwMCIgeGxpbms6aHJlZj0iI3BhdGgtNyI+PC91c2U+CiAgICAgICAgICAgIDxwb2x5Z29uIGlkPSJQb2x5Z29uIiBzdHJva2U9IiMwMDAwMDAiIHN0cm9rZS13aWR0aD0iNCIgZmlsbD0iI0ZGRkZGRiIgcG9pbnRzPSI3MjcuOTk1OTE4IDEyNCA3NzQuNDMyNDQ0IDE1MC44MTAxNDEgNzc0LjQzMjQ0NCAyMDQuNDMwNDIyIDcyNy45OTU5MTggMjMxLjI0MDU2MiA2ODEuNTU5MzkyIDIwNC40MzA0MjIgNjgxLjU1OTM5MiAxNTAuODEwMTQxIj48L3BvbHlnb24+CiAgICAgICAgICAgIDx1c2UgaWQ9IlN0YXItMS1Db3B5IiBzdHJva2U9IiMwMDAwMDAiIG1hc2s9InVybCgjbWFzay0xMCkiIHN0cm9rZS13aWR0aD0iOCIgZmlsbD0iI0ZGRkZGRiIgeGxpbms6aHJlZj0iI3BhdGgtOSI+PC91c2U+CiAgICAgICAgICAgIDx1c2UgaWQ9IlBhdGgtMS1Db3B5IiBzdHJva2U9IiMwMDAwMDAiIG1hc2s9InVybCgjbWFzay0xMikiIHN0cm9rZS13aWR0aD0iOCIgZmlsbD0iIzAwMDAwMCIgeGxpbms6aHJlZj0iI3BhdGgtMTEiPjwvdXNlPgogICAgICAgICAgICA8cG9seWdvbiBpZD0iUG9seWdvbiIgc3Ryb2tlPSIjMDAwMDAwIiBzdHJva2Utd2lkdGg9IjQiIGZpbGw9IiNGRkZGRkYiIHBvaW50cz0iNzI3Ljk5NTkxOCAyMjUgNzY5LjkxNzk0MiAyNDUuMTg4NTgzIDc4MC4yNzE4MjcgMjkwLjU1MTkxNiA3NTEuMjYwODg2IDMyNi45MzA0ODUgNzA0LjczMDk1IDMyNi45MzA0ODUgNjc1LjcyMDAwOSAyOTAuNTUxOTE2IDY4Ni4wNzM4OTQgMjQ1LjE4ODU4MyI+PC9wb2x5Z29uPgogICAgICAgICAgICA8cG9seWdvbiBpZD0iUG9seWdvbiIgc3Ryb2tlPSIjMDAwMDAwIiBzdHJva2Utd2lkdGg9IjQiIGZpbGw9IiNGRkZGRkYiIHBvaW50cz0iMzgyLjQ1MjY3OCAxMjMgNDI1LjkwNTM1NyAxNDguMDg3NDE2IDQyNS45MDUzNTcgMTk4LjI2MjI0NyAzODIuNDUyNjc4IDIyMy4zNDk2NjMgMzM5IDE5OC4yNjIyNDcgMzM5IDE0OC4wODc0MTYiPjwvcG9seWdvbj4KICAgICAgICAgICAgPHBvbHlnb24gaWQ9IlBvbHlnb24iIHN0cm9rZT0iIzAwMDAwMCIgc3Ryb2tlLXdpZHRoPSI0IiBmaWxsPSIjRkZGRkZGIiBwb2ludHM9IjQ0OC45ODMxMzkgMjI0IDQ4OS44Njg0NDEgMjQzLjY4OTMyNCA0OTkuOTY2Mjc3IDI4Ny45MzA4MzQgNDcxLjY3Mjc3IDMyMy40MDk3NyA0MjYuMjkzNTA3IDMyMy40MDk3NyAzOTggMjg3LjkzMDgzNCA0MDguMDk3ODM2IDI0My42ODkzMjQiPjwvcG9seWdvbj4KICAgICAgICAgICAgPHBvbHlnb24gaWQ9IlN0YXIiIHN0cm9rZT0iIzAwMDAwMCIgc3Ryb2tlLXdpZHRoPSI0IiBmaWxsPSIjRkZGRkZGIiBwb2ludHM9IjEzMzUuNSA5NS43NSAxMzA1LjgxNjg0IDExMS4zNTUzNTggMTMxMS40ODU4MiA3OC4zMDI2NzkxIDEyODcuNDcxNjUgNTQuODk0NjQxOCAxMzIwLjY1ODQyIDUwLjA3MjMyMDkgMTMzNS41IDIwIDEzNTAuMzQxNTggNTAuMDcyMzIwOSAxMzgzLjUyODM1IDU0Ljg5NDY0MTggMTM1OS41MTQxOCA3OC4zMDI2NzkxIDEzNjUuMTgzMTYgMTExLjM1NTM1OCI+PC9wb2x5Z29uPgogICAgICAgICAgICA8cG9seWdvbiBpZD0iU3RhciIgc3Ryb2tlPSIjMDAwMDAwIiBzdHJva2Utd2lkdGg9IjQiIGZpbGw9IiNGRkZGRkYiIHBvaW50cz0iMTQwMi4wMjgzNSAyMDIuNzUgMTM3Ni43NzgzNSAyMjEuMjM0MjgzIDEzODAuMTYxMjEgMTkwLjEyNSAxMzUxLjUyODM1IDE3Ny41IDEzODAuMTYxMjEgMTY0Ljg3NSAxMzc2Ljc3ODM1IDEzMy43NjU3MTcgMTQwMi4wMjgzNSAxNTIuMjUgMTQyNy4yNzgzNSAxMzMuNzY1NzE3IDE0MjMuODk1NSAxNjQuODc1IDE0NTIuNTI4MzUgMTc3LjUgMTQyMy44OTU1IDE5MC4xMjUgMTQyNy4yNzgzNSAyMjEuMjM0MjgzIj48L3BvbHlnb24+CiAgICAgICAgICAgIDxwb2x5Z29uIGlkPSJTdGFyIiBzdHJva2U9IiMwMDAwMDAiIHN0cm9rZS13aWR0aD0iNCIgZmlsbD0iI0ZGRkZGRiIgcG9pbnRzPSIxNDY4LjAyODM1IDMwMy43NSAxNDQ2LjExNzIzIDMyMy45OTg5MjggMTQ0OC4yODcxMSAyOTQuMjQzMTE3IDE0MTguNzk0NDkgMjg5LjczNzMwNyAxNDQzLjQxMTQyIDI3Mi44ODEzNDYgMTQyOC41NDU4NiAyNDcuMDEzNzY1IDE0NTcuMDcyNzkgMjU1Ljc1MDUzNiAxNDY4LjAyODM1IDIyOCAxNDc4Ljk4MzkyIDI1NS43NTA1MzYgMTUwNy41MTA4NCAyNDcuMDEzNzY1IDE0OTIuNjQ1MjggMjcyLjg4MTM0NiAxNTE3LjI2MjIxIDI4OS43MzczMDcgMTQ4Ny43Njk2IDI5NC4yNDMxMTcgMTQ4OS45Mzk0OCAzMjMuOTk4OTI4Ij48L3BvbHlnb24+CiAgICAgICAgPC9nPgogICAgPC9nPgo8L3N2Zz4=" alt="Figure 2: mapper sur des listes hétérogènes (polymorphic map)" id="fig:poly:polymorphic-map" />
 <p class="caption">Figure 2: mapper sur des listes hétérogènes (“polymorphic” map)</p>
 </div>
 <p>Malheureusement nous ne pouvons pas utiliser les fonctions Scala pour implémenter ces opérations. Nous avons besoin d’une nouvelle infrastructure.</p>
 <h2 id="fonctions-polymorphique"><span class="header-section-number">7.2</span> Fonctions polymorphique</h2>
-<p>Shapeless fournit un type appelé <code>Poly</code> pour représenter les <em>fonctions polymorphiques</em> dont le type de retour dépend des paramètres de types. Voici une explication simplifiée de leur fonctionnement. Notez que la section suivante ne contient pas de vrai code shapeless, nous mettons de coté une partie de la flexibilité et des mécanismes qui servent à simplifier l’utilisation de la vraie bibliothèque de shapeless pour créer une version simplifiée dans le cadre de notre exemple.</p>
+<p>Shapeless fournit un type appelé <code>Poly</code> pour représenter les <em>fonctions polymorphiques</em> dont le type de retour dépend des paramètres de types. Voici une explication simplifiée de leur fonctionnement. Notez que la section suivante ne contient pas de vrai code shapeless, nous mettons de côté une partie de la flexibilité et des mécanismes qui servent à simplifier l’utilisation de la vraie bibliothèque de shapeless pour créer une version simplifiée dans le cadre de notre exemple.</p>
 <h3 id="comment-poly-fonctionne"><span class="header-section-number">7.2.1</span> Comment <em>Poly</em> fonctionne</h3>
 <p>Au cœur de <code>Poly</code>, on trouve un objet avec une méthode <code>apply</code> générique. En plus de l’habituel paramètre de type <code>A</code>, <code>Poly</code> prend un paramètre implicite de type <code>Case[A]</code>:</p>
 <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala"><span class="co">// Ceci n'est pas du code shapeless.</span>
@@ -1708,7 +1709,7 @@ the[Last[String :: Int :: HNil]]
 <p>Lorsqu’on appelle <code>myPoly.apply</code>, le compilateur recherche le <code>Case</code> implicite correspondant et l’intègre comme à l’accoutumée :</p>
 <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala">myPoly.<span class="fu">apply</span>(<span class="dv">123</span>)
 <span class="co">// res8: Double = 61.5</span></code></pre></div>
-<p>Il y a ici quelques subltilités de scoping, qui permettent au compilateur de trouver les instances de <code>Case</code> sans import supplémentaire. <code>Case</code> a un paramètre de type supplémentaire appelé <code>P</code> qui référence le type singleton de <code>Poly</code>. Le scope de <code>Case[P, A]</code> contient comme implicit une référence à l’objet compagnon de <code>Case</code>, <code>P</code> et de <code>A</code>. Nous avons assigné <code>myPoly.type</code> à <code>P</code> et l’objet compagnon de <code>myPoly.type</code> est <code>myPoly</code> lui-même. En d’autre termes, <code>Cases</code> qui est défini dans le corps de <code>Poly</code> est toujours accesible dans le scope quel que soit l’emplacement de l’appel.</p>
+<p>Il y a ici quelques subtilités de scoping, qui permettent au compilateur de trouver les instances de <code>Case</code> sans import supplémentaire. <code>Case</code> a un paramètre de type supplémentaire appelé <code>P</code> qui référence le type singleton de <code>Poly</code>. Le scope de <code>Case[P, A]</code> contient comme implicit une référence à l’objet compagnon de <code>Case</code>, <code>P</code> et de <code>A</code>. Nous avons assigné <code>myPoly.type</code> à <code>P</code> et l’objet compagnon de <code>myPoly.type</code> est <code>myPoly</code> lui-même. En d’autre termes, <code>Cases</code> qui est défini dans le corps de <code>Poly</code> est toujours accessible dans le scope quel que soit l’emplacement de l’appel.</p>
 <h3 id="la-syntaxe-de-poly"><span class="header-section-number">7.2.2</span> la syntaxe de <em>Poly</em></h3>
 <p>Le code ci-dessus n’est pas le véritable code de shapeless. Heureusement, shapeless permet de définir les <code>Polys</code> de facon bien plus simple. Voici notre fonction <code>myPoly</code> réécrite avec la véritable syntaxe :</p>
 <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala"><span class="kw">import</span> shapeless._
@@ -1726,7 +1727,7 @@ the[Last[String :: Int :: HNil]]
 <li><p>Le type <code>Case.Aux</code> ne semble pas faire référence au type singleton de <code>Poly</code>. <code>Case.Aux</code> est en fait un alias de type défini dans le corp de <code>Poly1</code>. Le type singleton est bien présent, il est simplement caché.</p></li>
 <li><p>Nous utilisons la méthode helper <code>at</code> pour définir nos cas. Elle agit à la façon d’une méthode constructrice d’instance, comme traité dans la section 3.1.2), elle sert principalement à éliminer le code <em>boilerplate</em>.</p></li>
 </ol>
-<p>Une fois les différences de syntaxe mises de côté, la version shapeless de <code>myPoly</code> a la même fonctionalité que notre version de démonstration. Nous pouvons l’appeler avec un paramètre de type <code>Int</code> ou <code>String</code> et obtenir en retour le type correspondant :</p>
+<p>Une fois les différences de syntaxe mises de côté, la version shapeless de <code>myPoly</code> a la même fonctionnalité que notre version de démonstration. Nous pouvons l’appeler avec un paramètre de type <code>Int</code> ou <code>String</code> et obtenir en retour le type correspondant :</p>
 <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala">myPoly.<span class="fu">apply</span>(<span class="dv">123</span>)
 <span class="co">// res10: myPoly.intCase.Result = 61.5</span>
 
@@ -1745,7 +1746,7 @@ myPoly.<span class="fu">apply</span>(<span class="st">&quot;hello&quot;</span>)
 
 <span class="fu">multiply</span>(<span class="dv">3</span>, <span class="st">&quot;4&quot;</span>)
 <span class="co">// res13: multiply.intStrCase.Result = 444</span></code></pre></div>
-<p>Les <code>Cases</code> n’étant que des valeurs implicites, nous pouvons définir des cases basés sur des type classes et ainsi appliquer toutes les résolutions implicites sophistiquées que nous avions traitées dans le chapitre précédent.</p>
+<p>Les <code>Cases</code> n’étant que des valeurs implicites, nous pouvons définir des cases basés sur des <em>type classes</em> et ainsi appliquer toutes les résolutions implicites sophistiquées que nous avions traitées dans le chapitre précédent.</p>
 <p>Voici un exemple simple qui donne le total de nombre selon différents contextes :</p>
 <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala"><span class="kw">import</span> scala.<span class="fu">math</span>.<span class="fu">Numeric</span>
 
@@ -1844,7 +1845,7 @@ myPoly.<span class="fu">apply</span>(<span class="st">&quot;hello&quot;</span>)
 <span class="co">// res7: Int = 115</span></code></pre></div>
 <p>Nous pouvons aussi utiliser <code>reduceLeft</code>, <code>reduceRight</code>, <code>foldMap</code> et bien d’autres. Chaque opération est associée à une type classe. Nous vous laissons le soin d’examiner les autres opérations disponibles.</p>
 <h2 id="sec:poly:product-mapper"><span class="header-section-number">7.5</span> Définir une type classe utilisant <em>Poly</em></h2>
-<p>Nous pouvons utiliser <code>Poly</code> et les type classes en tant que <code>Mapper</code> et un <code>FlatMapper</code> comme brique d’assemblage pour nos propres type classes. Comme exemple, construisons une type classe pour transformer une case classe en une autre :</p>
+<p>Nous pouvons utiliser <code>Poly</code> et les <em>type classes</em> en tant que <code>Mapper</code> et un <code>FlatMapper</code> comme brique d’assemblage pour nos propres <em>type classes</em>. Comme exemple, construisons une type classe pour transformer une case classe en une autre :</p>
 <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala"><span class="kw">trait</span> ProductMapper[A, B, P] {
   <span class="kw">def</span> <span class="fu">apply</span>(a: A): B
 }</code></pre></div>
@@ -1891,10 +1892,10 @@ myPoly.<span class="fu">apply</span>(<span class="st">&quot;hello&quot;</span>)
 <span class="co">// res2: IceCream2 = IceCream2(Sundae,true,0)</span></code></pre></div>
 <p>La syntaxe de <code>mapTo</code> ressemble à un simple appel de méthode, mais il s’agit en réalité de deux appels : un appel à <code>mapTo</code> pour fixer le paramètre de type <code>B</code> et un appel à <code>Builder.apply</code> pour spécifier le <code>Poly</code>. Certaines méthodes d’extension ops de shapeless utilisent la même astuce pour fournir une syntaxe plus simple à l’utilisateur.</p>
 <h2 id="résumé-3"><span class="header-section-number">7.6</span> Résumé</h2>
-<p>Dans ce chapitre, nous avons traité des <em>fonctions polymorpgiques</em> dont le type de retour varie en fonction du type de paramètre. Nous avons vu comment le type <code>Poly</code> de shapeless est défini et comment implémenter des opérations fonctionnelles comme <code>map</code>, <code>flatMap</code>, <code>foldLeft</code> et <code>foldRight</code>.</p>
-<p>Chaque opération est implémentée comme une méthode d’extension sur <code>HList</code>, basée sur une des type classes correspondantes : <code>Mapper</code>, <code>FlatMapper</code>, <code>LeftFolder</code> et les autres. Nous pouvons utiliser ces type classes, <code>Poly</code> et les techniques de la section 4.3 pour créer nos propres type classes comportant un enchaînement de transformations sophistiquées.</p>
+<p>Dans ce chapitre, nous avons traité des <em>fonctions polymorphiques</em> dont le type de retour varie en fonction du type de paramètre. Nous avons vu comment le type <code>Poly</code> de shapeless est défini et comment implémenter des opérations fonctionnelles comme <code>map</code>, <code>flatMap</code>, <code>foldLeft</code> et <code>foldRight</code>.</p>
+<p>Chaque opération est implémentée comme une méthode d’extension sur <code>HList</code>, basée sur une des <em>type classes</em> correspondantes : <code>Mapper</code>, <code>FlatMapper</code>, <code>LeftFolder</code> et les autres. Nous pouvons utiliser ces <em>type classes</em>, <code>Poly</code> et les techniques de la section 4.3 pour créer nos propres <em>type classes</em> comportant un enchaînement de transformations sophistiquées.</p>
 <h1 id="sec:nat"><span class="header-section-number">8</span> Compter avec les types</h1>
-<p>De temps en temps nous avons besoin de compter quelque chose au niveau des types. Par exemple, nous pourrions avoir besoin de connaître la taille d’une <code>HList</code>. Nous pouvons représenter les nombres facilement avec les valeurs, mais si nous voulons influencer la résolution d’implicite, nous avons besoin de les représenter au niveau des types. Ce chapitre traite des théories qui permettent de compter avec les types, et nous fournirons quelques cas d’utilisation pour la déduction de <em>type class</em>es.</p>
+<p>De temps en temps nous avons besoin de compter quelque chose au niveau des types. Par exemple, nous pourrions avoir besoin de connaître la taille d’une <code>HList</code>. Nous pouvons représenter les nombres facilement avec les valeurs, mais si nous voulons influencer la résolution d’implicite, nous avons besoin de les représenter au niveau des types. Ce chapitre traite des théories qui permettent de compter avec les types, et nous fournirons quelques cas d’utilisation pour la déduction de <em>type classes</em>.</p>
 <h2 id="représenter-des-nombres-par-des-types."><span class="header-section-number">8.1</span> Représenter des nombres par des types.</h2>
 <p>Shapeless utilise « le codage de Church » pour représenter les nombres naturels au niveau des types. Il introduit le type <code>Nat</code> avec deux sous-types : <code>_0</code> représente zero et <code>Succ[N]</code> représente <code>N+1</code> :</p>
 <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala"><span class="kw">import</span> shapeless.{Nat, Succ}
@@ -1918,21 +1919,21 @@ Nat._<span class="dv">3</span>
 <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala">Nat.<span class="fu">toInt</span>[Nat._<span class="dv">3</span>]
 <span class="co">// res8: Int = 3</span></code></pre></div>
 <h2 id="la-longueur-des-représentations-génériques"><span class="header-section-number">8.2</span> La longueur des représentations génériques</h2>
-<p>Un des cas d’utilisation de <code>Nat</code>consiste à déterminer la taille des <code>HList</code>s et des <code>Coproduct</code>s. Shapeless fournit les type classes <code>shapeless.ops.hlist.Length</code> et <code>shapeless.ops.coproduct.Length</code> pour cela :</p>
+<p>Un des cas d’utilisation de <code>Nat</code>consiste à déterminer la taille des <code>HList</code>s et des <code>Coproduct</code>s. Shapeless fournit les <em>type classes</em> <code>shapeless.ops.hlist.Length</code> et <code>shapeless.ops.coproduct.Length</code> pour cela :</p>
 <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala"><span class="kw">import</span> shapeless._
 <span class="kw">import</span> shapeless.<span class="fu">ops</span>.{hlist, coproduct, nat}</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala"><span class="kw">val</span> hlistLength = hlist.<span class="fu">Length</span>[String :: Int :: Boolean :: HNil]
-<span class="co">// hlistLength: shapeless.ops.hlist.Length[shapeless.::[String,shapeless.::[Int,shapeless.::[Boolean,shapeless.HNil]]]]{type Out = shapeless.Succ[shapeless.Succ[shapeless.Succ[shapeless._0]]]} = shapeless.ops.hlist$Length$$anon$3@5a8a80b1</span>
+<span class="co">// hlistLength: shapeless.ops.hlist.Length[shapeless.::[String,shapeless.::[Int,shapeless.::[Boolean,shapeless.HNil]]]]{type Out = shapeless.Succ[shapeless.Succ[shapeless.Succ[shapeless._0]]]} = shapeless.ops.hlist$Length$$anon$3@1a54018d</span>
 
 <span class="kw">val</span> coproductLength = coproduct.<span class="fu">Length</span>[Double :+: Char :+: CNil]
-<span class="co">// coproductLength: shapeless.ops.coproduct.Length[shapeless.:+:[Double,shapeless.:+:[Char,shapeless.CNil]]]{type Out = shapeless.Succ[shapeless.Succ[shapeless._0]]} = shapeless.ops.coproduct$Length$$anon$29@6dd27140</span></code></pre></div>
+<span class="co">// coproductLength: shapeless.ops.coproduct.Length[shapeless.:+:[Double,shapeless.:+:[Char,shapeless.CNil]]]{type Out = shapeless.Succ[shapeless.Succ[shapeless._0]]} = shapeless.ops.coproduct$Length$$anon$29@45602c1a</span></code></pre></div>
 <p>Les instances de <code>Length</code> ont un membre de type <code>Out</code> qui représente la taille avec un <code>Nat</code> :</p>
 <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala">Nat.<span class="fu">toInt</span>[hlistLength.<span class="fu">Out</span>]
 <span class="co">// res0: Int = 3</span>
 
 Nat.<span class="fu">toInt</span>[coproductLength.<span class="fu">Out</span>]
 <span class="co">// res1: Int = 2</span></code></pre></div>
-<p>Utilisons un exemple concret. Nous allons créer une type class <code>SizeOf</code> qui compte le nombre de champs d’une case class et retourne cette valeur comme un simple <code>Int</code> :</p>
+<p>Utilisons un exemple concret. Nous allons créer une <em>type class</em> <code>SizeOf</code> qui compte le nombre de champs d’une case class et retourne cette valeur comme un simple <code>Int</code> :</p>
 <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala"><span class="kw">trait</span> SizeOf[A] {
   <span class="kw">def</span> value: Int
 }
@@ -1959,26 +1960,26 @@ Nat.<span class="fu">toInt</span>[coproductLength.<span class="fu">Out</span>]
 <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala">sizeOf[IceCream]
 <span class="co">// res3: Int = 3</span></code></pre></div>
 <h2 id="étude-de-cas-générateur-de-valeur-aléatoire"><span class="header-section-number">8.3</span> Étude de cas: générateur de valeur aléatoire</h2>
-<p>Les bibliothèques de test axées sur les propriétés comme <a href="https://scalacheck.org">ScalaCheck</a> utilisent des type classes dont le but est de générer des valeurs aléatoires pour les test unitaires. Par exemple, ScalaCheck fournit la <em>type class</em> <code>Arbitrary</code> que nous pouvons utiliser de la façon suivante :</p>
+<p>Les bibliothèques de test axées sur les propriétés comme <a href="https://scalacheck.org">ScalaCheck</a> utilisent des <em>type classes</em> dont le but est de générer des valeurs aléatoires pour les tests unitaires. Par exemple, ScalaCheck fournit la <em>type class</em> <code>Arbitrary</code> que nous pouvons utiliser de la façon suivante :</p>
 <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala"><span class="kw">import</span> org.<span class="fu">scalacheck</span>._</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala"><span class="kw">for</span>(i &lt;- <span class="dv">1</span> to <span class="dv">3</span>) <span class="fu">println</span>(Arbitrary.<span class="fu">arbitrary</span>[Int].<span class="fu">sample</span>)
-<span class="co">// Some(-2069432391)</span>
-<span class="co">// Some(2147483647)</span>
-<span class="co">// Some(0)</span>
+<span class="co">// Some(-2083372342)</span>
+<span class="co">// Some(-2147483648)</span>
+<span class="co">// Some(1579167812)</span>
 
 <span class="kw">for</span>(i &lt;- <span class="dv">1</span> to <span class="dv">3</span>) <span class="fu">println</span>(Arbitrary.<span class="fu">arbitrary</span>[(Boolean, Byte)].<span class="fu">sample</span>)
-<span class="co">// Some((false,126))</span>
-<span class="co">// Some((false,1))</span>
-<span class="co">// Some((false,-80))</span></code></pre></div>
-<p>ScalaCheck founit deja des instances d’<code>Arbitrary</code> pour un grand nombre de types scala standards. Pourtant, créer des instances d’<code>Arbitrary</code> pour les utilisateurs d’<em>ADT</em>s reste un travail manuel et chronophage. C’est ce qui rend très intéressant l’intégration de shapeless via des bibliothèques comme <a href="https://github.com/alexarchambault/scalacheck-shapeless">scalacheck-shapeless</a>.</p>
-<p>Dans cette section, nous allons créer une simple type class <code>Random</code> pour générer des valeurs aléatoires pour un <em>ADT</em> donné. Nous allons voir comment <code>Length</code> et <code>Nat</code> font partie intégrante de l’implémentation. Comme toujours, nous commençons par définir la <em>type class</em> elle-même.</p>
+<span class="co">// Some((true,0))</span>
+<span class="co">// Some((true,-29))</span>
+<span class="co">// Some((true,127))</span></code></pre></div>
+<p>ScalaCheck fournit déjà des instances d’<code>Arbitrary</code> pour un grand nombre de types scala standards. Pourtant, créer des instances d’<code>Arbitrary</code> pour les utilisateurs d’<em>ADT</em>s reste un travail manuel et chronophage. C’est ce qui rend très intéressant l’intégration de shapeless via des bibliothèques comme <a href="https://github.com/alexarchambault/scalacheck-shapeless">scalacheck-shapeless</a>.</p>
+<p>Dans cette section, nous allons créer une simple <em>type class</em> <code>Random</code> pour générer des valeurs aléatoires pour un <em>ADT</em> donné. Nous allons voir comment <code>Length</code> et <code>Nat</code> font partie intégrante de l’implémentation. Comme toujours, nous commençons par définir la <em>type class</em> elle-même.</p>
 <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala"><span class="kw">trait</span> Random[A] {
   <span class="kw">def</span> get: A
 }
 
 <span class="kw">def</span> random[A](<span class="kw">implicit</span> r: Random[A]): A = r.<span class="fu">get</span></code></pre></div>
 <h3 id="de-simples-valeurs-aléatoires"><span class="header-section-number">8.3.1</span> De simples valeurs aléatoires</h3>
-<p>Commencons avec une instance basique de <code>Random</code> :</p>
+<p>Commençons avec une instance basique de <code>Random</code> :</p>
 <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala"><span class="co">// Instance constructor:</span>
 <span class="kw">def</span> createRandom[A](func: () =&gt; A): Random[A] =
   <span class="kw">new</span> Random[A] {
@@ -2106,16 +2107,16 @@ hlist.<span class="fu">apply</span>(Nat._<span class="dv">3</span>)
 
 hlist.<span class="fu">updatedAt</span>(Nat._<span class="dv">1</span>, <span class="st">&quot;bar&quot;</span>).<span class="fu">updatedAt</span>(Nat._<span class="dv">2</span>, <span class="st">&quot;baz&quot;</span>)
 <span class="co">// res4: shapeless.::[Int,shapeless.::[String,shapeless.::[String,shapeless.::[Char,shapeless.HNil]]]] = 123 :: bar :: baz :: x :: HNil</span></code></pre></div>
-<p>Ces opérations et leurs type classes associées sont utiles pour manipuler individuellement les éléments d’un produit ou d’un coproduit.</p>
+<p>Ces opérations et leurs <em>type classes</em> associées sont utiles pour manipuler individuellement les éléments d’un produit ou d’un coproduit.</p>
 <h2 id="résumé-4"><span class="header-section-number">8.5</span> Résumé</h2>
-<p>Dans ce chapitre, nous avons traité la façon dont shapeless représente les nombre naturels et comment nous pouvons les utiliser dans les type classes. Nous avons vu qu’il existe déjà des type classe ops qui nous permettent de faire des choses comme calculer des tailles et accéder à des éléments par leurs index. Nous avons aussi vu comment créer nos type classes qui utilisent <code>Nat</code> pour leurs propres besoins.</p>
-<p>Avec <code>Nat</code>, <code>Poly</code> et les variétés de type que nous avons vues dans le dernier chapitre, nous n’avons abordé qu’une fraction des outils fournit par <code>shapeless.ops</code>. Il existe de nombreux autres type classes qui apportent des fondations structurées sur lesquelles nous pouvons construire notre propre code.</p>
-<p>Cependant, la théorie décrite ici est suffisante pour comprendre la majorité des opérations nécessaires à la déduction de nos propre type classes. La code source du package <code>shapeless.ops</code> devrait vous être désormais suffisament compréhensible pour que vous y séléctionniez d’autre ops qui vous seront utiles.</p>
+<p>Dans ce chapitre, nous avons traité la façon dont shapeless représente les nombre naturels et comment nous pouvons les utiliser dans les <em>type classes</em>. Nous avons vu qu’il existe déjà des <em>type classes</em> ops qui nous permettent de faire des choses comme calculer des tailles et accéder à des éléments par leurs index. Nous avons aussi vu comment créer nos <em>type classes</em> qui utilisent <code>Nat</code> pour leurs propres besoins.</p>
+<p>Avec <code>Nat</code>, <code>Poly</code> et les variétés de type que nous avons vues dans le dernier chapitre, nous n’avons abordé qu’une fraction des outils fournit par <code>shapeless.ops</code>. Il existe de nombreuses autres <em>type classes</em> qui apportent des fondations structurées sur lesquelles nous pouvons construire notre propre code.</p>
+<p>Cependant, la théorie décrite ici est suffisante pour comprendre la majorité des opérations nécessaires à la déduction de nos propre <em>type classes</em>. Le code source du package <code>shapeless.ops</code> devrait vous être désormais suffisamment compréhensible pour que vous y sélectionniez d’autre ops qui vous seront utiles.</p>
 <h1 id="préparez-vous-au-lancement" class="unnumbered">Préparez-vous au lancement!</h1>
 <p>Après la présentation de <code>shapeless.ops</code> dans la <em>Partie II</em> nous touchons désormais à la fin de ce guide. Nous espérons qu’il vous aura aidé à appréhender cette librairie passionante et puissante, et nous vous souhaitons bonne chance dans vos nouvelles péripéties d’astronaute des types.</p>
-<p>En programmation fonctionnelle, l’abstraction est mise en avant par rapport au reste. Les concepts de foncteurs et de monades sont apparus après des années de remise en question des pratiques de programmation : à écrire du code, à repérer des patrons de conception, et à créer des abstractions pour supprimer les redondances. Shapeless porte l’abstraction dans Scala à un niveau supérieur. Les outils comme <code>Generic</code> et <code>LabelledGeneric</code> fournissent une interface d’abstration à des types de données qui paraissaient auparavant frustrants par leur côté singulier.</p>
+<p>En programmation fonctionnelle, l’abstraction est mise en avant par rapport au reste. Les concepts de foncteurs et de monades sont apparus après des années de remise en question des pratiques de programmation : à écrire du code, à repérer des patrons de conception, et à créer des abstractions pour supprimer les redondances. Shapeless porte l’abstraction dans Scala à un niveau supérieur. Les outils comme <code>Generic</code> et <code>LabelledGeneric</code> fournissent une interface d’abstraction à des types de données qui paraissaient auparavant frustrants par leur côté singulier.</p>
 <p>Les nouveaux utilisateurs de shapeless rencontrent traditionnellement deux obstacles. Premièrement, la lourdeurs des prérequis à la fois théoriques et pratiques à posséder pour comprendre les patrons de conception utilisés. Nous espérons que ce guide vous a aidé sur ce point.</p>
-<p>Deuxièmement, la peur et l’hésitation à utiliser une librairie pouvant avoir une image trop <em>academique</em> ou <em>complexe</em>. Un remède à cela est de partager nos techniques (cas d’utilisations, avantages et inconvénients, stratégies d’implémentation <em>etc.</em>) et de diffuser l’information sur ces précieux outils. Alors s’il-vous-plaît partagez ce livre avec vos amis <em>etc.</em> et éliminons ensemble le code <em>boilerplate</em> !</p>
+<p>Deuxièmement, la peur et l’hésitation à utiliser une librairie pouvant avoir une image trop <em>académique</em> ou <em>complexe</em>. Un remède à cela est de partager nos techniques (cas d’utilisations, avantages et inconvénients, stratégies d’implémentation <em>etc.</em>) et de diffuser l’information sur ces précieux outils. Alors s’il-vous-plaît partagez ce livre avec vos amis <em>etc.</em> et éliminons ensemble le code <em>boilerplate</em> !</p>
 <p></p>
 <!-- Source -->
 <!-- Code -->
@@ -2132,7 +2133,7 @@ hlist.<span class="fu">updatedAt</span>(Nat._<span class="dv">1</span>, <span cl
 <li id="fn5"><p><code>String</code> est également doté de pluisieurs autres types tels que <code>Serializable</code> et <code>Comparable</code>, mais ignorons-les pour l’instant.<a href="#fnref5">↩</a></p></li>
 <li id="fn6"><p>Les futures versions de shapeless pourraient utiliser les <code>Strings</code> comme tags.<a href="#fnref6">↩</a></p></li>
 <li id="fn7"><p>Le terme est tiré de « migrations de base de donnée » : des scripts SQL qui automatise la mise à jour des schémas de base de données.<a href="#fnref7">↩</a></p></li>
-<li id="fn8"><p>Le jeu de mots est intentionel. (note du traducteur: jeu de mot intraduisible)<a href="#fnref8">↩</a></p></li>
+<li id="fn8"><p>Le jeu de mots est intentionnel. (note du traducteur: jeu de mot intraduisible)<a href="#fnref8">↩</a></p></li>
 </ol>
 </div>
 </article>

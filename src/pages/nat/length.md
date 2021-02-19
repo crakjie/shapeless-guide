@@ -2,7 +2,7 @@
 
 Un des cas d'utilisation de `Nat`consiste à déterminer la taille
 des `HList`s et des `Coproduct`s.
-Shapeless fournit les type classes `shapeless.ops.hlist.Length` et
+Shapeless fournit les *type classes* `shapeless.ops.hlist.Length` et
 `shapeless.ops.coproduct.Length` pour cela :
 
 ```tut:book:silent
@@ -23,7 +23,7 @@ Nat.toInt[coproductLength.Out]
 ```
 
 Utilisons un exemple concret.
-Nous allons créer une type class `SizeOf` qui
+Nous allons créer une *type class* `SizeOf` qui
 compte le nombre de champs d'une case class et 
 retourne cette valeur comme un simple `Int` :
 

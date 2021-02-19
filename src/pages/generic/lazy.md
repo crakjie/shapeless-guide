@@ -65,17 +65,16 @@ case class Branch[A](left: Tree[A], right: Tree[A]) extends Tree[A]
 case class Leaf[A](value: A) extends Tree[A]
 ```
 
-En théorie nous devrions deja avoir toutes les définiton
+En théorie nous devrions déjà avoir toutes les définitons
 pour instancier un CSV writer pour notre arbre.
-Pourtant, appler `writeCsv` provoque une erreur :
-However, calls to `writeCsv` fail to compile:
+Pourtant, appeler `writeCsv` provoque une erreur :
 
 ```tut:book:fail
 CsvEncoder[Tree[Int]]
 ````
 
-Le problème est que notre type est qu'il est récusif.
-Le compilateur rentre dans une boucle infie
+Le problème est que notre type est qu'il est récursif.
+Le compilateur rentre dans une boucle infinie
 en essayant d'appliquer nos implicits
 puis il abandonne.
 
@@ -89,11 +88,11 @@ si l'une d'elle ne donne pas de résultat favorable,
 le compilateur considère que cette branche n'aboutira pas
 et continue ses recherches sur une autre branche.
 
-Une des heuristique est conçue spécifiquement pour
+Une des heuristiques est conçue spécifiquement pour
 éviter les boucles infinies.
 Si le compilateur rencontre le type cible
-deux fois dans une branche de recherche;
-il abandonne cette branche et passe a une autre.
+deux fois dans une branche de recherche,
+il abandonne cette branche et passe à une autre.
 On peut l'observer si on regarde l'expression `CsvEncoder[Tree[Int]]`.
 Le processus de résolution d'implicits suit les étapes suivantes :
 
@@ -107,7 +106,7 @@ CsvEncoder[Tree[Int]]                          // 5 uh oh
 
 On rencontre `Tree[A]` deux fois lignes 1 et 5,
 donc le compilateur abandonne la recherche dans cette branche.
-La conséquence est que le compilateur echoue à trouver le bon *implicit*.
+La conséquence est que le compilateur échoue à trouver le bon *implicit*.
 
 En fait, la situation est pire.
 Si le compilateur voit le même constructeur de types deux fois
@@ -116,8 +115,8 @@ que la branche n'aboutira pas.*
 C'est un problème avec shapeless car les types comme
 `::[H, T]` et `:+:[H, T]` peuvent apparaître plusieurs fois
 lorsque le compilateur développe les représentations génériques.
-Ce qui pousse le compilateur a abandonner prématurément
-même si il aurait pu trouver la solution si il avait persisté
+Ce qui pousse le compilateur à abandonner prématurément
+même s'il aurait pu trouver la solution s'il avait persisté
 à chercher dans cette voie.
 
 Compte-tenu des types suivants :
@@ -149,7 +148,7 @@ il ne trouvera pas de quoi générer la bonne instance.
 
 La divergence d'`implicit` peut marquer un arrêt pour la librairie shapeless.
 Heureusement, shapeless fournit un
-type appeler `Lazy` pour contourner ce problème.
+type appelé `Lazy` pour contourner ce problème.
 `Lazy` fait deux choses :
 
  1. Il supprime la divergence d'`implicit` à la

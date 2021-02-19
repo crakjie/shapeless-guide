@@ -290,7 +290,7 @@ case class Booking(room: String, date: Date)
 writeCsv(List(Booking("Lecture hall", new Date())))
 ```
 
-Le messsage d'erreur ne nous aide pas vraiment.
+Le message d'erreur ne nous aide pas vraiment.
 Tout ce que le compilateur sait,
 c'est qu'il a essayé un grand nombre de combinaisons d'implicites
 et qu'aucune ne fonctionnait.
@@ -302,7 +302,7 @@ Nous devons trouver nous-même la source
 des erreurs par un processus d'élimination.
 Nous aborderons les techniques de
 debuggage dans la section [@sec:generic:debugging].
-Pour l'instant la seule fonctionalité qui compense c'est que
+Pour l'instant la seule fonctionnalité qui compense c'est que
 la résolution d'implicite plantera toujours à la compilation.
 Il y a une petite chance que cela finisse
 par produire du code qui plante durant l'exécution.

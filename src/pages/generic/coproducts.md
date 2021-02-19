@@ -56,10 +56,10 @@ implicit def genericEncoder[A, R](
 
 // ----------------------------------------------
 ```
-Dans la section précédente nous avons crée un ensemble de règle
+Dans la section précédente nous avons créé un ensemble de règles
 pour déduire automatiquement un `CsvEncoder` pour n'importe quel type de produits.
-Dans cette section allons appliqué les mêmes patrons de conception aux coproduits.
-Retournons a notre exemple, l'*ADT* shape :
+Dans cette section allons nous appliquer les mêmes patrons de conception aux coproduits.
+Retournons à notre exemple, l'*ADT* shape :
 
 ```tut:book:silent
 sealed trait Shape
@@ -70,9 +70,9 @@ final case class Circle(radius: Double) extends Shape
 La représentation générique de `Shape` est
 `Rectangle :+: Circle :+: CNil`.
 Dans la section [@sec:generic:product-generic]
-nous avons définie des encodeurs de produit pour `Rectangle` et `Circle`.
-Maintenant, pour écrire des `CsvEncoders` générique pour `:+:` et `CNil`,
-nous alons utilisé les mêmes principes que pour `HList`s:
+nous avons défini des encodeurs de produit pour `Rectangle` et `Circle`.
+Maintenant, pour écrire des `CsvEncoders` génériques pour `:+:` et `CNil`,
+nous allons utiliser les mêmes principes que pour `HList`s:
 
 ```tut:book:silent
 import shapeless.{Coproduct, :+:, CNil, Inl, Inr}
@@ -94,19 +94,21 @@ Il importe de noter deux choses :
 
  1. Comme `Coproduct`s est une *disjonction* de types,
     l'encoder de `:+:` doit *choisir*
-    si il a à encoder la valeur de droit ou de gauche.
+    s'il a à encoder la valeur de droit ou de gauche.
     On fait un pattern matching sur les deux sous types de `:+:`,
     qui sont `Inl` pour la gauche et `Inr` pour la droite.
 
- 2. Etonnament, l'encoder de `CNil` lève une exception!
+ 2. Étonnamment, l'encoder de `CNil` lève une exception !
     Mais pas de panique.
-    Rappelez vous que l'on ne peut
-    crée de valeur pour le type `CNil`,
-    donc the `throw` et en fait du code mort.
+    Rappelez-vous que l'on ne peut
+    créer de valeur pour le type `CNil`,
+    donc le `throw` est en fait du code mort.
+    Pas de problème pour échouer violemment ici, 
+    nous n'atteindrons jamais ce point.
 
 Si l'on utilise ces définitions avec celle de nos produit de la section [@sec:generic:products],
 on sera capable de sérializer une liste de shapes.
-Essayons:
+Essayons :
 
 ```tut:book:silent
 val shapes: List[Shape] = List(
@@ -129,7 +131,7 @@ implicit val doubleEncoder: CsvEncoder[Double] =
   createEncoder(d => List(d.toString))
 ```
 
-Avec cette nouvelle définition, tout fonctionne comme prévus:
+Avec cette nouvelle définition, tout fonctionne comme prévu :
 
 ```tut:book
 writeCsv(shapes)
@@ -137,32 +139,33 @@ writeCsv(shapes)
 
 <div class="callout callout-warning">
   *SI-7046 et vous*
+
   Il y a dans Scala un bug du compilateur appelé [SI-7046][link-si7046]
-  qui peut amener la résolution de générique pour comproduct a ne pas fonctionner.
-  Le bug provoque dans certaines partie de l'API de macro,
-  dont shapeless dépend, deviens sensible a l'ordre
+  qui peut amener la résolution de générique pour les coproduits à ne pas fonctionner.
+  Le bug fait que certaines parties de l'API de macro,
+  dont shapeless dépend, deviennent sensible à l'ordre
   des définitions dans le code source.
-  C'est un problème qui peut souvant etre contourner
-  en réordonant le code et en renoment les fichiers,
-  mais ces solution on tendence a ne durée qu'un temps
-  et sont peut fiable.
+  C'est un problème qui peut souvent être contourné
+  en réordonnant le code et en renommant les fichiers,
+  mais ces solutions ont tendance à ne durer qu'un temps
+  et sont peu fiables.
 
   Si vous utilisez *Lightbend Scala 2.11.8* ou une version plus ancienne
-  et que vous ètes toucher par ce problème, pensez a mettre a jour
+  et que vous êtes touché par ce problème, pensez à mettre à jour
   vers la version *Lightbend Scala 2.11.9* ou *Typelevel Scala 2.11.8*.
-  SI-7046 est corrigée dans chacune de de ces versions.
+  SI-7046 est corrigée dans chacune de ces versions.
 </div>
 
 ### Aligner les colonnes dans la sortie CSV
 
-Notre encodeur de CSV n'est idéal dans ca forme courante.
-Il permet au champs de `Rectangle` et `Circle`
-de se retrouver dans la meme colonne.
-Pour remédier a a ce problème il faut changer
+Notre encodeur de CSV n'est idéal dans sa forme courante.
+Il autorise les champs de `Rectangle` et `Circle`
+à se retrouver dans la même colonne.
+Pour remédier à ce problème il faut changer
 la définition de `CsvEncoder`
-pour ajouter la largeur des type de données et ainsi
+pour ajouter la largeur des types de données et ainsi
 espacer les colonnes en conséquence.
-Le dépôt d'exemple contenant
+Le dépôt d'exemples contenant
 l'implémentation complète d'un `CsvEncoder`
 traitant ce problème est
-linké dans la section [@sec:intro:about-this-book]
+référencé dans la section [@sec:intro:about-this-book]

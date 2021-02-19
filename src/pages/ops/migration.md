@@ -1,6 +1,6 @@
 ## Étude de cas : migration de case class {#sec:ops:migration}
 
-La puissance des type classes ops se conrétise
+La puissance des *type classes* ops se concrétise
 quand on assemble dans notre propre code.
 Nous allons conclure ce chapitre avec un exemple probant :
 une type classe visant à effectuer des « migrations » (ou « évolutions »)
@@ -159,7 +159,7 @@ IceCreamV1("Sundae", 1, true).migrateTo[IceCreamV2c]
 
 Pour soutenir l'ajout de champs nous avons
 besoin d'un mécanisme pour fournir les valeurs par défaut.
-Shapeless ne fournit pas une type class pour cette raison,
+Shapeless ne fournit pas une *type class* pour cette raison,
 mais Cats le fait, sous la forme d'un `Monoid`.
 En voici une définition simplifiée :
 
@@ -221,7 +221,7 @@ Voici la liste complète des étapes :
  6. utiliser `Align` pour réordonner les champs de l'étape 5 dans le même ordre que `B` ;
  7. utiliser `LabelledGeneric` pour convertir le résultat de l'étape 6 vers `B`.
 
-[^monoid-pun]: Le jeu de mots est intentionel.
+[^monoid-pun]: Le jeu de mots est intentionnel.
 (note du traducteur: jeu de mot intraduisible)
 
 Nous avons déja vu comment implémenter les étapes 1, 2, 4, 6 et 7.
@@ -250,7 +250,7 @@ implicit def genericMigration[
   }
 ```
 
-Notez que ce code n'évalue pas toutes les type classes.
+Notez que ce code n'évalue pas toutes les *type classes*.
 Nous utilisons `Diff` uniquement pour calculer le type de données `Added`,
 mais nous n'avons pas besoin d'exécuter `diff.apply`.
 Au lieu de cela, nous utilisons notre `Monoid` pour invoquer une instance de `Added`.
@@ -265,7 +265,7 @@ IceCreamV1("Sundae", 1, true).migrateTo[IceCreamV2b]
 IceCreamV1("Sundae", 1, true).migrateTo[IceCreamV2c]
 ```
 
-C'est incroyable tout ce que nous pouvons faire avec les type class ops.
+C'est incroyable tout ce que nous pouvons faire avec les *type class* ops.
 `Migration` ne contient qu'une `implicit def` avec une seul ligne d'implémentation
 au value-level.
 Cela nous permet d'automatiser les migrations entre *n'importe* quelle paire de *case classes*,

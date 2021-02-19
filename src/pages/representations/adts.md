@@ -31,7 +31,7 @@ val circ: Shape = Circle(1.0)
 ```
 
 Ce qui est beau avec les *ADT*s, c'est qu'ils sont complètement type safe.
-Le compilateur a une connaisence complète de l'algèbre[^algebra]
+Le compilateur a une connaissance complète de l'algèbre[^algebra]
 que nous définissons, il peut donc nous aider à écrire des méthodes
 correctement typées avec nos types.
 
@@ -53,7 +53,7 @@ area(circ)
 ### Les écritures alternatives
 
 Les sealed traits et les *case classes* sont sans aucun doute
-les encodages les plus pratique des *ADT*s en Scala.
+les encodages les plus pratiques des *ADT*s en Scala.
 Mais ce ne sont pas les *seules* possibilités d'encodage.
 Par exemple, la librairie standard de Scala fournit
 des produits génériques appelés `Tuples`

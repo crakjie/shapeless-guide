@@ -7,7 +7,7 @@ Pourtant, nous n'avons pas encore abordé la théorie sous-jacente à `Generic` 
 
 
 Pour illustrer tout ca, intéressons-nous de plus près à `Generic`.
-Voici une version simplifié de sa définition :
+Voici une version simplifiée de sa définition :
 
 ```scala
 trait Generic[A] {
@@ -59,4 +59,4 @@ def getRepr2[A, R](value: A)(implicit generic: Generic2[A, R]): R =
 Nous aurions dû passer la valeur désirée de `Repr` dans le paramètre de type de `getRepr`,
 ce qui finit par rendre `getRepr` inutile.
 On peut en déduire que les paramètres de type sont utiles en tant « qu'inputs »
-et les membre de type sont utiles en tant « qu'outputs. »
+et les membres de type sont utiles en tant « qu'outputs. »

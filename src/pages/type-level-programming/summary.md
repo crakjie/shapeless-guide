@@ -13,12 +13,12 @@ d'après un point de départ à l'emplacement d'appel.
 Plusieurs étapes sont souvent nécessiares pour
 calculer le resultat
 (par exemple : utiliser `Generic` pour avoir un `Repr`,
-puis utiliser une autre type class pour avoir un autre type).
+puis utiliser une autre *type class* pour avoir un autre type).
 Dans ce cas, on peut suivre quelques règles
 pour nous assuer que notre code compile et fonctionne comme prévu :
 
 
- 1. Il faut placer tout les types intermédiaires dans la liste des paramètres de types.
+ 1. Il faut placer tous les types intermédiaires dans la liste des paramètres de types.
     De nombreux paramètres de type ne seront pas utilisés dans le résultat mais le compilateur en a besoin pour savoir quel type il doit unifier.
 
  2. Le compilateur résoud les implicites de gauche à droite

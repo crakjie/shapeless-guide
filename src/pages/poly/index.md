@@ -5,12 +5,12 @@ les opérations fonctionnelles
 telles que `map` et `flatMap`.
 Une question se pose : peut-on effectuer
 des opérations semblables sur les HLists` ?
-Les réponse est oui, mais nous devons faire les choses
+La réponse est oui, mais nous devons faire les choses
 légèrement différemment par rapport au Scala classique.
 Nous ne serons pas surpris de constater que le mécanisme utilisé reste basé
-sur les type classes et un ensemble de *type class*es ops pour nous aider.
+sur les *type classes* et un ensemble de *type classes* ops pour nous aider.
 
-Avant de nous péncher directement sur les type classes,
+Avant de nous pencher directement sur les *type classes*,
 nous devons aborder la façon dont shapeless représente les
 *fonctions polymorphiques* qui seront capables
 de mapper sur une structure de données hétérogènes.
@@ -36,7 +36,7 @@ le même type pour toutes les positions.
 Dans l'idéal, nous voulons que notre fonction `map` corresponde à
 la Figure [@fig:poly:polymorphic-map], où la fonction inspecte
 le type de chaque entrée pour déterminer le type de chaque sortie.
-Ce qui nous donne un environement clos et
+Ce qui nous donne un environnement clos et
 composable qui conserve la nature hétérogène
 des `HList`.
 

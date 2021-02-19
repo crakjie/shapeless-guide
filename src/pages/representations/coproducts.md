@@ -23,7 +23,7 @@ Globalement, le type d'un coproduit encode tous les types
 possibles d'une disjonction, mais ces instances contiennent
 uniquement la valeur de l'une des possibilités.
 `:+:` dispose de deux sous types, `Inl` et `Inr`,
-qui correspondent vagument à `Left` et `Right`.
+qui correspondent vaguement à `Left` et `Right`.
 On crée des instances de coproduit en
 imbriquant des constructeurs de `Inl` et de `Inr` :
 

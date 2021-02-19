@@ -14,12 +14,12 @@ Shapeless fournit deux ensembles d'outils dans ce but :
     et leurs représentations génériques.
 
 Dans ce chapitre, nous commençons par un
-récapitulatif sur la théorie des types alébriques
+récapitulatif sur la théorie des types algébriques
 et la raison pour laquelle ils peuvent être familiers pour le développeur Scala.
 Puis, nous verrons les représentations génériques utilisées
 par shapeless et nous traiterons de la façon dont ils sont
 reliés aux *ADT*s concrets.
-Enfin, nous présenterons une type class appelée `Generic`
+Enfin, nous présenterons une *type class* appelée `Generic`
 qui fournit un mapping automatique bidirectionnel entre
 un *ADT* et sa représentation générique.
 Enfin, nous utiliserons `Generic` dans quelques exemples
