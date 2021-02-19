@@ -3,7 +3,7 @@ Dans ce chapitre nous avons expliqué comment utiliser
 `Generic`, `HList`s, et `Coproduct`s
 pour déduire automatiquement l'instance d'une *type class*.
 Nous avons couvert aussi le type `Lazy`
-qui est un moyen de manipuler les types complexes/recursifs.
+qui est un moyen de manipuler les types complexes/récursifs.
 Compte tenu de tout ceci,
 on peut écrire le squelette commun suivant
 qui permet de déduire des instances de *type class*.

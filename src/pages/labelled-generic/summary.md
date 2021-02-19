@@ -4,8 +4,8 @@ Dans ce chapitre, nous avons abordé `LabelledGeneric`,
 une variante de `Generic` qui donne accès aux noms des
 champs et aux noms des types dans sa représentation générique.
 
-Les noms accessible grâce à `LabelledGeneric` sont encodés par des tags au type-level afin de les utiliser durant la résolution d'implicites.
-Nous avons commencer ce chapitre en abordant les *types littéraux*
+Les noms accessibles grâce à `LabelledGeneric` sont encodés par des tags au type-level afin de les utiliser durant la résolution d'implicites.
+Nous avons commencé ce chapitre en abordant les *types littéraux*
 et la façon dont shapeless les utilise dans ces tags.
 Nous avons également abordé la *type class* `Witness` utilisée pour
 extraire les valeurs des types littéraux.

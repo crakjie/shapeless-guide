@@ -2,7 +2,7 @@
 
 Shapeless utilise les types dépendants partout :
 dans `Generic`, dans `Witness` (que nous traiterons dans le chapitre suivant),
-et dans de nombreux type classes « ops » que
+et dans de nombreux *type classes* « ops » que
 nous traiterons dans la *Partie II* de ce guide.
 Par exemple, shapeless fournit une case class appelée `Last`
 qui retourne le dernier élément d'une `HList`.
@@ -301,9 +301,9 @@ l'on a résolu le problème en utilisant `IsHCons`.
 Shapeless fournit de nombreux outils comme celui-ci
 (voir Chapitre [@sec:ops] à [@sec:nat]),
 et on peut les compléter si nécessaire
-avec nos propres type classes.
+avec nos propres *type classes*.
 Le point important est la compréhension du processus
-que l'on utilise pour parvenir à ecrire un code qui compile
+que l'on utilise pour parvenir à écrire un code qui compile
 et la capacité de trouver les solutions
 Cette section se conclue par un
 guide pas à pas qui résume

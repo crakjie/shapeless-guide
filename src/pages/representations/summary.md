@@ -13,4 +13,4 @@ La vraie puissance de `HList`s et de `Coproduct`s provient de leur structure ré
 On peut écrire du code qui traverse leur représentation et calcule des valeurs à partir
 des éléments qui les constituent.
 Dans le prochain chapitre nous verrons notre premier véritable cas d'utilisation :
-la déduction automatique d'instance de *type class*es.
+la déduction automatique d'instance de *type classes*.

@@ -1,10 +1,10 @@
 ## Exemple d'ops simples
 
 `HList` dispose d'une méthode d'extension `init`
-et d'un autre `last` basé sur deux type classes :
+et d'un autre `last` basé sur deux *type classes* :
 `shapeless.ops.hlist.Init` et
 `shapeless.ops.hlist.Last`.
-`Coproduct` a des méthodes et des type classes similaires.
+`Coproduct` a des méthodes et des *type classes* similaires.
 Ils représentent un exemple parfait du pattern ops.
 Voici une définition simplifiée des méthodes d'extension :
 
@@ -19,7 +19,7 @@ implicit class HListOps[L <: HList](l : L) {
 ```
 
 Le type de retour de chaque méthode est déterminé par le type dépendant du paramètre implicite.
-Ce sont les instances de chaque type class qui fournissent la relation.
+Ce sont les instances de chaque *type class* qui fournissent la relation.
 Voici le squelette de l'implémentation de `Last` en guise d'exemple :
 
 ```scala
@@ -37,10 +37,10 @@ object Last {
 ```
 
 Nous pouvons faire quelques observations intéressantes sur cette implémentation.
-Premièrement, nous pouvons généralement implémenter les type classes
+Premièrement, nous pouvons généralement implémenter les *type classes*
 ops avec un petit nombre d'instances (seulement deux dans cet exemple).
 Nous pouvons ainsi rassembler *toutes* les instances requises dans l'objet compagnon de la *type class*,
-ce qui nous permet d'appeler les methodes d'extention de `shapeless.ops` qui n'ont aucun rapport :
+ce qui nous permet d'appeler les méthodes d'extension de `shapeless.ops` qui n'ont aucun rapport :
 
 ```tut:book:silent
 import shapeless._

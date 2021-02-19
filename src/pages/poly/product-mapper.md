@@ -1,8 +1,8 @@
 ## Définir une type classe utilisant *Poly* {#sec:poly:product-mapper}
 
-Nous pouvons utiliser `Poly` et les type classes
+Nous pouvons utiliser `Poly` et les *type classes*
 en tant que `Mapper` et un `FlatMapper` comme
-brique d'assemblage pour nos propres type classes.
+brique d'assemblage pour nos propres *type classes*.
 Comme exemple, construisons une type classe
 pour transformer une case classe en une autre :
 

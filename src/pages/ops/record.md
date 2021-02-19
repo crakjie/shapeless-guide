@@ -1,7 +1,7 @@
 ## Record ops {#sec:ops:record}
 
 Nous avons passé un certain temps dans ce chapitre
-à travailler avec les type classes du package
+à travailler avec les *type classes* du package
 `shapeless.ops.hlist` et `shapeless.ops.coproduct`.
 Nous ne devons pas passer à côté du troisième package :`shapeless.ops.record`.
 
@@ -29,7 +29,7 @@ import shapeless.record._
 
 ### Sélectionner les champs
 
-La méthode d'extension `get` et sa type classe `Selector`
+La méthode d'extension `get` et sa *type classe* `Selector`
 nous permettent d'extraire un champ par son tag :
 
 ```tut:book
@@ -49,8 +49,8 @@ sundae.get('nomCherries)
 
 ### Mettre à jour ou enlever des champs
 
-La méthode `updated` ce type class `Updater` nous permet de modifier un champ via sa clé.
-La méthode `remove` ce type class `Remover` nous permet de supprimer un champ via sa clé :
+La méthode `updated` et sa *type class* `Updater` nous permettent de modifier un champ via sa clé.
+La méthode `remove` et sa *type class* `Remover` nous permetteny de supprimer un champ via sa clé :
 
 ```tut:book
 sundae.updated('numCherries, 3)
@@ -60,7 +60,7 @@ sundae.updated('numCherries, 3)
 sundae.remove('inCone)
 ```
 
-La méthode `updateWith` et sa case class `Modifier` nous permettent de modifier un champ
+La méthode `updateWith` et sa *type class* `Modifier` nous permettent de modifier un champ
 avec une fonction de mise à jour :
 
 ```tut:book
@@ -69,7 +69,7 @@ sundae.updateWith('name)("MASSIVE " + _)
 
 ### Convertir en une *Map* conventionnelle
 
-La méthode `toMap` et sa case class `ToMap`
+La méthode `toMap` et sa *type class* `ToMap`
 nous permettent de convertir un record en `Map` :
 
 ```tut:book

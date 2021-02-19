@@ -1,14 +1,14 @@
-## Bref rappel : les type classes {#sec:generic:type-classes}
+## Bref rappel : les *type classes* {#sec:generic:type-classes}
 
 Avant d'entrer dans les détails de la déduction d'instance,
 faisons un bref rappel des aspects importants des *types classes*.
 
-Les type classes sont un pattern de programmation emprunté à *Haskell*
+Les *type classes* sont un pattern de programmation emprunté à *Haskell*
 (le mot « classe » n'a rien a voir avec les classes
 de la programmation orientée object).
 Nous les écrivons en Scala avec des traits et des implicites.
 Une *type class* est un trait paramétré représentant une
-fonctionalité générale que l'on voudrait appliquer à une grande
+fonctionnalité générale que l'on voudrait appliquer à une grande
 variété de types :
 
 ```tut:book:silent
@@ -17,7 +17,7 @@ trait CsvEncoder[A] {
   def encode(value: A): List[String]
 }
 ```
-On implémente notre type class avec une *instance*
+On implémente notre *type class* avec une *instance*
 pour chaque type visé.
 Si nous voulons avoir l'instance dans le scope automatiquement,
 on peut les placer dans l'objet compagnon de la *type class*.
@@ -135,7 +135,7 @@ le compilateur est capable de *rechercher* les combinaisons
 pour retourner l'instance requise.
 
 
-Cette fonctionalité, connue sous le nom de *résolution d'`implicit`s*,
+Cette fonctionnalité, connue sous le nom de *résolution d'`implicit`s*,
 est ce qui rend le pattern des *types classes* si puissant en Scala.
 
 Même avec cette puissance, le compilateur

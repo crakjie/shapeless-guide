@@ -35,7 +35,7 @@ La *Partie I* comprend quatre chapitres :
   - Le *Chapitre [@sec:labelled-generic]* présente `LabelledGeneric`,
     une variante de `Generic` qui divulgue les champs et les noms des types
     dans sa représentation générique.
-    Davantages d'éléments théoriques sont donnés sur
+    D'avantages d'éléments théoriques sont donnés sur
     les *types littéraux*, les *types singletons*, les *types fantômes* et les *type tagging*.
     `LabelledGeneric` est illustré en créant
     un encodeur *JSON* qui préserve les champs et les noms des types dans sa sortie.

@@ -5,7 +5,7 @@ je n'aurais alors pas pensé que cinq ans plus tard, shapeless deviendrait
 une librairie autant utilisée. Je suis profondément reconnaissant
 envers les personnes qui ont cru en moi et qui ont ajouté shapeless à leurs dépendances.
 Le vote d'adhésion unanime est une source d'encouragements
-pour perserver dans tout projet *open source*.
+pour persévérer dans tout projet *open source*.
 Je suis aussi reconnaissant envers les nombreuses personnes
 qui ont contribué à shapeless au fil des années,
 quatre-vingt-une au moment où j'écris ces lignes.
@@ -13,7 +13,7 @@ Sans leur aide, shapeless serait une librairie bien moins intéressante.
 
 Malgré ces points positifs, shapeless a souffert d'une carence qui caractérise
 les projets *open source* : le manque de documentation compréhensible,
-précise et accessible. La reponsabilité me revient en partie :
+précise et accessible. La responsabilité me revient en partie :
 bien que conscient de ce problème, je n'ai jamais trouvé le
 temps d'y remédier.
 Dans une certaine mesure, shapeless a été sauvé par le travail

@@ -209,10 +209,10 @@ leurs noms dans notre code source.
 Les tags n'existent qu'à la compilation
 et n'ont pas de représentation à l'exécution.
 Alors, comment pouvons-nous les convertir en valeurs utilisables à l'exécution ?
-Shapeless fournit à cette fin une type class appelée `Witness`[^witness].
+Shapeless fournit à cette fin une *type class* appelée `Witness`[^witness].
 Si l'on combine `Witness` et `FieldType`,
 on obtient quelque chose de vraiment intéressant :
-la possibilité d'extraire le nom d'un champ à partir d'un champ tagger :
+la possibilité d'extraire le nom d'un champ à partir d'un champ taggé :
 
 [^witness] : le terme "witness" est emprunté aux [preuves mathématiques][link-witness]
 
@@ -276,6 +276,6 @@ Nous n'avons pas besoin ici d'approfondir les records :
 en bref, les records sont les représentations génériques utilisées par `LabelledGeneric`.
 `LabelledGeneric` tag chaque champ ou nom de type d'un *ADT* dans des produits ou des coproduits
 (bien que les noms soient représentés par des `Symbols` et non des `Strings`).
-Shapeless fournit un ensemble d'operations semblables à celles de `Map` pour manipuler les records,
+Shapeless fournit un ensemble d'opérations semblables à celles de `Map` pour manipuler les records,
 certaines seront traitées dans la section [@sec:ops:record].
-Pour l'instant, contentons-nous de déduire quelquess type class à l'aide de  `LabelledGeneric`.
+Pour l'instant, contentons-nous de déduire quelques *type classes* à l'aide de `LabelledGeneric`.
